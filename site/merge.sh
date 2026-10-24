@@ -22,7 +22,9 @@ stub() { # stub <dir> <target-url>
 <meta http-equiv="refresh" content="0; url=$2">
 <style>body{background:#07090d;color:#d7e3f4;font:16px/1.5 system-ui,sans-serif;margin:3rem}a{color:#7fe7ff}</style>
 </head>
-<body><p>This page moved to <a href="$2">$2</a>.</p></body>
+<body><p>This page moved to <a href="$2">$2</a>.</p>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "eb094a31847f4b1b96558586692a6f73"}'></script>
+</body>
 </html>
 HTML
 }

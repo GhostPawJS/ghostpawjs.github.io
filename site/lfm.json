@@ -35,7 +35,8 @@
     "agentEmail": "https://email.ghostpaw.dev/",
     "agentTelegram": "https://telegram.ghostpaw.dev/",
     "docsEmail": "https://email.ghostpaw.dev/docs/",
-    "docsTelegram": "https://telegram.ghostpaw.dev/docs/"
+    "docsTelegram": "https://telegram.ghostpaw.dev/docs/",
+    "cfBeacon": "https://static.cloudflareinsights.com/beacon.min.js"
   },
   "data": {
     "measured": "Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against the version shown: tests from node --test at the release tag, size as gzip -9 of the published dist/index.js, import time as the median of 11 cold imports.",

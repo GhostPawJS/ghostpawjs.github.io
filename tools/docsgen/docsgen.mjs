@@ -136,6 +136,7 @@ for (const [f, slug] of pages) {
 ${html}</article></main>
 </div>
 <footer><div class="bar libs"><nav aria-label="GhostPaw libraries">${LIBS.map((l) => `<a href="https://${l}.ghostpaw.dev/"${l === lib ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav></div><div class="bar"><span>Rendered from <a href="${gh}/tree/main/docs">docs/</a> in the repository, MIT licensed.</span><nav aria-label="Legal"><a href="https://ghostpaw.dev/">GhostPaw home</a><a href="https://lab.anonyfox.com/impressum/">Impressum</a><a href="https://lab.anonyfox.com/datenschutz/">Datenschutz</a></nav></div></footer>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "eb094a31847f4b1b96558586692a6f73"}'></script>
 </body>
 </html>
 `;
