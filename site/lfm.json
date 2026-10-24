@@ -6,7 +6,7 @@
   "description": "Seven MIT-licensed Node.js 24 libraries that turn the MEMORY.md, task list, USER.md and skills your agent keeps into records you can read, correct and delete. None has a runtime dependency.",
   "socialImage": {
     "src": "assets/images/share.png",
-    "alt": "Ink drawing of a filing drawer of manila folders with a faint paw print, beside the headline: Your agent keeps its state in markdown files. GhostPaw files it."
+    "alt": "A wolf head drawn in cyan light on black, beside the headline: Your agent keeps its state in markdown files."
   },
   "urls": {
     "agentMemory": "https://ghostpaw.anonyfox.com/agent-memory/",
@@ -59,8 +59,6 @@
         "tests": "378",
         "gzip": "32.5 KB",
         "importMs": "4 ms",
-        "spot": "codex",
-        "spotAlt": "Ink drawing of a ruled index card with a red clip.",
         "links": [
           {
             "label": "codex source on GitHub",
@@ -103,8 +101,6 @@
         "tests": "326",
         "gzip": "42.6 KB",
         "importMs": "4.4 ms",
-        "spot": "questlog",
-        "spotAlt": "Ink drawing of a checklist on a clipboard with one box ticked.",
         "links": [
           {
             "label": "questlog source on GitHub",
@@ -147,8 +143,6 @@
         "tests": "436",
         "gzip": "57.4 KB",
         "importMs": "5.8 ms",
-        "spot": "affinity",
-        "spotAlt": "Ink drawing of a rotary card file of blank address cards.",
         "links": [
           {
             "label": "affinity source on GitHub",
@@ -185,8 +179,6 @@
         "tests": "510",
         "gzip": "32.2 KB",
         "importMs": "3.9 ms",
-        "spot": "souls",
-        "spotAlt": "Ink drawing of a hand mirror lying on a sheet of paper.",
         "links": [
           {
             "label": "souls source on GitHub",
@@ -224,8 +216,6 @@
         "tests": "848",
         "gzip": "47.5 KB",
         "importMs": "8.8 ms",
-        "spot": "grimoire",
-        "spotAlt": "Ink drawing of an open recipe card box with one card standing up.",
         "links": [
           {
             "label": "grimoire source on GitHub",
@@ -263,8 +253,6 @@
         "tests": "528",
         "gzip": "48.7 KB",
         "importMs": "11.7 ms",
-        "spot": "email",
-        "spotAlt": "Ink drawing of a sealed envelope with a red wax dot.",
         "links": [
           {
             "label": "email source on GitHub",
@@ -296,8 +284,6 @@
         "tests": "860",
         "gzip": "34.5 KB",
         "importMs": "10.4 ms",
-        "spot": "telegram",
-        "spotAlt": "Ink drawing of a folded paper plane with a dashed trail.",
         "links": [
           {
             "label": "telegram source on GitHub",
@@ -312,15 +298,6 @@
         ]
       }
     ]
-  },
-  "build": {
-    "assets": {
-      "overrides": {
-        "assets/images/spot-codex.webp": "file",
-        "assets/images/spot-questlog.webp": "file",
-        "assets/images/spot-telegram.webp": "file"
-      }
-    }
   },
   "jsonld": {
     "@context": "https://schema.org",

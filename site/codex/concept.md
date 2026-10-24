@@ -1,5 +1,8 @@
 # Concept: GhostPaw Codex
 
+## Diagnosis
+The owner reviewed the live paper page on 2026-10-24 and rejected the visual direction across the GhostPaw site: index cards, ink and stamps read as an office archive, not as GhostPaw. What stays strong: the five-move drill with values from a real codex 0.3.0 run, the record form, the numbers and the stated limits. What changes: palette, type, form, imagery and motion move to the shared dark spectral identity; the belief card becomes a lit pane, the carbon copy becomes a dimmed afterimage.
+
 ## Voices
 - The fear that recurs most: one agent saves a wrong fact and every other agent treats it as ground truth. V008 V012 V013 V014 V015 V019
 - Buyers want to read, correct and delete what the agent believes, one line at a time, not debug an embedding. V010 V016 V022
@@ -52,8 +55,8 @@ Delivery: `npm install @ghostpaw/codex` into a Node.js 24+ project (tables go in
 | Opening | memory that persists, learns or scales P001 P006 P007 | the wrong fact everyone trusts, the hard half is forgetting V013 V015 | open on the wrong fact and its correction |
 | Proof | stars and benchmarks P004 P005 P010 P012 | wants to read and delete each belief V010 V016 | the card itself: every field visible, plus measured package numbers |
 | Mechanism | hosted API, SDK quickstart or plugin P001 P006 P012 | correction, expiry, provenance V011 V019 V059 | a step-through drill of one belief's life |
-| Palette | light with one accent P001 P003 P004 | files, junk drawer, dated sentences V009 V010 | manila index card, carbon ink, stamp red for flags, ledger green for confirmed |
-| Imagery | none or code UI P008 P010 P011 | creators show memory as files and cards V068 V074 | one hand-drawn ink index-card drawing; the rest is the live card in HTML |
+| Palette | light with one accent P001 P003 P004 | watches memory in terminals; fears stale context and ghost vectors V067 V073 V025 | near-black void, spectral cyan for live beliefs, wraith violet for superseded afterimages, alarm rose for flags, ward green for confirmed |
+| Imagery | none or code UI P008 P010 P011 | films memory screens in the terminal V067 V073 | generated spectral line art: a ghost paw on a lit belief card, a cracked memory shard; the rest is the live card in HTML |
 | Tone | confident claims, "default engine" P006 P007 | wary, plain, admits limits V029 V067 V022 | plain maintainer notes, limits stated |
 
 ## Sparks
@@ -67,7 +70,7 @@ Delivery: `npm install @ghostpaw/codex` into a Node.js 24+ project (tables go in
   pushed: a chat mock that remembers your name; a competitor drops in unchanged.
 2. Graph view: beliefs as a knowledge graph animation. V026 → struck: second direction; graphs are Cognee's and the MCP server's picture (P005 P011).
   pushed: an interactive graph; pretty, slow on phones, says nothing about correction.
-3. Wrong-fact drill: one belief card goes wrong and gets fixed in five steps with the real verbs. V013 V015 V010 → chosen
+3. Wrong-fact drill: one belief card goes wrong and gets fixed in five steps with the real verbs. V013 V015 V010 → struck: built as paper index cards, then rejected on owner review on 2026-10-24; the drill survives inside direction 9.
   pushed: the card carries its source, certainty and flags; the correction leaves a superseded card underneath like a carbon copy, so lineage is visible.
 4. Junk drawer cleanup: a MEMORY.md on screen that the visitor sorts into beliefs and deletes. V009 V001 → struck: slows first value and needs invented sample content.
   pushed: a sorting game with fake lines; fun for a minute, answers late.
@@ -79,12 +82,14 @@ Delivery: `npm install @ghostpaw/codex` into a Node.js 24+ project (tables go in
   pushed: kept as step four.
 8. Plain README page: install, quick start and tools table. V017 → struck: matches the market baseline (repo page, P010 P011 P012).
   pushed: the README stays one click away.
+9. Afterimage: the same five-move drill on a dark scope; each belief is a lit pane, a correction leaves the old belief behind as a violet afterimage, and retire switches the pane off. V013 V015 V067 V025 → chosen
+  pushed: the GhostPaw paw leaves its print on the live card in the hero art; flags glow alarm rose exactly where codex computes them.
 
 ## Concept
-One belief, five moves. The page centres on a single index card, the belief "The API uses GraphQL with a REST fallback", taken from the README's own example. Step one remembers it as inferred; the card shows the low-trust flag in stamp red, because the wrong fact every agent trusts is what buyers fear (V013). Step two is recall: another session finds it, flag and source attached. Step three corrects it; the old card slides under the new one like a carbon copy marked "superseded", and lineage reads "supersedes #1" (V059 V047). Step four jumps ninety days: unconfirmed, freshness falls to 37% and the card is flagged stale (V006). Step five retires it: the belief and its lineage are hard-deleted and recall returns nothing (V016). Each step shows the exact call beside the card. The forgetting half is the story; recall is one step of five.
+One belief, five moves, on a dark scope. The page centres on a single belief pane, "The API uses GraphQL with a REST fallback", taken from the README's own example. Step one remembers it as inferred; the pane shows the low-trust flag in alarm rose, because the wrong fact every agent trusts is what buyers fear (V013). Step two is recall: another session finds it, flag and source attached. Step three corrects it; the old belief stays behind the new pane as a dimmed violet afterimage marked "superseded", and lineage reads "supersedes #1" (V059 V047). Step four jumps ninety days: unconfirmed, freshness falls to 37% and the pane is flagged stale (V006). Step five retires it: the belief and its lineage are hard-deleted, the pane goes dark and recall returns nothing (V016). Each step shows the exact call beside the pane, the way developers watch memory in a terminal (V067). The forgetting half is the story; recall is one step of five.
 
 ## Spine
-1. Hero: "When one agent saves a wrong fact, every agent trusts it." Subline on what codex records; install line, GitHub, live demo; the stamp "0 runtime dependencies"; ink drawing of an index card. V013 V015
+1. Hero: "When one agent saves a wrong fact, every agent trusts it." Subline on what codex records; install line, GitHub, live demo; a "0 runtime dependencies" readout; generated art of a ghost paw on a lit belief card. V013 V015
 2. The drill: five steps, card plus call, step one shown on load. V010 V011 V059
 3. What a belief records: the fields as a labelled form (claim, source, category, certainty, evidence, freshness, lineage). V019 V026
 4. If memory worries you: active-only recall, flags tell you what to prune, retire deletes, the database is a file you can open with sqlite3. V067 V066 V048
@@ -95,33 +100,37 @@ One belief, five moves. The page centres on a single index card, the belief "The
 ## Palette
 | Role | Color | Source |
 | --- | --- | --- |
-| ground | #efe4c8 | manila folder stock; memory as files and dated sentences V010 V002 |
-| card | #f8f2e2 | the belief index card |
-| ink | #1d1a16 | typed claim text |
-| muted ink | #5a5146 | field labels |
-| stamp | #a3312a | low-trust and stale flags; the wrong fact V013 |
-| ledger | #2e5a4c | confirmed and strong |
-| rule | #c9b98f | card rules and creases |
+| void | #04070b | the night behind the ghost; the owner asked for a deep near-black ground, and every peer page is white or stone P002 P004 P006 |
+| panel | #0a1119 | a terminal pane one step above the void; creators film agents in terminals V067 V073 |
+| rule | #1d2c3c | pane borders and the faint HUD grid |
+| ghost | #e3edf5 | spectral white for body text, cold not cream |
+| haze | #93a5b9 | secondary text, the glow a ghost leaves |
+| spectral | #62e6f2 | the ghost's cold cyan: primary actions, available, measured values |
+| wraith | #b39dff | the afterglow: in progress, superseded, structure lines |
+| alarm | #ff7aa6 | flags, refusals, blocked and overdue |
+| ward | #7af0b4 | confirmed and done |
 
 ## Type
 | Role | Family | Source |
 | --- | --- | --- |
-| display and body | Libre Franklin, Franklin Gothic, Arial, sans-serif | the gothic of typed forms; field labels must read small on a phone |
-| labels and code | Courier Prime, Courier New, monospace | typed claims on an index card and the code calls; memory lines are plain text V010 |
+| display | Tektur, Bahnschrift, Arial Narrow, sans-serif | a squared, width-variable display face that reads like HUD lettering and stretches from condensed tabs to wide headlines; one family carries the GhostPaw name |
+| body | system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif | the reader's own interface sans, which stays readable in long paragraphs on a dark ground and costs no download, so the two loaded faces carry the identity |
+| code and file names | Martian Mono, Cascadia Mono, Consolas, monospace | crisp, slightly narrow mono for install lines, calls and file names like MEMORY.md V010 |
 
 ## Form
-The belief card is an index card: square corners, 2px ink border, a red top rule like a ruled card, no shadows. A superseded card sits 8px down and right beneath the current one, like a carbon copy. Steps are numbered tabs. One column on phones with the call under the card; on desktop the card and the call sit side by side.
+The belief is a pane: panel ground, 1px rule border, a 3px top bar in alarm rose while flagged and ward green once confirmed, and a 12px chamfer on the top right corner like a HUD frame. No drop shadows; a soft glow only on the live pane's top bar. A superseded belief sits behind and below the current pane as a violet-edged afterimage with its claim struck through. Steps are numbered tabs with a glowing underline. One column on phones with the call under the pane; on desktop the pane and the call sit side by side. The page ground carries the shared faint 48px grid.
 
 ## Imagery
 | Image | Job | Art direction | Source |
 | --- | --- | --- | --- |
-| hero index card | protagonist | ink line drawing of a single ruled index card held by a faint ghostly paw, a red flag clip on its corner, manila wash; creators show memory as files and cards V068 V074 | generated |
-| share card | share preview | the card drawing with the headline at 1200×630 | rendered from HTML |
+| hero paw on belief card | protagonist | a translucent holographic card drawn in cyan light with a glowing ghost paw print on it and a small rose flag on its corner, violet afterimage cards behind, on pure black; no people, no logos V067 V073 | generated |
+| memory shard | atmosphere | a cracked shard of cyan light dissolving into violet particles, the wrong fact breaking up, on pure black V025 | generated |
+| share card | share preview | the hero art with the headline in the display face at 1200×630 | generated art, rendered from HTML |
 
 ## Motion
-Moment: on step three the old card slides 8px down and right under the new card and its stamp changes to "superseded" (300 ms).
-Feedback: the active step tab lifts; flags press in with a 150 ms scale.
-Reduced motion: cards swap without movement; the superseded card is shown in place.
+Moment: on first load a single cyan scan line sweeps down over the hero art once (900 ms) and the art resolves behind it.
+Feedback: on step three the old belief slides back behind the new pane and dims to its violet afterimage (300 ms); flags light up with a 150 ms fade; the chosen step tab gets a glowing underline.
+Reduced motion: no sweep; panes swap without movement and the afterimage is shown in place.
 
 ## Copy
 - Use: "wrong fact", "read and delete", "source", "certainty", "stale", "superseded" V013 V010 V011 V006
@@ -132,5 +141,6 @@ Reduced motion: cards swap without movement; the superseded card is shown in pla
 - Never present voices as customers; describe what developers report in our words. V010 V014
 
 ## Changelog
+- 2026-10-24: visual rebuild after owner review: paper index cards replaced by the shared dark spectral identity (void, spectral cyan, wraith violet, alarm rose, ward green; Tektur, system sans, Martian Mono; generated paw-on-card and memory-shard art). Drill values, numbers and copy rules kept; direction 3 struck and direction 9 chosen.
 - 2026-10-24: codex 0.3.0 shipped during the build (MCP server, CLI); facts, numbers and limits updated; card values now come from running 0.3.0.
 - 2026-10-24: first concept from the batch of 2026-10-24 (75 voices, 12 peers).

@@ -13,8 +13,9 @@
 <meta property="og:image" content="{{.socialImage.src}}">
 <meta property="og:image:alt" content="{{.socialImage.alt}}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="assets/fonts/libre-franklin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/courier-prime-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/tektur-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/martian-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#04070b">
 <script>document.documentElement.classList.add("js")</script>
 {{style "assets/styles/main.css"}}
 </head>
@@ -42,9 +43,9 @@
       <p class="actions"><a class="button" href="#drill">Follow one wrong fact</a> <a href="{{.urls.github}}">Read the source on GitHub</a></p>
       <p class="terms">Free, MIT licence, Node.js 24 or newer, zero runtime dependencies. One SQLite file on your machine.</p>
     </div>
-    <figure class="hero-art">
-      <picture><source media="(min-width: 52rem)" srcset="assets/images/belief-card-720.webp" width="720" height="540"><img src="assets/images/belief-card-480.webp" width="480" height="360" alt="Ink drawing of a ruled index card with a red clip on its corner, lying over an older card marked with a faint paw print." fetchpriority="high"></picture>
-      <p class="stamp" aria-label="Zero runtime dependencies"><span>0 runtime</span><span>dependencies</span></p>
+    <figure class="hero-art frame">
+      <div class="scope"><picture><source media="(min-width: 52rem)" srcset="assets/images/hero-720.webp" width="720" height="540"><img src="assets/images/hero-480.webp" width="480" height="360" alt="A glowing cyan paw print on a translucent belief card with a small rose flag on its corner, older violet cards fading behind it." fetchpriority="high"></picture><span class="scan" aria-hidden="true"></span></div>
+      <p class="readout" aria-label="Zero runtime dependencies"><span class="big">0</span><span>runtime dependencies</span></p>
     </figure>
   </section>
 
@@ -188,7 +189,8 @@ read.recall(db, 'graphql api'); // []</code></pre></div>
   <section class="worry" aria-labelledby="worry-title">
     <h2 id="worry-title">If memory makes your agent worse</h2>
     <div class="worry-grid">
-      <p>Plenty of developers turn agent memory off. Unread memories pile up, and an old line wins against a new one. That is a fair reason, and most of codex exists because of it.</p>
+      <div><img class="shard" src="assets/images/art-480.webp" width="480" height="480" alt="A cracked shard of cyan light breaking up into violet particles." loading="lazy">
+      <p>Plenty of developers turn agent memory off. Unread memories pile up, and an old line wins against a new one. That is a fair reason, and most of codex exists because of it.</p></div>
       <ul>
         <li>Recall returns only active beliefs. Superseded and forgotten ones stay out of the prompt.</li>
         <li>Flags tell you what to prune: stale, fading, low trust, single evidence.</li>

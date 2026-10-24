@@ -1,5 +1,8 @@
 # Concept: GhostPaw Questlog
 
+## Diagnosis
+The owner reviewed the live paper page on 2026-10-24 and rejected the visual direction across the GhostPaw site: paper cards, ink and rubber stamps read as an office archive, not as GhostPaw. What stays strong: the board replayed from a real questlog 0.5.1 run, the refusal text, the honest notes about blocked being a view, the TODO.md mapping and the numbers. What changes: palette, type, form, imagery and motion move to the shared dark spectral identity; quest cards become lit panes and stamps become glowing status tags.
+
 ## Voices
 - The complaint that defines the category: the agent said it was done, and it was not. V002 V006 V019 V034 V036 V037
 - People build second reviewers, hooks and runnable specs just to check a "done". V001 V019 V036 V045 V060 V061
@@ -54,8 +57,8 @@ Delivery: `npm install @ghostpaw/questlog` into a Node.js 24+ project; tables ar
 | Opening | "team of agents", "structure for AI", "really does things" P002 P004 P012 | "said it was done", "grade its own homework" V002 V006 V019 | open on the hollow done and the outcome line that stops it |
 | Proof | stars, waitlists, app screenshots P001 P004 P011 | wants evidence and enforced blockers V019 V038 | the board refuses what the library refuses; measured numbers |
 | Mechanism | MCP server, CLI or hosted app P006 P007 P008 | keeps TODO.md and HEARTBEAT.md files V025 V040 | a quest board with outcome-gated finish and unlocks |
-| Palette | white or black with one accent P002 P004 P006 | paper lists, three headings, handoff notes V025 V044 | manila stock, carbon ink, stamp red for blocked and overdue, ledger green for done |
-| Imagery | screenshots or none P001 P003 P008 | creators film checklists and boards V063 V064 | one hand-drawn ink drawing of a quest card; the rest is the live board in HTML |
+| Palette | white or black with one accent P002 P004 P006 | watches agents and dependency graphs in the terminal V062 V065 | near-black void, spectral cyan for available, wraith violet for in progress, alarm rose for blocked, overdue and refusals, ward green for done |
+| Imagery | screenshots or none P001 P003 P008 | films task graphs drawn in the terminal V065 V062 | generated spectral line art: a ghost paw pressing a hexagonal "!" marker, a dependency graph of hex nodes; the rest is the live board in HTML |
 | Tone | bold claims P004 P012 | tired of agents claiming success V034 V037 | plain, states what it refuses |
 
 ## Sparks
@@ -69,7 +72,7 @@ Delivery: `npm install @ghostpaw/questlog` into a Node.js 24+ project; tables ar
   pushed: a dashboard of busy agents; any peer drops in.
 2. Kanban board: drag cards from Todo to Done. V025 → struck: second direction; peers already show boards (P005), and drag-to-Done is the hollow finish.
   pushed: animated lanes; same picture, nicer.
-3. Outcome-gated board: quests finish only with a written outcome and blocked quests stay blocked until their prerequisite succeeds. V019 V038 V006 → chosen
+3. Outcome-gated board: quests finish only with a written outcome and blocked quests stay blocked until their prerequisite succeeds. V019 V038 V006 → struck: built as paper cards with rubber stamps, then rejected on owner review on 2026-10-24; the board survives inside direction 9.
   pushed: the Finish button holds an outcome field; finishing one quest lifts the stamp off the next; time jumps a week to show overdue.
 4. TODO.md converter: paste a TODO.md and see it become quests. V025 V026 → struck: needs parsing guesses and a real library call the browser cannot make.
   pushed: kept as the board's starting text, three headings mapped to states.
@@ -81,12 +84,14 @@ Delivery: `npm install @ghostpaw/questlog` into a Node.js 24+ project; tables ar
   pushed: only the plain marker symbols "!" and "?" remain, as the markers namespace prints them.
 8. Plain README page. V017 → struck: matches the market baseline (repo pages P001 P003 P008).
   pushed: the README stays one click away.
+9. Lit board: the same outcome-gated board on a dark scope; each quest is a pane lit by its state, the blocked tag on #3 glows alarm rose until #1 finishes with an outcome, then dissolves. V019 V038 V065 → chosen
+  pushed: the GhostPaw paw presses the "!" marker in the hero art; markers stay the plain "!" and "?" the library prints, no game styling (direction 7 stays struck).
 
 ## Concept
-Done needs an outcome. The page centres on a small quest board taken from the README's Vendor Renewal example. Each quest is a card with questlog's markers: "!" available, "?" incomplete while in progress or blocked. Pressing Finish opens an outcome line; leave it blank and the card stamps back the library's own refusal, "Quest outcome must not be empty." (V019 V006). Write one and the card is filed as done with its outcome, and the quest that waited on it loses its red "blocked" stamp and joins the available list (V038). A switch jumps seven days: a due date turns overdue in stamp red (V008 V013). Under every move the exact call appears. The TODO.md with three headings (V025) is the before, shown as typed text beside the board.
+Done needs an outcome, on a dark scope. The page centres on a small quest board taken from the README's Vendor Renewal example. Each quest is a lit pane with questlog's markers: "!" available in spectral cyan, "?" incomplete while in progress or blocked. Pressing Finish opens an outcome line; leave it blank and the pane answers with the library's own refusal in alarm rose, "Quest outcome must not be empty." (V019 V006). Write one and the pane turns ward green with its outcome, and the quest that waited on it loses its glowing "blocked" tag and joins the available list (V038). A switch jumps seven days: a due date turns overdue in alarm rose (V008 V013). Under every move the exact call appears, the way developers watch task graphs in a terminal (V065). The TODO.md with three headings (V025) is the before, shown as plain text beside the mapping.
 
 ## Spine
-1. Hero: "Your agent said it was done. Was it?" Subline: questlog will not finish a quest without a written outcome and keeps blocked work blocked; install line, GitHub, live demo; the stamp "0 runtime dependencies"; ink drawing of a quest card. V002 V006 V019
+1. Hero: "Your agent said it was done. Was it?" Subline: questlog will not finish a quest without a written outcome and keeps blocked work blocked; install line, GitHub, live demo; a "0 runtime dependencies" readout; generated art of a ghost paw pressing the "!" marker. V002 V006 V019
 2. The board: four quests, Finish with outcome, unlock, +7 days; the call under each move. V038 V008
 3. From TODO.md: the three headings mapped to derived states, plus rumors for work not yet shaped. V025 V026 V044
 4. Deadlines and repeats: dueAt, scheduled windows, RRULE repeatable quests. V009 V040
@@ -97,33 +102,37 @@ Done needs an outcome. The page centres on a small quest board taken from the RE
 ## Palette
 | Role | Color | Source |
 | --- | --- | --- |
-| ground | #efe4c8 | manila folder stock; task lists kept as paper-like files V025 V044 |
-| card | #f8f2e2 | the quest card |
-| ink | #1d1a16 | typed titles |
-| muted ink | #5a5146 | objectives and labels |
-| stamp | #a3312a | blocked, overdue and refused stamps; the hollow done V006 |
-| ledger | #2e5a4c | finished with outcome |
-| rule | #c9b98f | card rules and board lines |
+| void | #04070b | the night behind the ghost; the owner asked for a deep near-black ground, and every peer page is white or stone P002 P004 P006 |
+| panel | #0a1119 | a terminal pane one step above the void; creators film agents in terminals V062 V065 |
+| rule | #1d2c3c | pane borders and the faint HUD grid |
+| ghost | #e3edf5 | spectral white for body text, cold not cream |
+| haze | #93a5b9 | secondary text, the glow a ghost leaves |
+| spectral | #62e6f2 | the ghost's cold cyan: primary actions, available, measured values |
+| wraith | #b39dff | the afterglow: in progress, superseded, structure lines |
+| alarm | #ff7aa6 | flags, refusals, blocked and overdue |
+| ward | #7af0b4 | confirmed and done |
 
 ## Type
 | Role | Family | Source |
 | --- | --- | --- |
-| display and body | Libre Franklin, Franklin Gothic, Arial, sans-serif | typed-form gothic; card titles must read small on a phone |
-| labels and code | Courier Prime, Courier New, monospace | typed TODO.md text and code calls; agents keep tasks as plain text files V025 |
+| display | Tektur, Bahnschrift, Arial Narrow, sans-serif | a squared, width-variable display face that reads like HUD lettering and stretches from condensed tabs to wide headlines; one family carries the GhostPaw name |
+| body | system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif | the reader's own interface sans, which stays readable in long paragraphs on a dark ground and costs no download, so the two loaded faces carry the identity |
+| code and file names | Martian Mono, Cascadia Mono, Consolas, monospace | crisp, slightly narrow mono for install lines, calls and file names like MEMORY.md V025 |
 
 ## Form
-Quest cards are paper cards with square corners, a 2px ink border and no shadows, laid on a ruled board. Stamps are rotated 3 degrees, outlined in stamp red. One column on phones with the call below each card; on desktop a two-column board with the TODO.md text beside it.
+Quests are panes: panel ground, 1px rule border, a 12px chamfer on the top right corner and a 3px top bar lit by state (cyan available, violet in progress, rose blocked, green done). No drop shadows. Status tags are small outlined labels with a faint fill of their color; nothing is rotated. One column on phones with the call log below the board; on desktop three panes side by side with the TODO.md text beside its mapping. The page ground carries the shared faint 48px grid.
 
 ## Imagery
 | Image | Job | Art direction | Source |
 | --- | --- | --- | --- |
-| hero quest card | protagonist | ink line drawing of a paper task card with a big exclamation mark and an empty outcome line, a faint ghostly paw resting on a rubber stamp beside it, manila wash; creators film checklists V063 V064 | generated |
-| share card | share preview | the card drawing with the headline at 1200×630 | rendered from HTML |
+| hero paw on marker | protagonist | a ghost paw drawn in cyan light filaments pressing a glowing hexagonal "!" marker, violet sparks, on pure black; no people, no logos V065 V062 | generated |
+| dependency graph | explanation | hex nodes joined by light lines: lit cyan nodes, a locked violet node, faint nodes beyond, on pure black; what unlocks look like V065 V038 | generated |
+| share card | share preview | the hero art with the headline in the display face at 1200×630 | generated art, rendered from HTML |
 
 ## Motion
-Moment: when a quest finishes, the "blocked" stamp on the next quest lifts and fades (300 ms).
-Feedback: a blank outcome shakes the field 4px once and shows the refusal; the Finish button reads "Filed" afterwards.
-Reduced motion: no shake or lift; text and stamp states change in place.
+Moment: on first load a single cyan scan line sweeps down over the hero art once (900 ms) and the art resolves behind it.
+Feedback: when a quest finishes, the "blocked" tag on the next quest dissolves upward (300 ms); a blank outcome shakes the field 4px once and shows the refusal; the chosen toolbar state glows.
+Reduced motion: no sweep, shake or dissolve; text and tag states change in place.
 
 ## Copy
 - Use: "said it was done", "outcome", "blocked", "overdue" V002 V006 V038
@@ -135,6 +144,7 @@ Reduced motion: no shake or lift; text and stamp states change in place.
 - Never present voices as customers; describe what developers report in our words. V034 V036
 
 ## Changelog
+- 2026-10-24: visual rebuild after owner review: paper cards and stamps replaced by the shared dark spectral identity (void, spectral cyan, wraith violet, alarm rose, ward green; Tektur, system sans, Martian Mono; generated paw-on-marker and dependency-graph art). Board replay, refusals, numbers and copy rules kept; direction 3 struck and direction 9 chosen.
 - 2026-10-24: TODO.md moved from the Use phrases to a code-only rule; the bare word reads as a placeholder.
 - 2026-10-24: page moved to /agent-tasks/; numbers from EXCELLENCE.md (96.0% lines, 4.4 ms import); markers as plain "!" and "?"; blocked described as a read-side view after a real run showed startQuest does not check unlocks.
 - 2026-10-24: first concept from the batch of 2026-10-24 (67 voices, 12 peers).

@@ -1,5 +1,8 @@
 # Concept: GhostPaw
 
+## Diagnosis
+The owner reviewed the live paper page on 2026-10-24 and rejected the visual direction: manila, ink and rubber stamps read as an office archive, not as GhostPaw. What stays strong: the file-to-package index, the measured numbers, the plain maintainer copy and the honesty notes. What changes: palette, type, form, imagery and motion move to a dark spectral identity built on the name itself, a ghost wolf. The visitor still comes to find which package replaces which file, so the index stays the mechanism.
+
 ## Voices
 - Persistent agents keep their state in a handful of named markdown files, and people list them by name like rooms in a house: SOUL.md, USER.md, MEMORY.md, AGENTS.md, TOOLS.md. V001 V002 V089 V035
 - The memory file grows every session and turns into a "junk drawer"; nobody prunes it, so stale lines keep steering the agent. V001 V006 V009 V086 V005
@@ -53,8 +56,8 @@ Delivery: `npm install @ghostpaw/<package>` into any Node.js 24+ project, immedi
 | --- | --- | --- | --- |
 | Opening | names a framework or platform category P006 P007 P008 | names the files they keep and the wrong fact that spreads V001 V089 V013 | open on the files: "Your agent keeps its state in markdown files" |
 | Proof | stars, downloads or benchmarks P001 P002 P004 | wants to read and delete what is stored, distrusts size V010 V016 V053 | measured package facts beside each claim: 0 runtime deps, Node 24+, tests, KB gzip |
-| Palette | white or black with one accent P001 P006 P008 P009 | talks about files, drawers and paper records V002 V009 V001 | manila folder paper, carbon ink, stamp red and ledger green |
-| Imagery | none or code UI P002 P004 P008 P011 | creators film files and checklists, cards labelled "PERSISTS" V113 V115 | hand-drawn ink illustrations, one per package |
+| Palette | white or stone with one accent P001 P006 P008 P009 | lives in terminals and dark editors; talks about ghost vectors and stale context V107 V120 V033 | near-black void with spectral cyan, a violet afterglow and an alarm rose used only for flags |
+| Imagery | none or code UI P002 P004 P008 P011 | films terminals and dependency graphs in the terminal V107 V120 | generated spectral line art of a ghost wolf and its paw trail; no UI screenshots |
 | Mechanism | install docs or hosted SDK P001 P008 | asks which tool replaces which file V035 V050 V051 | a file index that maps each file to a package |
 | Tone | confident product claims P001 P006 P009 | plain, wary of hype, likes boring choices V017 V021 V107 | plain maintainer notes that state limits |
 
@@ -69,7 +72,7 @@ Delivery: `npm install @ghostpaw/<package>` into any Node.js 24+ project, immedi
   pushed: an animated graph of agents writing to one store; still a framework page with a different name.
 2. Benchmarks first: open on recall speed numbers against other stores. V031 → struck: second direction, and benchmark proof is what P001 already does.
   pushed: a live leaderboard; it would rest on other projects' numbers we cannot keep current.
-3. Filing cabinet: the agent's home directory drawn as a drawer of manila folders, one tab per file, each tab opening onto the package that replaces it. V001 V089 V002 → chosen
+3. Filing cabinet: the agent's home directory drawn as a drawer of manila folders, one tab per file, each tab opening onto the package that replaces it. V001 V089 V002 → struck: built and shipped, then rejected on owner review on 2026-10-24; paper and stamps say archive, not GhostPaw.
   pushed: the visitor pulls the folder for the file they keep; inside are the record shape, the numbers and the install line, typed like a form.
 4. Junk drawer audit: a messy MEMORY.md on screen that the visitor sorts line by line into beliefs, tasks and contacts. V009 V006 → struck: slows first value; sorting a fake file takes a minute before any answer.
   pushed: a drag-and-drop sort game; charming, but the answer arrives late and needs invented sample lines.
@@ -81,49 +84,54 @@ Delivery: `npm install @ghostpaw/<package>` into any Node.js 24+ project, immedi
   pushed: an illustrated map; pretty, but it hides the install line behind a story.
 8. Plain ledger: a single typed table of seven packages with numbers. V010 → struck: matches the market baseline (neutral docs, P004 P011) and loses the file-to-package question.
   pushed: becomes the numbers strip inside the chosen direction.
+9. Ghost on the scope: the file index from direction 3 on a dark terminal scope where the GhostPaw wolf appears in cyan light; each file tab opens a pane. V107 V120 V001 → chosen
+  pushed: the wolf resolves under one scan line on load; its paw trail leads into the list of all seven packages; flags and refusals glow alarm rose only where the library itself would raise them.
 
 ## Concept
-The agent's home directory, filed. The page is a drawer of manila folders. Each tab carries the name of a file a persistent agent keeps (MEMORY.md, TODO.md, USER.md, SOUL.md, skills, inbox) because buyers name those files themselves (V001 V089). Pull a tab and the folder shows the package that keeps that state in SQLite: the record shape typed like a form, the measured numbers as a ledger line, an ink drawing of what the package holds, and the install line ready to copy. The junk drawer (V009) is the before; the labelled folder is the after. Correction and the honest finish are the two answers the voices want (V015 V023), so the memory and task folders say them first. A stamp lands once on the hero: "0 runtime dependencies", the claim no peer makes.
+The agent's home directory, haunted. GhostPaw is the ghost that keeps an agent's state between runs, so the page is a dark scope where that ghost shows up: a spectral wolf drawn in cold cyan light resolves on the hero while a scan line passes, the way a terminal draws a new screen (V107 V120). Below it the index keeps the job the voices gave it: one tab per file a persistent agent keeps (MEMORY.md, TODO.md, USER.md, SOUL.md, skills, inbox, chat log), named the way buyers name them (V001 V089). Each tab opens a terminal pane with the package that keeps that state in SQLite, the record shape, the measured numbers and the install line. The paw-print trail returns where the page lists all seven packages: a ghost leaves tracks you can follow, which is the point of state you can read and delete (V010). Correction and the honest finish (V015 V023) are still said first in the memory and task panes. The "0 runtime dependencies" claim no peer makes sits on the hero as a HUD readout.
 
 ## Spine
-1. Hero: names the files (MEMORY.md, TODO.md, USER.md) and says GhostPaw turns them into SQLite tables a Node process opens directly; install line and GitHub link; the stamp; ink drawing of a filing drawer. V001 V089 V002
-2. File index: the folder tabs; MEMORY.md open by default; each folder shows package, record shape, numbers and install. V035 V050 V010
+1. Hero: names the files (MEMORY.md, TODO.md, USER.md) and says GhostPaw turns them into SQLite tables a Node process opens directly; install line and GitHub link; the zero-dependency readout; the spectral wolf. V001 V089 V002
+2. File index: the file tabs; MEMORY.md open by default; each folder shows package, record shape, numbers and install. V035 V050 V010
 3. Why not just markdown: three short notes in the voices' terms: the junk drawer, the wrong fact everyone trusts, the task said done; each answered by a package behaviour. V009 V013 V023
 4. If memory worries you: decay, stale flags, correction with lineage, explicit finish; nothing is recalled you cannot read or delete. V107 V106 V016
-5. All seven packages: ledger table with version, runtime deps, tests, gzip, links to repo and live demo. V053 V010
+5. All seven packages: the paw-print trail above a table with version, runtime deps, tests, gzip, links to repo and live demo. V053 V010
 6. Footer: GitHub org, npm org, Impressum, Datenschutz.
 
 ## Palette
 | Role | Color | Source |
 | --- | --- | --- |
-| ground | #efe4c8 | manila folder stock; the voices call memory files and drawers V002 V009 |
-| card | #f8f2e2 | index card inside the folder |
-| ink | #1d1a16 | carbon typewriter ink on the forms |
-| muted ink | #5a5146 | pencil notes on the card |
-| stamp | #a3312a | rubber stamp red for the zero-dependency stamp and "said it was done" V045 V117 |
-| ledger | #2e5a4c | ledger green for measured numbers |
-| rule | #c9b98f | folder crease and table rules |
+| void | #04070b | the night behind the ghost; the owner asked for a deep near-black ground, and every peer page is white or stone P002 P004 P006 |
+| panel | #0a1119 | a terminal pane one step above the void; creators film agents in terminals V107 V120 |
+| rule | #1d2c3c | pane borders and the faint HUD grid |
+| ghost | #e3edf5 | spectral white for body text, cold not cream |
+| haze | #93a5b9 | secondary text, the glow a ghost leaves |
+| spectral | #62e6f2 | the ghost's cold cyan: primary actions, available, measured values |
+| wraith | #b39dff | the afterglow: in progress, superseded, structure lines |
+| alarm | #ff7aa6 | flags, refusals, blocked and overdue |
+| ward | #7af0b4 | confirmed and done |
 
 ## Type
 | Role | Family | Source |
 | --- | --- | --- |
-| display and body | Libre Franklin, Franklin Gothic, Arial, sans-serif | the gothic of typed office forms and folder labels; must stay legible small on a phone and bold on a tab |
-| labels and code | Courier Prime, Courier New, monospace | typewriter labels on folder tabs; file names like MEMORY.md are plain text files V002 |
+| display | Tektur, Bahnschrift, Arial Narrow, sans-serif | a squared, width-variable display face that reads like HUD lettering and stretches from condensed tabs to wide headlines; one family carries the GhostPaw name |
+| body | system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif | the reader's own interface sans, which stays readable in long paragraphs on a dark ground and costs no download, so the two loaded faces carry the identity |
+| code and file names | Martian Mono, Cascadia Mono, Consolas, monospace | crisp, slightly narrow mono for install lines, calls and file names like MEMORY.md V001 V002 |
 
 ## Form
-Folders with a tab on the top edge, square corners, 2px ink borders, no shadows; a folder sits 6px above the drawer line when open. Cards inside are flat paper with a thin rule. Layout: one column on phones with tabs as a horizontal scroller that wraps to two rows; on desktop a wide drawer with tabs across the top and the open folder below. Numbers sit in a ledger line with tabular figures.
+Panes, not cards: one terminal-like pane per open file with a 1px rule border, square corners and a 12px chamfer cut from the top right corner like a HUD frame; no drop shadows, glow only on the spectral accent and only where something is active. The page ground carries a faint 48px grid. Tabs are file names in mono sitting on one baseline; the chosen tab gets a cyan underline with a soft glow. Layout stays: one column on phones with tabs wrapping into a grid; on desktop the hero splits copy and art, the index is one wide pane under its tabs. Numbers sit in rows with tabular figures in spectral cyan.
 
 ## Imagery
 | Image | Job | Art direction | Source |
 | --- | --- | --- | --- |
-| hero drawer | protagonist | ink line drawing of an open filing drawer of manila folders with a faint ghostly paw print on the front tab, flat wash of manila, no people; creators show files and checklists as cards V113 V115 | generated |
-| package spots | explanation | seven small ink drawings, one per package, each of the paper object that package replaces: index card of beliefs, checklist, address card, mirror, recipe card, envelope, paper plane, printed page V001 V089 | generated |
-| share card | share preview | drawer drawing with the headline and stamp at 1200×630 | rendered from HTML |
+| hero ghost wolf | protagonist | a wolf head in profile drawn in fine cyan light filaments with a violet afterglow dissolving into particles, on pure black so it blends into the void; no people, no logos; creators show terminals and graphs on dark screens V107 V120 | generated |
+| paw trail | atmosphere | four glowing paw prints walking up and to the right, the oldest fading violet, the newest bright cyan, on pure black V033 | generated |
+| share card | share preview | the wolf art on the right with the headline set in the display face at 1200×630 | generated art, rendered from HTML |
 
 ## Motion
-Moment: on first load the red "0 runtime dependencies" stamp presses onto the hero once (scale from 1.15 to 1 with a 2 degree settle, 400 ms).
-Feedback: a tab lifts 6px when chosen; the copy button changes its label to "Copied" for two seconds.
-Reduced motion: the stamp is already in place and tabs switch without movement.
+Moment: on first load a single cyan scan line sweeps down over the hero art once (900 ms) and the art resolves from 0 to full opacity behind it, like a ghost appearing on a scope.
+Feedback: the chosen tab gets a glowing underline; copy buttons read "Copied" for two seconds; focus rings are cyan.
+Reduced motion: the art is shown at once, no sweep; everything else changes in place.
 
 ## Copy
 - Use: "MEMORY.md", "junk drawer", "wrong fact", "said it was done", "zero runtime dependencies" V001 V009 V013 V045
@@ -134,6 +142,7 @@ Reduced motion: the stamp is already in place and tabs switch without movement.
 - Never quote voices as customers; say what developers commonly report in our words, the way they describe their own setups. V050 V051
 
 ## Changelog
+- 2026-10-24: visual rebuild after owner review: the paper and stamp identity is replaced by a dark spectral one (void, spectral cyan, wraith violet, alarm rose; Tektur, system sans, Martian Mono; generated ghost-wolf art). Content, mechanism, numbers and copy rules kept; direction 3 struck and direction 9 chosen.
 - 2026-10-24: website is being archived (lfm replaces it); the page now covers seven libraries, all with zero runtime dependencies.
 - 2026-10-24: codex 0.3.0 and telegram 0.5.0 were published during the build; numbers, dependency count (seven of eight) and CLI facts updated from npm and the scorecard.
 - 2026-10-24: first concept from the batch of 2026-10-24 (120 voices, 12 peers).

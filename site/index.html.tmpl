@@ -13,8 +13,9 @@
 <meta property="og:image" content="{{.socialImage.src}}">
 <meta property="og:image:alt" content="{{.socialImage.alt}}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="assets/fonts/libre-franklin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/courier-prime-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/tektur-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/martian-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#04070b">
 <script>document.documentElement.classList.add("js")</script>
 {{style "assets/styles/main.css"}}
 </head>
@@ -39,15 +40,15 @@
       <p class="actions"><a class="button" href="#files">Find the file you outgrew</a> <a href="{{.urls.githubOrg}}">Read all seven on GitHub</a></p>
       <p class="terms">Free, MIT licence, Node.js 24 or newer. All seven have zero runtime dependencies. No account and no service to run.</p>
     </div>
-    <figure class="hero-art">
-      <picture><source media="(min-width: 52rem)" srcset="assets/images/drawer-720.webp" width="720" height="540"><img src="assets/images/drawer-480.webp" width="480" height="360" alt="Ink drawing of an open filing drawer of manila folders, one pulled halfway out, with a faint paw print on it." fetchpriority="high"></picture>
-      <p class="stamp" aria-label="Zero runtime dependencies in all seven packages"><span>0 runtime</span><span>dependencies</span><small>in all seven packages</small></p>
+    <figure class="hero-art frame">
+      <div class="scope"><picture><source media="(min-width: 52rem)" srcset="assets/images/hero-720.webp" width="720" height="540"><img src="assets/images/hero-480.webp" width="480" height="360" alt="A wolf head in profile drawn in thin cyan light lines, dissolving into violet sparks on black." fetchpriority="high"></picture><span class="scan" aria-hidden="true"></span></div>
+      <p class="readout" aria-label="Zero runtime dependencies in all seven packages"><span class="big">0</span><span>runtime dependencies</span><small>in all seven packages</small></p>
     </figure>
   </section>
 
   <section id="files" class="files" aria-labelledby="files-title">
     <h2 id="files-title">Which file is your agent outgrowing?</h2>
-    <p class="intro">Pick the file. Its folder shows the package that takes it over, what one record holds and what we measured.</p>
+    <p class="intro">Pick the file. Its pane shows the package that takes it over, what one record holds and what we measured.</p>
     <div class="drawer">
       <div class="tabs" role="tablist" aria-label="Agent files">
         {{range $i, $p := .data.packages}}<button type="button" role="tab" id="tab-{{$p.key}}" aria-controls="folder-{{$p.key}}" aria-selected="{{if eq $i 0}}true{{else}}false{{end}}" {{if ne $i 0}}tabindex="-1"{{end}}><code>{{$p.file}}</code></button>{{end}}
@@ -55,7 +56,6 @@
       {{range $i, $p := .data.packages}}
       <div class="folder" id="folder-{{$p.key}}" role="tabpanel" aria-labelledby="tab-{{$p.key}}" data-key="{{$p.key}}">
         <div class="folder-head">
-          <img src="assets/images/spot-{{$p.spot}}.webp" width="256" height="256" alt="{{$p.spotAlt}}" loading="lazy">
           <div>
             <p class="replaces">Replaces <code>{{$p.file}}</code></p>
             <h3>{{$p.role}}</h3>
@@ -119,7 +119,10 @@
   </section>
 
   <section class="all" aria-labelledby="all-title">
+    <div class="all-head">
     <h2 id="all-title">All seven, side by side</h2>
+    <img class="trail" src="assets/images/art-640.webp" width="640" height="360" alt="Four paw prints in light walking up and to the right, the oldest fading violet, the newest bright cyan." loading="lazy">
+    </div>
     <div class="table-wrap">
     <table>
       <caption>The seven GhostPaw packages and what we measured</caption>

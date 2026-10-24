@@ -13,8 +13,9 @@
 <meta property="og:image" content="{{.socialImage.src}}">
 <meta property="og:image:alt" content="{{.socialImage.alt}}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="assets/fonts/libre-franklin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/courier-prime-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/tektur-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/martian-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#04070b">
 <script>document.documentElement.classList.add("js")</script>
 {{style "assets/styles/main.css"}}
 </head>
@@ -40,9 +41,9 @@
       <p class="actions"><a class="button" href="#board">Try to finish a quest</a> <a href="{{.urls.github}}">Read the source on GitHub</a></p>
       <p class="terms">Free and MIT licensed for Node.js 24 or newer, with zero runtime dependencies and the tables in a SQLite database you open.</p>
     </div>
-    <figure class="hero-art">
-      <picture><source media="(min-width: 52rem)" srcset="assets/images/quest-card-720.webp" width="720" height="540"><img src="assets/images/quest-card-480.webp" width="480" height="360" alt="Ink drawing of a pinned paper card with a large exclamation mark and an empty line at the bottom, beside a rubber stamp with a paw print on its handle." fetchpriority="high"></picture>
-      <p class="stamp" aria-label="Zero runtime dependencies"><span>0 runtime</span><span>dependencies</span></p>
+    <figure class="hero-art frame">
+      <div class="scope"><picture><source media="(min-width: 52rem)" srcset="assets/images/hero-720.webp" width="720" height="540"><img src="assets/images/hero-480.webp" width="480" height="360" alt="A ghost paw drawn in cyan light pressing a glowing hexagonal exclamation mark, violet sparks around it." fetchpriority="high"></picture><span class="scan" aria-hidden="true"></span></div>
+      <p class="readout" aria-label="Zero runtime dependencies"><span class="big">0</span><span>runtime dependencies</span></p>
     </figure>
   </section>
 
@@ -114,9 +115,12 @@ read.listDueSoonQuests(db, 7 * DAY);
   </section>
 
   <section class="todo" aria-labelledby="todo-title">
+    <div class="sec-head">
     <h2 id="todo-title">Where your <code>TODO.md</code> headings go</h2>
+    <img class="graph" src="assets/images/art-640.webp" width="640" height="360" alt="Hexagon nodes joined by lines of light: two lit cyan, one locked in violet, the rest faint." loading="lazy">
+    </div>
     <div class="todo-grid">
-      <pre class="paper"><code>## Todo
+      <pre class="plain"><code>## Todo
 - Collect redlines
 - Obtain finance approval (after redlines)
 
