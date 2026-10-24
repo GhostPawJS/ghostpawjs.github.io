@@ -27,7 +27,7 @@ jobs:
       - name: Assemble site (built output only)
         run: |
           mkdir _site
-          rsync -a --exclude='/site/' --exclude='/tools/' --exclude='/.git/' --exclude='/.github/' --exclude='/.gitignore' --exclude='/_site/' ./ _site/
+          rsync -a --exclude='/site/' --exclude='/tools/' --exclude='/.git/' --exclude='/.github/' --exclude='/.gitignore' --exclude='/README.md' --exclude='/_site/' ./ _site/
           test -f _site/index.html && test -f _site/CNAME
           test ! -e _site/site && test ! -e _site/tools
 
