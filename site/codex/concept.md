@@ -36,7 +36,7 @@ Price: free, MIT licence
 Delivery: `npm install @ghostpaw/codex` into a Node.js 24+ project (tables go in a node:sqlite database the caller opens), or `npx -y @ghostpaw/codex mcp` as a local MCP server
 
 ## Facts
-- codex 0.3.0 is on npm with zero runtime dependencies and requires Node.js 24+ for node:sqlite. https://www.npmjs.com/package/@ghostpaw/codex
+- codex 0.3.2 is on npm with zero runtime dependencies and requires Node.js 24+ for node:sqlite. https://www.npmjs.com/package/@ghostpaw/codex
 - Since 0.3.0 the package also runs as an MCP server (`npx -y @ghostpaw/codex mcp`) and a CLI (ghostpaw-codex), generated from the same seven tools. https://github.com/GhostPawJS/codex
 - The model has five concepts: belief, dismissal, flag, proximity and lineage. https://github.com/GhostPawJS/codex
 - A belief carries a claim, source (explicit, observed or inferred), category, certainty, evidence, freshness and revision lineage. https://github.com/GhostPawJS/codex
@@ -46,7 +46,7 @@ Delivery: `npm install @ghostpaw/codex` into a Node.js 24+ project (tables go in
 - Seven tools for agents: search_codex, review_codex, inspect_codex_item, remember_belief, revise_belief, retire_belief, dismiss_proximity. https://github.com/GhostPawJS/codex
 - Recall is hybrid: FTS5 preselection plus local cosine similarity over trigram-hash embeddings, fused with reciprocal rank fusion; no model call. https://github.com/GhostPawJS/codex
 - Every write returns semantically nearby beliefs so near-duplicates surface at once. https://github.com/GhostPawJS/codex
-- dist/index.js of 0.3.0 is 32.5 KB gzip and imports in about 4 ms on the maintainer box; 378 tests pass, measured 2026-10-24. https://github.com/GhostPawJS/codex
+- dist/index.js of 0.3.2 is 31.5 KB gzip and imports in about 4 ms on the maintainer box; 380 tests pass, measured 2026-10-24. https://github.com/GhostPawJS/codex
 - One audit found 26 of 45 auto-saved memories never read once. V066
 
 ## Axes
@@ -141,6 +141,7 @@ Reduced motion: no sweep; panes swap without movement and the afterimage is show
 - Never present voices as customers; describe what developers report in our words. V010 V014
 
 ## Changelog
+- 2026-10-24: codex 0.3.2 on npm. The five drill steps re-run against 0.3.2 with the same clock (same certainty, freshness, flags and deleted ids); kicker, intro, JSON-LD version and numbers updated (31.5 KB gzip, 380 tests from the v0.3.2 tag).
 - 2026-10-24: visual rebuild after owner review: paper index cards replaced by the shared dark spectral identity (void, spectral cyan, wraith violet, alarm rose, ward green; Tektur, system sans, Martian Mono; generated paw-on-card and memory-shard art). Drill values, numbers and copy rules kept; direction 3 struck and direction 9 chosen.
 - 2026-10-24: codex 0.3.0 shipped during the build (MCP server, CLI); facts, numbers and limits updated; card values now come from running 0.3.0.
 - 2026-10-24: first concept from the batch of 2026-10-24 (75 voices, 12 peers).

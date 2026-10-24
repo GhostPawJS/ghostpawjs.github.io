@@ -4,8 +4,8 @@ description: Collects verbatim posts, comments and reviews from real buyers and 
 license: MIT
 compatibility: Works with any toolset. Uses web search, page fetching, a browser or data connectors when available, and asks the user for sources otherwise.
 metadata:
-  lfm-version: "0.1.7"
-  lfm-sha256: "0724454af109d1c7679002a38655e7236684daae993b9edba4d8cd07b08f20e3"
+  lfm-version: "0.1.8"
+  lfm-sha256: "de92cdc89335fe04f12ba24e1ccc44db03d4f243f313fb467aca3546c724fbc5"
 ---
 
 # Research for an lfm page

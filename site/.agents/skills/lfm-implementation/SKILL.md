@@ -4,8 +4,8 @@ description: Builds or improves the lfm sales page from concept.md - template, s
 license: MIT
 compatibility: Needs lfm, the project's research files and concept.md. Uses image generation, a browser and screenshots when available, and asks the user for what it cannot produce.
 metadata:
-  lfm-version: "0.1.7"
-  lfm-sha256: "e6f59c4460f76fce6cca84a4d1b213fb5f3912b36646930f1878ade20cba458c"
+  lfm-version: "0.1.8"
+  lfm-sha256: "71307f9a36d0b7ce79ba759946bb0a481c6487817ff0e159d384059f0ce5f445"
 ---
 
 # Implement an lfm page
@@ -230,3 +230,5 @@ These ship on pages that looked finished in chosen screenshots; check each in th
 - Values that change with input use tabular numerals and units in the same element.
 - A warning you cannot fix without breaking the concept means the concept needs a change; edit
   concept.md first, then the page.
+
+After deployment, `lfm check <url> --json` checks the published page with the same page rules.

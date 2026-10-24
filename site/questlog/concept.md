@@ -22,7 +22,7 @@ A Node.js developer whose agent keeps its work in TODO.md, PROGRESS.md or HEARTB
 1. Is this the "said it was done" problem? → hero names it and shows a quest that cannot finish without a written outcome.
 2. How is it different from TODO.md? → the board: the same three headings become quests whose state is derived, and finishing one unlocks the next.
 3. What about deadlines and recurring work? → due soon, overdue and repeatable quests on the same board (RRULE).
-4. Is it small? → 0 runtime dependencies, Node 24+, 326 tests, 42.6 KB gzip, about 4.4 ms import.
+4. Is it small? → 0 runtime dependencies, Node 24+, 352 tests, 42.1 KB gzip, about 4.6 ms import.
 5. How do I start? → install line, quick start code, GitHub and the live demo.
 
 ## Mechanism
@@ -37,18 +37,18 @@ Price: free, MIT licence
 Delivery: `npm install @ghostpaw/questlog` into a Node.js 24+ project; tables are created in a node:sqlite database the caller opens
 
 ## Facts
-- questlog 0.5.1 is on npm with zero runtime dependencies and requires Node.js 24+ for node:sqlite. https://www.npmjs.com/package/@ghostpaw/questlog
+- questlog 0.6.2 is on npm with zero runtime dependencies and requires Node.js 24+ for node:sqlite. https://www.npmjs.com/package/@ghostpaw/questlog
 - Seven concepts: rumor, questline, quest, repeatable quest, unlock, reward, tag. https://github.com/GhostPawJS/questlog
 - finishQuest takes an outcome string and throws "Quest outcome must not be empty." on a blank one. https://github.com/GhostPawJS/questlog/blob/main/src/assert_non_empty.ts
 - A resolved quest cannot be resolved again or restarted. https://github.com/GhostPawJS/questlog/blob/main/src/quests/resolve_quest.ts
-- An unlock keeps quest B out of listAvailableQuests and in listBlockedQuests until quest A resolves with success; startQuest itself does not check unlocks, so blocking is a read-side view. https://github.com/GhostPawJS/questlog
+- An unlock keeps quest B out of listAvailableQuests and in listBlockedQuests until quest A resolves with success; the run_quest tool refuses to start a blocked quest with invalid_state naming the blockers unless force is true (0.6.0); the library startQuest does not check unlocks. https://github.com/GhostPawJS/questlog
 - Markers are plain symbols from the markers namespace: "!" available, "?" incomplete (in progress or blocked), "?" turn-in pending; a done quest without a reward has no marker. https://github.com/GhostPawJS/questlog
-- The board on the page replays a real run of questlog 0.5.1 on 2026-10-24 with a fixed clock: the empty-outcome error, the unlock, due soon and overdue at +7 days. https://github.com/GhostPawJS/questlog#quick-start
+- The board on the page replays a real run of questlog 0.6.2 on 2026-10-24 with a fixed clock: the empty-outcome error, the run_quest refusal on the blocked quest, the unlock, due soon and overdue at +7 days. https://github.com/GhostPawJS/questlog#quick-start
 - Availability, blocking, deferral and overdue are derived at read time, never stored as flags. https://github.com/GhostPawJS/questlog
 - A deadline is a quest with dueAt; a calendar event is a quest with a scheduled start and end; repeatable quests use RRULE. https://github.com/GhostPawJS/questlog
 - Twelve tools for agents, among them review_questlog, capture_rumor, shape_work, run_quest and reward_work. https://github.com/GhostPawJS/questlog
-- 326 tests with 96.0% line, 89.4% branch and 96.1% function coverage, measured 2026-10-24. https://github.com/GhostPawJS/questlog
-- dist is 42.6 KB gzip and imports in about 4.4 ms on the maintainer box, measured 2026-10-24. https://github.com/GhostPawJS/questlog
+- 352 tests with 95.98% line, 87.91% branch and 96.35% function coverage, measured 2026-10-24. https://github.com/GhostPawJS/questlog
+- dist is 42.1 KB gzip and imports in about 4.6 ms on the maintainer box, measured 2026-10-24. https://github.com/GhostPawJS/questlog
 - A TODO.md with three headings, Todo, Doing and Done, is a common agent task store. V025
 
 ## Axes
@@ -95,7 +95,7 @@ Done needs an outcome, on a dark scope. The page centres on a small quest board 
 2. The board: four quests, Finish with outcome, unlock, +7 days; the call under each move. V038 V008
 3. From TODO.md: the three headings mapped to derived states, plus rumors for work not yet shaped. V025 V026 V044
 4. Deadlines and repeats: dueAt, scheduled windows, RRULE repeatable quests. V009 V040
-5. Numbers: 0 runtime deps, Node 24+, 326 tests, 96.0% lines, 42.6 KB gzip, about 4.4 ms import, 12 tools. V028 V029
+5. Numbers: 0 runtime deps, Node 24+, 352 tests, 96.0% lines, 42.1 KB gzip, about 4.6 ms import, 12 tools. V028 V029
 6. Start: install, quick start, GitHub, README, live demo, back to GhostPaw home.
 7. Footer: Impressum, Datenschutz.
 
@@ -140,10 +140,12 @@ Reduced motion: no sweep, shake or dissolve; text and tag states change in place
 - Use: "grade its own homework" V002
 - Avoid: "team of agents", "really does things", "sanity for you" P002 P004 P012
 - Avoid: "autonomous", "set it and forget it", "ships while you sleep" V066
-- Plain, second person, short sentences; state limits: Node 24+, no scheduler or MCP server in the package, an outcome line is text and not a test; blocked means left out of the available list, not a refused call. V019 V045
+- Plain, second person, short sentences; state limits: Node 24+, no scheduler or hosted service, an outcome line is text and not a test; since 0.6.0 the run_quest tool (and the MCP server and CLI on top of it) refuses to start a blocked quest unless force is true, while the library startQuest stays permissive. V019 V045 V038
 - Never present voices as customers; describe what developers report in our words. V034 V036
 
 ## Changelog
+- 2026-10-24: questlog 0.6.2 on npm (same dist apart from version and homepage). Refusal and forced-start warning re-run against 0.6.2; kicker, intro and JSON-LD version bumped; numbers stay from the v0.6.1 measurement and say so.
+- 2026-10-24: questlog 0.6.1. Real run repeated against 0.6.1 (same lists and errors); #3 gets a "Start with run_quest" button that replays the tool's invalid_state refusal; the blocked note now says the tool refuses unless force is true while startQuest stays permissive; MCP install line added; numbers remeasured (352 tests, 42.1 KB gzip, 4.6 ms import).
 - 2026-10-24: visual rebuild after owner review: paper cards and stamps replaced by the shared dark spectral identity (void, spectral cyan, wraith violet, alarm rose, ward green; Tektur, system sans, Martian Mono; generated paw-on-marker and dependency-graph art). Board replay, refusals, numbers and copy rules kept; direction 3 struck and direction 9 chosen.
 - 2026-10-24: TODO.md moved from the Use phrases to a code-only rule; the bare word reads as a placeholder.
 - 2026-10-24: page moved to /agent-tasks/; numbers from EXCELLENCE.md (96.0% lines, 4.4 ms import); markers as plain "!" and "?"; blocked described as a read-side view after a real run showed startQuest does not check unlocks.

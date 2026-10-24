@@ -151,6 +151,9 @@ pre code { font-size: inherit; color: var(--ghost); }
 .act { font: 650 0.95rem var(--display); background: var(--spectral); color: var(--void); border: 0; padding: 0.5rem 1rem; cursor: pointer; }
 .act:hover { background: var(--ghost); }
 .act[hidden], .finish[hidden] { display: none; }
+.act.ask { background: transparent; color: var(--alarm); border: 1px solid var(--alarm); font-size: 0.85rem; }
+.act.ask:hover { background: rgba(255, 122, 166, 0.12); }
+html:not(.js) .ask, .tool-refusal:empty { display: none; }
 .finish label { display: block; font: 600 0.9rem var(--display); color: var(--haze); margin-bottom: 0.35rem; }
 .finish-row { display: flex; border: var(--edge); background: var(--void); }
 .finish-row:focus-within { border-color: var(--spectral); }

@@ -4,8 +4,8 @@ description: Turns an lfm project's research into concept.md, the single brief i
 license: MIT
 compatibility: Needs the research files of the project; works with any toolset. Running lfm compile checks the result.
 metadata:
-  lfm-version: "0.1.7"
-  lfm-sha256: "4d35176b5164062ba7f103b01c3e6b4e014eb96fb96e3a9a37f0beb0a68cac7e"
+  lfm-version: "0.1.8"
+  lfm-sha256: "d0846634add4e98840e5437d41f5b4a302c250956f8c98099d4f3456e735cccb"
 ---
 
 # Design for an lfm page

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "url": "https://ghostpaw.dev/agent-contacts/",
+  "language": "en",
+  "title": "affinity: a relationship store for agents that works out who is drifting",
+  "description": "@ghostpaw/affinity keeps contacts, promises and yearly dates in your own SQLite file and derives rank, trust and drift from what happened. Local MCP server, 12 tools, Node.js 24, zero dependencies, MIT.",
+  "socialImage": {
+    "src": "assets/images/share.png",
+    "alt": "A radar scope in cyan light with a ghost paw at its centre and one violet point drifting outward, beside the line: Who have you been meaning to call?"
+  },
+  "urls": {
+    "home": "https://ghostpaw.dev/",
+    "github": "https://github.com/GhostPawJS/affinity",
+    "readme": "https://github.com/GhostPawJS/affinity#readme",
+    "npm": "https://www.npmjs.com/package/@ghostpaw/affinity",
+    "demo": "https://ghostpaw.dev/affinity/",
+    "impressum": "https://lab.anonyfox.com/impressum/",
+    "privacy": "https://lab.anonyfox.com/datenschutz/",
+    "mit": "https://opensource.org/license/mit",
+    "orgId": "https://ghostpaw.dev/#org",
+    "agentMemory": "https://ghostpaw.dev/agent-memory/",
+    "agentTasks": "https://ghostpaw.dev/agent-tasks/",
+    "agentIdentity": "https://ghostpaw.dev/agent-identity/",
+    "agentSkills": "https://ghostpaw.dev/agent-skills/",
+    "agentEmail": "https://ghostpaw.dev/agent-email/",
+    "agentTelegram": "https://ghostpaw.dev/agent-telegram/"
+  },
+  "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/affinity",
+        "description": "{{.description}}",
+        "codeRepository": "{{.urls.github}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "version": "0.3.0",
+        "license": "{{.urls.mit}}",
+        "author": {
+          "@type": "Organization",
+          "@id": "{{.urls.orgId}}",
+          "name": "GhostPaw"
+        }
+      }
+    ]
+  }
+}

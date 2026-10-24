@@ -35,7 +35,12 @@
     "impressum": "https://lab.anonyfox.com/impressum/",
     "privacy": "https://lab.anonyfox.com/datenschutz/",
     "mit": "https://opensource.org/licenses/MIT",
-    "orgId": "https://ghostpaw.dev/#org"
+    "orgId": "https://ghostpaw.dev/#org",
+    "agentContacts": "https://ghostpaw.dev/agent-contacts/",
+    "agentIdentity": "https://ghostpaw.dev/agent-identity/",
+    "agentSkills": "https://ghostpaw.dev/agent-skills/",
+    "agentEmail": "https://ghostpaw.dev/agent-email/",
+    "agentTelegram": "https://ghostpaw.dev/agent-telegram/"
   },
   "data": {
     "measured": "Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against the version shown: tests from node --test, size as gzip -9 of dist/index.js, import time with performance.now().",
@@ -45,7 +50,7 @@
         "file": "MEMORY.md",
         "name": "codex",
         "pkg": "@ghostpaw/codex",
-        "version": "0.3.0",
+        "version": "0.3.2",
         "role": "Beliefs instead of a memory file",
         "line": "Every remembered line becomes a belief with a source, a certainty and a history. Flags for stale, fading and low-trust beliefs are computed each time you read, so the junk drawer shows you what to prune. Since 0.3.0 it also ships an MCP server and a ghostpaw-codex command line tool.",
         "fields": [
@@ -56,8 +61,8 @@
           "lineage of corrections"
         ],
         "deps": "0",
-        "tests": "378",
-        "gzip": "32.5 KB",
+        "tests": "380",
+        "gzip": "31.5 KB",
         "importMs": "4 ms",
         "links": [
           {
@@ -87,7 +92,7 @@
         "file": "TODO.md",
         "name": "questlog",
         "pkg": "@ghostpaw/questlog",
-        "version": "0.5.1",
+        "version": "0.6.2",
         "role": "Quests instead of a to-do list",
         "line": "Work becomes quests with deadlines, repeats and unlocks. A quest only finishes with a written outcome, and a blocked quest stays blocked until the one before it succeeds.",
         "fields": [
@@ -98,9 +103,9 @@
           "repeat rule (RRULE)"
         ],
         "deps": "0",
-        "tests": "326",
-        "gzip": "42.6 KB",
-        "importMs": "4.4 ms",
+        "tests": "352",
+        "gzip": "42.1 KB",
+        "importMs": "4.6 ms",
         "links": [
           {
             "label": "questlog source on GitHub",
@@ -129,7 +134,7 @@
         "file": "USER.md",
         "name": "affinity",
         "pkg": "@ghostpaw/affinity",
-        "version": "0.2.4",
+        "version": "0.3.0",
         "role": "Contacts instead of a user note",
         "line": "The people, companies and services your agent deals with become contacts with identities, relationship tracks and a journal of evidence, plus the yearly dates that matter.",
         "fields": [
@@ -140,9 +145,9 @@
           "date anchors such as birthdays"
         ],
         "deps": "0",
-        "tests": "436",
-        "gzip": "57.4 KB",
-        "importMs": "5.8 ms",
+        "tests": "459",
+        "gzip": "56.1 KB",
+        "importMs": "5.7 ms",
         "links": [
           {
             "label": "affinity source on GitHub",
@@ -158,6 +163,11 @@
             "label": "affinity live demo",
             "strong": false,
             "to": "demoAffinity"
+          },
+          {
+            "label": "Read how affinity keeps a promise you made",
+            "strong": true,
+            "to": "agentContacts"
           }
         ]
       },
@@ -166,7 +176,7 @@
         "file": "SOUL.md",
         "name": "souls",
         "pkg": "@ghostpaw/souls",
-        "version": "0.2.3",
+        "version": "0.3.0",
         "role": "An identity that changes with evidence",
         "line": "The agent's character is stored as a short essence plus traits that each carry evidence. Refinements are gated, consolidated at level-up and can be rolled back.",
         "fields": [
@@ -176,9 +186,9 @@
           "full rollback"
         ],
         "deps": "0",
-        "tests": "510",
-        "gzip": "32.2 KB",
-        "importMs": "3.9 ms",
+        "tests": "532",
+        "gzip": "31.4 KB",
+        "importMs": "3.8 ms",
         "links": [
           {
             "label": "souls source on GitHub",
@@ -194,6 +204,11 @@
             "label": "souls live demo",
             "strong": false,
             "to": "demoSouls"
+          },
+          {
+            "label": "Read how souls gates a prompt change",
+            "strong": true,
+            "to": "agentIdentity"
           }
         ]
       },
@@ -202,7 +217,7 @@
         "file": "skills/",
         "name": "grimoire",
         "pkg": "@ghostpaw/grimoire",
-        "version": "0.2.15",
+        "version": "0.3.0",
         "role": "Procedures that get better and keep their history",
         "line": "Each learned procedure stays a SKILL.md file. Git commits mark verified improvements, notes collect evidence, and a health check names stale, dormant and oversized skills.",
         "fields": [
@@ -213,9 +228,9 @@
           "catalogue health snapshot"
         ],
         "deps": "0",
-        "tests": "848",
-        "gzip": "47.5 KB",
-        "importMs": "8.8 ms",
+        "tests": "872",
+        "gzip": "46.4 KB",
+        "importMs": "9.4 ms",
         "links": [
           {
             "label": "grimoire source on GitHub",
@@ -231,6 +246,11 @@
             "label": "grimoire live demo",
             "strong": false,
             "to": "demoGrimoire"
+          },
+          {
+            "label": "Read how grimoire seals and rolls back a skill",
+            "strong": true,
+            "to": "agentSkills"
           }
         ]
       },
@@ -239,9 +259,9 @@
         "file": "inbox/",
         "name": "email",
         "pkg": "@ghostpaw/email",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "role": "A mailbox the agent can search offline",
-        "line": "IMAP sync and SMTP send with a local SQLite cache, threads built from References headers and full-text search. Ships an email command line tool.",
+        "line": "IMAP sync and SMTP send with a local SQLite cache, threads built from References and In-Reply-To headers, and FTS5 search. Reading, searching, composing, organising and syncing are five separate agent tools. Ships an email command line tool.",
         "fields": [
           "account with IMAP and SMTP config",
           "folder with sync state",
@@ -250,9 +270,9 @@
           "thread tree"
         ],
         "deps": "0",
-        "tests": "528",
-        "gzip": "48.7 KB",
-        "importMs": "11.7 ms",
+        "tests": "553",
+        "gzip": "47.5 KB",
+        "importMs": "12.3 ms",
         "links": [
           {
             "label": "email source on GitHub",
@@ -263,6 +283,11 @@
             "label": "email on npm",
             "strong": false,
             "to": "npmEmail"
+          },
+          {
+            "label": "Read how email keeps reading apart from sending",
+            "strong": true,
+            "to": "agentEmail"
           }
         ]
       },
@@ -271,19 +296,20 @@
         "file": "chat log",
         "name": "telegram",
         "pkg": "@ghostpaw/telegram",
-        "version": "0.5.0",
+        "version": "0.6.0",
         "role": "Every Telegram update kept before your handler runs",
-        "line": "A Telegram bot channel that mirrors each incoming update into SQLite first, files included, with full-text search and markdown rendering. Since 0.5.0 it talks to the Bot API with built-in fetch and has no runtime dependencies.",
+        "line": "A Telegram bot channel that mirrors each incoming update into SQLite before your handler runs, with edit history, reply chains and FTS5 search. Its agent tools return plans until you switch execution on.",
         "fields": [
-          "message mirror",
-          "file bytes stored as BLOBs",
-          "FTS5 search",
-          "markdown rendering"
+          "message mirror with edit history",
+          "reply chains",
+          "FTS5 search with diacritic folding",
+          "file bytes as BLOBs when downloading is on",
+          "plan-first agent tools"
         ],
         "deps": "0",
-        "tests": "860",
-        "gzip": "34.5 KB",
-        "importMs": "10.4 ms",
+        "tests": "883",
+        "gzip": "33.7 KB",
+        "importMs": "11.8 ms",
         "links": [
           {
             "label": "telegram source on GitHub",
@@ -294,6 +320,11 @@
             "label": "telegram on npm",
             "strong": false,
             "to": "npmTelegram"
+          },
+          {
+            "label": "Read how telegram keeps a chat with its edits",
+            "strong": true,
+            "to": "agentTelegram"
           }
         ]
       }

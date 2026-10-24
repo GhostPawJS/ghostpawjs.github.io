@@ -41,12 +41,12 @@ Delivery: `npm install @ghostpaw/<package>` into any Node.js 24+ project, immedi
 - Seven libraries are maintained under @ghostpaw: affinity, codex, email, grimoire, questlog, souls, telegram (website is being archived; lfm replaces it). https://www.npmjs.com/org/ghostpaw
 - All seven declare zero runtime dependencies on npm (telegram dropped grammy and marked in 0.5.0). https://www.npmjs.com/package/@ghostpaw/telegram
 - Every package requires Node.js 24 or newer and uses the built-in node:sqlite module. https://github.com/GhostPawJS/codex
-- codex 0.3.0 ships 32.5 KB gzip and imports in about 4 ms on the maintainer box (measured 2026-10-24). https://github.com/GhostPawJS/codex
-- questlog 0.5.1 has 326 passing tests and 95.8% line coverage (measured 2026-10-24). https://github.com/GhostPawJS/questlog
+- codex 0.3.2 ships 31.5 KB gzip and imports in about 4 ms on the maintainer box (measured 2026-10-24). https://github.com/GhostPawJS/codex
+- questlog 0.6.1 has 352 passing tests and 96.0% line coverage (measured 2026-10-24 from the v0.6.1 tag; 0.6.2 changes only the version string and homepage). https://github.com/GhostPawJS/questlog
 - Test counts measured 2026-10-24: grimoire 848, telegram 860, souls 510, email 528, affinity 436, codex 378, questlog 326. https://github.com/GhostPawJS
 - codex models five things: belief, dismissal, flag, proximity and lineage; flags are stale, fading, low-trust, single-evidence or gap, computed at read time. https://github.com/GhostPawJS/codex
 - questlog models rumor, questline, quest, repeatable quest, unlock, reward and tag; a deadline is a quest with dueAt and a calendar event a quest with a start and end. https://github.com/GhostPawJS/questlog
-- codex and email ship command-line binaries; codex 0.3.0 also exports an MCP server. The other five are libraries only. https://www.npmjs.com/package/@ghostpaw/codex
+- All seven READMEs document a local MCP server started with `npx -y @ghostpaw/<name> mcp`; codex and email also ship command-line binaries. https://github.com/GhostPawJS
 - The files an agent's home directory holds, as one user listed them: SOUL.md, IDENTITY.md, USER.md, MEMORY.md, AGENTS.md and TOOLS.md. V089
 - One audit found 26 of 45 auto-saved memories never read once. V106
 - OpenClaw's MEMORY.md writer works against a 10,000-character budget. V059
@@ -142,6 +142,7 @@ Reduced motion: the art is shown at once, no sweep; everything else changes in p
 - Never quote voices as customers; say what developers commonly report in our words, the way they describe their own setups. V050 V051
 
 ## Changelog
+- 2026-10-24: versions and numbers moved to npm latest (codex 0.3.2, questlog 0.6.2, affinity 0.3.0, souls 0.3.0, grimoire 0.3.0, email 0.4.0, telegram 0.6.0); each pane links its new landing page (/agent-contacts/, /agent-identity/, /agent-skills/, /agent-email/, /agent-telegram/); the telegram pane no longer says files are stored on receipt, because DEFAULTS.autoDownload is false in 0.6.0.
 - 2026-10-24: visual rebuild after owner review: the paper and stamp identity is replaced by a dark spectral one (void, spectral cyan, wraith violet, alarm rose; Tektur, system sans, Martian Mono; generated ghost-wolf art). Content, mechanism, numbers and copy rules kept; direction 3 struck and direction 9 chosen.
 - 2026-10-24: website is being archived (lfm replaces it); the page now covers seven libraries, all with zero runtime dependencies.
 - 2026-10-24: codex 0.3.0 and telegram 0.5.0 were published during the build; numbers, dependency count (seven of eight) and CLI facts updated from npm and the scorecard.

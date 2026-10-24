@@ -31,12 +31,14 @@
 <main>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="kicker"><code>@ghostpaw/questlog</code> 0.5.1</p>
+      <p class="kicker"><code>@ghostpaw/questlog</code> 0.6.2</p>
       <h1 id="hero-title">Your agent said it was done. Was it?</h1>
       <p class="lede">An agent that ticks its own box gets to grade its own homework, so questlog makes it write the homework down: no quest is done without an outcome, and work that waits on other work stays blocked until that work is done.</p>
       <div class="install">
-        <p class="cmd-label" id="lib-label">Install</p>
+        <p class="cmd-label" id="lib-label">As a library</p>
         <div class="cmd"><input id="cmd-lib" readonly value="npm install @ghostpaw/questlog" aria-labelledby="lib-label" spellcheck="false"><button type="button" class="copy" data-copy="cmd-lib">Copy</button></div>
+        <p class="cmd-label" id="mcp-label">As a local MCP server</p>
+        <div class="cmd"><input id="cmd-mcp" readonly value="npx -y @ghostpaw/questlog mcp" aria-labelledby="mcp-label" spellcheck="false"><button type="button" class="copy" data-copy="cmd-mcp">Copy</button></div>
       </div>
       <p class="actions"><a class="button" href="#board">Try to finish a quest</a> <a href="{{.urls.github}}">Read the source on GitHub</a></p>
       <p class="terms">Free and MIT licensed for Node.js 24 or newer, with zero runtime dependencies and the tables in a SQLite database you open.</p>
@@ -50,7 +52,7 @@
   <section id="board" class="board-sec" aria-labelledby="board-title">
     <h2 id="board-title">Three quests from the README</h2>
     <p class="intro">Try to finish one with the outcome left blank.</p>
-    <p class="intro">This is the Vendor Renewal example from the README, replayed in your browser from a real run: we made the same calls against questlog 0.5.1 on 2026-10-24 with a fixed clock, and every error and every list you see here is what came back, so press Start, leave the outcome empty, press Finish, then finish #1 for real and watch #3, and jump a week to see the due date go overdue. The live demo runs the library itself.</p>
+    <p class="intro">This is the Vendor Renewal example from the README, replayed in your browser from a real run: we made the same calls against questlog 0.6.2 on 2026-10-24 with a fixed clock, and every error and every list you see here is what came back, so press Start, leave the outcome empty, press Finish, try to start #3 the way an agent would, then finish #1 for real and watch #3, and jump a week to see the due date go overdue. The live demo runs the library itself.</p>
     <div class="toolbar">
       <p class="today" id="today">Today: Sat 24 Oct</p>
       <button type="button" class="button ghost" id="jump" aria-pressed="false">Jump 7 days</button>
@@ -93,6 +95,8 @@
         <p class="outcome" hidden></p>
         <div class="q-actions">
           <button type="button" class="act start" hidden>Start</button>
+          <button type="button" class="act ask">Start with run_quest</button>
+          <p class="refusal tool-refusal" role="status"></p>
           <div class="finish" hidden>
             <label for="out-3">Outcome</label>
             <div class="finish-row"><input id="out-3" autocomplete="off" placeholder="What got done?"><button type="button" class="act do-finish">Finish</button></div>
@@ -111,7 +115,8 @@ read.listDueSoonQuests(db, 7 * DAY);
 // [3]</code></pre>
     </div>
     <p class="note">A done quest stays done, and a second <code>finishQuest</code> throws "Resolved quests cannot be resolved again."</p>
-    <p class="note">Blocked is a view, not a lock: questlog leaves #3 off the available list, but a direct <code>startQuest</code> call on it would still go through.</p>
+    <p class="note">Since 0.6.0 blocked holds where your agent acts. The <code>run_quest</code> tool, which the MCP server and the CLI also call, refuses to start #3 with <code>invalid_state</code> and names the open blocker. With <code>force: true</code> it starts the quest anyway and returns the warning "Forced start with unmet prerequisites: Collect redlines."</p>
+    <p class="note">The library's own <code>startQuest</code> does not check unlocks, so your code can still start #3 directly. That is on purpose.</p>
   </section>
 
   <section class="todo" aria-labelledby="todo-title">
@@ -159,8 +164,8 @@ read.listDueSoonQuests(db, 7 * DAY);
       <ul>
         <li>One package, one bundled file, no runtime dependencies. The numbers are below.</li>
         <li>An outcome is text. It records what the agent claims; it does not run your tests.</li>
-        <li>No scheduler and no server. Your code or your agent harness decides when to read.</li>
-        <li>No MCP server in the package. It ships twelve tools with JSON Schemas for your own harness.</li>
+        <li>No scheduler and no hosted service. Your code or your agent harness decides when to read.</li>
+        <li>Twelve tools with JSON Schemas, served over MCP stdio by <code>npx -y @ghostpaw/questlog mcp</code> or called from your own harness.</li>
         <li>Node.js 24 or newer, because it uses the built-in <code>node:sqlite</code>.</li>
       </ul>
     </div>
@@ -171,13 +176,13 @@ read.listDueSoonQuests(db, 7 * DAY);
     <dl class="ledger wide">
       <div><dt>Runtime dependencies</dt><dd>0</dd></div>
       <div><dt>Node.js</dt><dd>24 or newer (node:sqlite)</dd></div>
-      <div><dt>Size of dist/index.js, gzip</dt><dd>42.6 KB</dd></div>
-      <div><dt>Import time</dt><dd>about 4.4 ms</dd></div>
-      <div><dt>Tests</dt><dd>326 passing</dd></div>
+      <div><dt>Size of dist/index.js, gzip</dt><dd>42.1 KB</dd></div>
+      <div><dt>Import time</dt><dd>about 4.6 ms</dd></div>
+      <div><dt>Tests</dt><dd>352 passing</dd></div>
       <div><dt>Line coverage</dt><dd>96.0%</dd></div>
       <div><dt>Agent tools</dt><dd>12</dd></div>
     </dl>
-    <p class="note">Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against questlog 0.5.1.</p>
+    <p class="note">Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against questlog 0.6.1: size of the published dist/index.js at gzip -9, median of 11 cold imports, tests and coverage from the v0.6.1 tag. 0.6.2 only changes the version string and homepage, so the numbers carry over.</p>
   </section>
 
   <section class="start" aria-labelledby="start-title">

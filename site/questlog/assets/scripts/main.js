@@ -1,4 +1,4 @@
-// Replays the questlog 0.5.1 rules from a recorded run. Without this script the board shows its starting state.
+// Replays the questlog 0.6.2 rules from a recorded run. Without this script the board shows its starting state.
 (() => {
   const DAY = 86400000;
   const t0 = Date.UTC(2026, 9, 24, 10);
@@ -45,6 +45,11 @@
       else { marker.textContent = "!"; label.textContent = "available"; }
       start.hidden = s.done || s.started || isBlocked;
       finish.hidden = s.done || !s.started;
+      const ask = el.querySelector(".ask");
+      if (ask) {
+        ask.hidden = !isBlocked || s.started;
+        if (ask.hidden) el.querySelector(".tool-refusal").textContent = "";
+      }
       out.hidden = !s.done;
       out.textContent = s.outcome;
       const bs = el.querySelector(".block");
@@ -80,6 +85,12 @@
       lastCall = "write.startQuest(db, " + id + ");";
       render();
       input.focus();
+    });
+    const ask = el.querySelector(".ask");
+    if (ask) ask.addEventListener("click", () => {
+      lastCall = "runQuestToolHandler(db, { action: 'start', questId: " + id + " });\n// error invalid_state: Quest \"Obtain finance approval\" is blocked by Collect redlines.\n// Finish the blocking prerequisites before starting this quest, or set force to true.";
+      el.querySelector(".tool-refusal").textContent = "invalid_state: blocked by Collect redlines";
+      render();
     });
     const tryFinish = () => {
       const text = input.value.trim();

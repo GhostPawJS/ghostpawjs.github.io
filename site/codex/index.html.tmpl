@@ -31,7 +31,7 @@
 <main>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="kicker"><code>@ghostpaw/codex</code> 0.3.0</p>
+      <p class="kicker"><code>@ghostpaw/codex</code> 0.3.2</p>
       <h1 id="hero-title">When one agent saves a wrong fact, every agent trusts it.</h1>
       <p class="lede">codex keeps what your agent believes as beliefs with a source, a certainty and a history, so you can read and delete them one at a time instead of rereading MEMORY.md.</p>
       <div class="install">
@@ -52,7 +52,7 @@
   <section id="drill" class="drill" aria-labelledby="drill-title">
     <h2 id="drill-title">One wrong fact, five moves</h2>
     <p class="intro">The hard half is forgetting.</p>
-    <p class="intro">Here is one belief from the README example, from the guess that starts it to the call that deletes it. The cards show what codex 0.3.0 actually returned when we ran these calls on 2026-10-24 with a fixed clock, so the numbers are not made up for the page.</p>
+    <p class="intro">Here is one belief from the README example, from the guess that starts it to the call that deletes it. The cards show what codex 0.3.2 actually returned when we ran these calls on 2026-10-24 with a fixed clock, so the numbers are not made up for the page.</p>
     <div class="tabs" role="tablist" aria-label="Steps">
       <button type="button" role="tab" id="tab-1" aria-controls="step-1" aria-selected="true"><span>1</span> remember</button>
       <button type="button" role="tab" id="tab-2" aria-controls="step-2" aria-selected="false" tabindex="-1"><span>2</span> recall</button>
@@ -206,12 +206,12 @@ read.recall(db, 'graphql api'); // []</code></pre></div>
     <dl class="ledger wide">
       <div><dt>Runtime dependencies</dt><dd>0</dd></div>
       <div><dt>Node.js</dt><dd>24 or newer (node:sqlite)</dd></div>
-      <div><dt>Size of dist/index.js, gzip</dt><dd>32.5 KB</dd></div>
+      <div><dt>Size of dist/index.js, gzip</dt><dd>31.5 KB</dd></div>
       <div><dt>Import time</dt><dd>about 4 ms</dd></div>
-      <div><dt>Tests</dt><dd>378 passing</dd></div>
+      <div><dt>Tests</dt><dd>380 passing</dd></div>
       <div><dt>Agent tools</dt><dd>7</dd></div>
     </dl>
-    <p class="note">Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against codex 0.3.0.</p>
+    <p class="note">Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against codex 0.3.2: size of the published dist/index.js at gzip -9, median of 11 cold imports, tests from the v0.3.2 tag.</p>
   </section>
 
   <section class="start" aria-labelledby="start-title">
