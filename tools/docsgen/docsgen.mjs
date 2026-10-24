@@ -22,6 +22,7 @@ for (const f of ents) {
   const n = f.replace('.md', '').toLowerCase();
   pages.push([`entities/${f}`, `entities/${n}/`, n.charAt(0).toUpperCase() + n.slice(1)]);
 }
+const LIBS = ['codex', 'questlog', 'affinity', 'souls', 'grimoire', 'email', 'telegram'];
 const slugOf = new Map(pages.map(([f, s]) => [f, s]));
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -82,7 +83,7 @@ article h1{font-size:clamp(1.9rem,4vw,2.6rem);margin:0 0 1rem}article h2{font-si
 article code{font:400 .9em var(--mono);color:var(--spectral);overflow-wrap:anywhere}article pre{background:var(--panel);border:1px solid var(--rule);border-left:2px solid var(--wraith);padding:1rem;overflow-x:auto;line-height:1.5}article pre code{color:var(--ghost);overflow-wrap:normal}
 article table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;font-size:.95rem}article th,article td{border:1px solid var(--rule);padding:.45rem .6rem;text-align:left;vertical-align:top}article th{background:var(--panel)}
 article blockquote{margin:1rem 0;padding:.25rem 1rem;border-left:2px solid var(--spectral);color:var(--haze)}
-footer{border-top:1px solid var(--rule)}footer .bar{color:var(--haze);font-size:.9rem}footer .bar nav a{color:var(--haze)}`;
+footer{border-top:1px solid var(--rule)}footer .bar{color:var(--haze);font-size:.9rem}footer .bar nav a{color:var(--haze)}footer .libs{padding-bottom:0}footer .libs nav{margin-left:0}footer .libs nav a{font:600 1rem var(--display);color:var(--ghost);text-decoration:none;padding:.2rem 0}footer .libs nav a[aria-current]{color:var(--spectral)}`;
 
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
@@ -134,7 +135,7 @@ for (const [f, slug] of pages) {
 <main id="doc"><article><span class="ver">@ghostpaw/${lib} ${version}</span>
 ${html}</article></main>
 </div>
-<footer><div class="bar"><span>Rendered from <a href="${gh}/tree/main/docs">docs/</a> in the repository, MIT licensed.</span><nav aria-label="Legal"><a href="https://ghostpaw.dev/">All GhostPaw libraries</a><a href="https://lab.anonyfox.com/impressum/">Impressum</a><a href="https://lab.anonyfox.com/datenschutz/">Datenschutz</a></nav></div></footer>
+<footer><div class="bar libs"><nav aria-label="GhostPaw libraries">${LIBS.map((l) => `<a href="https://${l}.ghostpaw.dev/"${l === lib ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav></div><div class="bar"><span>Rendered from <a href="${gh}/tree/main/docs">docs/</a> in the repository, MIT licensed.</span><nav aria-label="Legal"><a href="https://ghostpaw.dev/">GhostPaw home</a><a href="https://lab.anonyfox.com/impressum/">Impressum</a><a href="https://lab.anonyfox.com/datenschutz/">Datenschutz</a></nav></div></footer>
 </body>
 </html>
 `;
