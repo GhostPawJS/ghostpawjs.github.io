@@ -1,0 +1,7 @@
+{
+  "name": "ghostpaw-docsgen",
+  "private": true,
+  "type": "module",
+  "description": "Renders a library's docs/*.md into static pages for <lib>.ghostpaw.dev/docs/",
+  "dependencies": { "marked": "14.1.4" }
+}

@@ -7,13 +7,13 @@ Install any of them with `npm install @ghostpaw/<name>`. Source: https://github.
 ## Pages
 
 - [GhostPaw home](https://ghostpaw.dev/): all seven libraries side by side, with measured tests, bundle size and import time.
-- [codex, agent memory](https://ghostpaw.dev/agent-memory/): beliefs with a source, a certainty and a revision history; correct or delete a wrong fact.
-- [questlog, agent tasks](https://ghostpaw.dev/agent-tasks/): quests that only finish with a written outcome; the run_quest tool refuses a blocked quest unless force is true.
-- [affinity, agent contacts](https://ghostpaw.dev/agent-contacts/): a social CRM for agents; contacts, promises, a drift radar and yearly dates, replayed from a real run.
-- [souls, agent identity](https://ghostpaw.dev/agent-identity/): an agent's prompt as an essence plus evidence-backed traits; a refinement waits until evidence from more than one source agrees.
-- [grimoire, agent skills](https://ghostpaw.dev/agent-skills/): SKILL.md folders whose improvements are sealed as git commits, with notes in SQLite and rollback.
-- [email, agent email](https://ghostpaw.dev/agent-email/): IMAP and SMTP in-process with a SQLite cache, threads and FTS5 search; reading and sending are separate tools.
-- [telegram, agent Telegram bots](https://ghostpaw.dev/agent-telegram/): every update mirrored into SQLite before the handler, with edit history, reply chains and plan-first agent tools.
+- [codex, agent memory](https://codex.ghostpaw.dev/): beliefs with a source, a certainty and a revision history; correct or delete a wrong fact.
+- [questlog, agent tasks](https://questlog.ghostpaw.dev/): quests that only finish with a written outcome; the run_quest tool refuses a blocked quest unless force is true.
+- [affinity, agent contacts](https://affinity.ghostpaw.dev/): a social CRM for agents; contacts, promises, a drift radar and yearly dates, replayed from a real run.
+- [souls, agent identity](https://souls.ghostpaw.dev/): an agent's prompt as an essence plus evidence-backed traits; a refinement waits until evidence from more than one source agrees.
+- [grimoire, agent skills](https://grimoire.ghostpaw.dev/): SKILL.md folders whose improvements are sealed as git commits, with notes in SQLite and rollback.
+- [email, agent email](https://email.ghostpaw.dev/): IMAP and SMTP in-process with a SQLite cache, threads and FTS5 search; reading and sending are separate tools.
+- [telegram, agent Telegram bots](https://telegram.ghostpaw.dev/): every update mirrored into SQLite before the handler, with edit history, reply chains and plan-first agent tools.
 
 ## Libraries
 

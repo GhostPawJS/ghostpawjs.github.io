@@ -1,20 +1,35 @@
 #!/bin/sh
-# Merge the eight lfm outputs into the GitHub Pages root.
-# Run each project's `lfm compile --release` first.
+# Publish the home page (lfm output) at the GitHub Pages root and write
+# redirect stubs for the old per-library paths. Each library's landing page
+# now lives in its own repo and is served at https://<lib>.ghostpaw.dev/.
+# Run `lfm compile --release` in site/ first.
 set -eu
 root=$(cd "$(dirname "$0")/.." && pwd)
 site="$root/site"
-PAGES="agent-memory:codex agent-tasks:questlog agent-contacts:affinity agent-identity:souls agent-skills:grimoire agent-email:email agent-telegram:telegram"
-for pair in $PAGES; do rm -rf "$root/${pair%%:*}"; done
+OLD="agent-memory:codex agent-tasks:questlog agent-contacts:affinity agent-identity:souls agent-skills:grimoire agent-email:email agent-telegram:telegram"
 find "$root" -maxdepth 1 -type f \( -name '*.html' -o -name '*.css' -o -name '*.webp' -o -name '*.png' -o -name '*.woff2' -o -name 'sitemap.xml' -o -name 'robots.txt' -o -name 'llms.txt' \) -delete
 cp -R "$site/output/." "$root/"
-for pair in $PAGES; do
-  d=${pair%%:*}; p=${pair#*:}
-  mkdir -p "$root/$d"
-  cp -R "$site/$p/output/." "$root/$d/"
-  rm -f "$root/$d/sitemap.xml" "$root/$d/robots.txt"
+stub() { # stub <dir> <target-url>
+  rm -rf "$root/$1"; mkdir -p "$root/$1"
+  cat > "$root/$1/index.html" <<HTML
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Moved to $2</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="$2">
+<meta http-equiv="refresh" content="0; url=$2">
+<style>body{background:#07090d;color:#d7e3f4;font:16px/1.5 system-ui,sans-serif;margin:3rem}a{color:#7fe7ff}</style>
+</head>
+<body><p>This page moved to <a href="$2">$2</a>.</p></body>
+</html>
+HTML
+}
+for pair in $OLD; do
+  d=${pair%%:*}; lib=${pair#*:}
+  stub "$d" "https://$lib.ghostpaw.dev/"
 done
-sh "$site/sitemap-extra.sh"
 touch "$root/.nojekyll"
 test -f "$root/CNAME" && test -f "$root/2652ea37754f5b3042032eab07305565.txt"
 echo "merged into $root"
