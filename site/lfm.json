@@ -3,7 +3,7 @@
   "url": "https://ghostpaw.dev/",
   "language": "en",
   "title": "GhostPaw: Node.js libraries for the MEMORY.md and task files your agent keeps",
-  "description": "Seven MIT-licensed Node.js 24 libraries that turn the MEMORY.md, task list, USER.md and skills your agent keeps into records you can read, correct and delete. None has a runtime dependency.",
+  "description": "Seven MIT-licensed Node.js 24 libraries for agents that run on their own: memory, tasks, contacts, identity, skills, email and Telegram, each kept as SQLite records you can read, correct and delete. None has a runtime dependency.",
   "socialImage": {
     "src": "assets/images/share.png",
     "alt": "A wolf head drawn in cyan light on black, beside the headline: Your agent keeps its state in markdown files."
@@ -20,13 +20,6 @@
     "ghGrimoire": "https://github.com/GhostPawJS/grimoire",
     "ghEmail": "https://github.com/GhostPawJS/email",
     "ghTelegram": "https://github.com/GhostPawJS/telegram",
-    "npmCodex": "https://www.npmjs.com/package/@ghostpaw/codex",
-    "npmQuestlog": "https://www.npmjs.com/package/@ghostpaw/questlog",
-    "npmAffinity": "https://www.npmjs.com/package/@ghostpaw/affinity",
-    "npmSouls": "https://www.npmjs.com/package/@ghostpaw/souls",
-    "npmGrimoire": "https://www.npmjs.com/package/@ghostpaw/grimoire",
-    "npmEmail": "https://www.npmjs.com/package/@ghostpaw/email",
-    "npmTelegram": "https://www.npmjs.com/package/@ghostpaw/telegram",
     "demoCodex": "https://codex.ghostpaw.dev/docs/",
     "demoQuestlog": "https://questlog.ghostpaw.dev/docs/",
     "demoAffinity": "https://affinity.ghostpaw.dev/docs/",
@@ -40,10 +33,12 @@
     "agentIdentity": "https://souls.ghostpaw.dev/",
     "agentSkills": "https://grimoire.ghostpaw.dev/",
     "agentEmail": "https://email.ghostpaw.dev/",
-    "agentTelegram": "https://telegram.ghostpaw.dev/"
+    "agentTelegram": "https://telegram.ghostpaw.dev/",
+    "docsEmail": "https://email.ghostpaw.dev/docs/",
+    "docsTelegram": "https://telegram.ghostpaw.dev/docs/"
   },
   "data": {
-    "measured": "Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against the version shown: tests from node --test, size as gzip -9 of dist/index.js, import time with performance.now().",
+    "measured": "Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against the version shown: tests from node --test at the release tag, size as gzip -9 of the published dist/index.js, import time as the median of 11 cold imports.",
     "packages": [
       {
         "key": "memory",
@@ -52,7 +47,6 @@
         "pkg": "@ghostpaw/codex",
         "version": "0.3.2",
         "role": "Beliefs instead of a memory file",
-        "line": "Every remembered line becomes a belief with a source, a certainty and a history. Flags for stale, fading and low-trust beliefs are computed each time you read, so the junk drawer shows you what to prune. Since 0.3.0 it also ships an MCP server and a ghostpaw-codex command line tool.",
         "fields": [
           "claim",
           "source: explicit, observed or inferred",
@@ -63,29 +57,12 @@
         "deps": "0",
         "tests": "380",
         "gzip": "31.5 KB",
-        "importMs": "4 ms",
-        "links": [
-          {
-            "label": "codex source on GitHub",
-            "strong": false,
-            "to": "ghCodex"
-          },
-          {
-            "label": "codex on npm",
-            "strong": false,
-            "to": "npmCodex"
-          },
-          {
-            "label": "codex live demo",
-            "strong": false,
-            "to": "demoCodex"
-          },
-          {
-            "label": "Read how codex handles a wrong fact",
-            "strong": true,
-            "to": "agentMemory"
-          }
-        ]
+        "importMs": "2.5 ms",
+        "page": "agentMemory",
+        "docs": "demoCodex",
+        "docsLabel": "codex live demo",
+        "gives": "MEMORY.md stops being a junk drawer: every belief carries its source and certainty, stale ones are flagged when read, and a wrong fact gets corrected with its lineage kept.",
+        "gh": "ghCodex"
       },
       {
         "key": "tasks",
@@ -94,7 +71,6 @@
         "pkg": "@ghostpaw/questlog",
         "version": "0.6.2",
         "role": "Quests instead of a to-do list",
-        "line": "Work becomes quests with deadlines, repeats and unlocks. A quest only finishes with a written outcome, and a blocked quest stays blocked until the one before it succeeds.",
         "fields": [
           "title and objective",
           "dueAt or a scheduled window",
@@ -105,29 +81,12 @@
         "deps": "0",
         "tests": "352",
         "gzip": "42.1 KB",
-        "importMs": "4.6 ms",
-        "links": [
-          {
-            "label": "questlog source on GitHub",
-            "strong": false,
-            "to": "ghQuestlog"
-          },
-          {
-            "label": "questlog on npm",
-            "strong": false,
-            "to": "npmQuestlog"
-          },
-          {
-            "label": "questlog live demo",
-            "strong": false,
-            "to": "demoQuestlog"
-          },
-          {
-            "label": "Read how questlog handles a hollow done",
-            "strong": true,
-            "to": "agentTasks"
-          }
-        ]
+        "importMs": "3.7 ms",
+        "page": "agentTasks",
+        "docs": "demoQuestlog",
+        "docsLabel": "questlog live demo",
+        "gives": "An agent that said it was done has to write down what came of it, and a blocked quest stays blocked until the one before it succeeds.",
+        "gh": "ghQuestlog"
       },
       {
         "key": "people",
@@ -136,7 +95,6 @@
         "pkg": "@ghostpaw/affinity",
         "version": "0.3.0",
         "role": "Contacts instead of a user note",
-        "line": "The people, companies and services your agent deals with become contacts with identities, relationship tracks and a journal of evidence, plus the yearly dates that matter.",
         "fields": [
           "contact and identities (email, phone, account)",
           "social link: rank, trust, cadence",
@@ -147,29 +105,12 @@
         "deps": "0",
         "tests": "459",
         "gzip": "56.1 KB",
-        "importMs": "5.7 ms",
-        "links": [
-          {
-            "label": "affinity source on GitHub",
-            "strong": false,
-            "to": "ghAffinity"
-          },
-          {
-            "label": "affinity on npm",
-            "strong": false,
-            "to": "npmAffinity"
-          },
-          {
-            "label": "affinity live demo",
-            "strong": false,
-            "to": "demoAffinity"
-          },
-          {
-            "label": "Read how affinity keeps a promise you made",
-            "strong": true,
-            "to": "agentContacts"
-          }
-        ]
+        "importMs": "4.8 ms",
+        "page": "agentContacts",
+        "docs": "demoAffinity",
+        "docsLabel": "affinity live demo",
+        "gives": "The people your agent deals with, with their accounts, a journal of what happened, the promises made and the dates that matter, plus a radar of who is drifting out of touch.",
+        "gh": "ghAffinity"
       },
       {
         "key": "identity",
@@ -178,7 +119,6 @@
         "pkg": "@ghostpaw/souls",
         "version": "0.3.0",
         "role": "An identity that changes with evidence",
-        "line": "The agent's character is stored as a short essence plus traits that each carry evidence. Refinements are gated, consolidated at level-up and can be rolled back.",
         "fields": [
           "essence",
           "traits with evidence",
@@ -188,29 +128,12 @@
         "deps": "0",
         "tests": "532",
         "gzip": "31.4 KB",
-        "importMs": "3.8 ms",
-        "links": [
-          {
-            "label": "souls source on GitHub",
-            "strong": false,
-            "to": "ghSouls"
-          },
-          {
-            "label": "souls on npm",
-            "strong": false,
-            "to": "npmSouls"
-          },
-          {
-            "label": "souls live demo",
-            "strong": false,
-            "to": "demoSouls"
-          },
-          {
-            "label": "Read how souls gates a prompt change",
-            "strong": true,
-            "to": "agentIdentity"
-          }
-        ]
+        "importMs": "2.8 ms",
+        "page": "agentIdentity",
+        "docs": "demoSouls",
+        "docsLabel": "souls live demo",
+        "gives": "Character that moves only on evidence: refinements wait for level-up, and any of them can be rolled back.",
+        "gh": "ghSouls"
       },
       {
         "key": "skills",
@@ -219,7 +142,6 @@
         "pkg": "@ghostpaw/grimoire",
         "version": "0.3.0",
         "role": "Procedures that get better and keep their history",
-        "line": "Each learned procedure stays a SKILL.md file. Git commits mark verified improvements, notes collect evidence, and a health check names stale, dormant and oversized skills.",
         "fields": [
           "spell: a SKILL.md file",
           "seal: a git commit per verified improvement",
@@ -230,38 +152,20 @@
         "deps": "0",
         "tests": "872",
         "gzip": "46.4 KB",
-        "importMs": "9.4 ms",
-        "links": [
-          {
-            "label": "grimoire source on GitHub",
-            "strong": false,
-            "to": "ghGrimoire"
-          },
-          {
-            "label": "grimoire on npm",
-            "strong": false,
-            "to": "npmGrimoire"
-          },
-          {
-            "label": "grimoire live demo",
-            "strong": false,
-            "to": "demoGrimoire"
-          },
-          {
-            "label": "Read how grimoire seals and rolls back a skill",
-            "strong": true,
-            "to": "agentSkills"
-          }
-        ]
+        "importMs": "7.6 ms",
+        "page": "agentSkills",
+        "docs": "demoGrimoire",
+        "docsLabel": "grimoire live demo",
+        "gives": "Procedures stay SKILL.md files, each verified improvement is a git commit, and a health check names stale, dormant and oversized skills.",
+        "gh": "ghGrimoire"
       },
       {
         "key": "inbox",
         "file": "inbox/",
         "name": "email",
         "pkg": "@ghostpaw/email",
-        "version": "0.4.0",
+        "version": "0.4.1",
         "role": "A mailbox the agent can search offline",
-        "line": "IMAP sync and SMTP send with a local SQLite cache, threads built from References and In-Reply-To headers, and FTS5 search. Reading, searching, composing, organising and syncing are five separate agent tools. Ships an email command line tool.",
         "fields": [
           "account with IMAP and SMTP config",
           "folder with sync state",
@@ -270,63 +174,82 @@
           "thread tree"
         ],
         "deps": "0",
-        "tests": "553",
-        "gzip": "47.5 KB",
-        "importMs": "12.3 ms",
-        "links": [
-          {
-            "label": "email source on GitHub",
-            "strong": false,
-            "to": "ghEmail"
-          },
-          {
-            "label": "email on npm",
-            "strong": false,
-            "to": "npmEmail"
-          },
-          {
-            "label": "Read how email keeps reading apart from sending",
-            "strong": true,
-            "to": "agentEmail"
-          }
-        ]
+        "tests": "563",
+        "gzip": "47.8 KB",
+        "importMs": "10.4 ms",
+        "page": "agentEmail",
+        "docs": "docsEmail",
+        "docsLabel": "email docs",
+        "gives": "Your agent can read and search the mailbox. Whether it can also send is a separate tool, and you decide.",
+        "gh": "ghEmail"
       },
       {
         "key": "chat",
         "file": "chat log",
         "name": "telegram",
         "pkg": "@ghostpaw/telegram",
-        "version": "0.6.0",
+        "version": "0.6.2",
         "role": "Every Telegram update kept before your handler runs",
-        "line": "A Telegram bot channel that mirrors each incoming update into SQLite before your handler runs, with edit history, reply chains and FTS5 search. Its agent tools return plans until you switch execution on.",
         "fields": [
           "message mirror with edit history",
           "reply chains",
           "FTS5 search with diacritic folding",
-          "file bytes as BLOBs when downloading is on",
+          "file bytes as BLOBs, stored once per SHA-256 hash",
           "plan-first agent tools"
         ],
         "deps": "0",
-        "tests": "883",
-        "gzip": "33.7 KB",
-        "importMs": "11.8 ms",
-        "links": [
-          {
-            "label": "telegram source on GitHub",
-            "strong": false,
-            "to": "ghTelegram"
-          },
-          {
-            "label": "telegram on npm",
-            "strong": false,
-            "to": "npmTelegram"
-          },
-          {
-            "label": "Read how telegram keeps a chat with its edits",
-            "strong": true,
-            "to": "agentTelegram"
-          }
-        ]
+        "tests": "887",
+        "gzip": "34.2 KB",
+        "importMs": "8.9 ms",
+        "page": "agentTelegram",
+        "docs": "docsTelegram",
+        "docsLabel": "telegram docs",
+        "gives": "Every update lands in SQLite before your handler runs, edits keep the old text, and the agent's tools only plan until you switch execution on.",
+        "gh": "ghTelegram"
+      }
+    ],
+    "run": [
+      {
+        "lib": "telegram",
+        "what": "Lena posts “Invoice 4471 is paid” in the Renewal desk group, and telegram has the row before your handler sees it.",
+        "file": "telegram.db",
+        "lands": "Lena's message, edit kept"
+      },
+      {
+        "lib": "affinity",
+        "what": "Your handler looks her up by Telegram account and adds the exchange to her journal.",
+        "file": "affinity.db",
+        "lands": "journal entry for Lena"
+      },
+      {
+        "lib": "codex",
+        "what": "The agent writes “invoice 4471 is paid” as an explicit belief. Yesterday's belief said it was overdue. That one is superseded, not deleted, so you can still see what the agent thought before and why it changed.",
+        "file": "codex.db",
+        "lands": "belief superseded, lineage kept"
+      },
+      {
+        "lib": "questlog",
+        "what": "The quest “Chase invoice 4471” closes only with a written outcome: paid, confirmed by Lena in the group.",
+        "file": "questlog.db",
+        "lands": "quest done, outcome written"
+      },
+      {
+        "lib": "email",
+        "what": "It finds the invoice thread in the cached inbox with mail_search and labels it paid with mail_organize. A reply to the vendor would need mail_compose, which this agent was never given.",
+        "file": "email.db",
+        "lands": "thread labelled paid"
+      },
+      {
+        "lib": "grimoire",
+        "what": "It followed the steps in a SKILL.md for closing a paid invoice. Last time the receipt went to the wrong folder, and that note is still attached. When a better version proves itself, it is sealed as a git commit you can diff and roll back.",
+        "file": "grimoire/",
+        "lands": "note on a SKILL.md, then a seal"
+      },
+      {
+        "lib": "souls",
+        "what": "Weeks of runs like this one pile up evidence for a trait: confirm payment with a person before closing a quest. The essence only changes at level-up, and you can roll the change back.",
+        "file": "souls.db",
+        "lands": "evidence for one trait"
       }
     ]
   },
@@ -358,7 +281,8 @@
         "codeRepository": "{{.urls.ghCodex}}",
         "programmingLanguage": "TypeScript",
         "runtimePlatform": "Node.js 24",
-        "license": "{{.urls.mit}}"
+        "license": "{{.urls.mit}}",
+        "url": "{{.urls.agentMemory}}"
       },
       {
         "@type": "SoftwareSourceCode",
@@ -366,7 +290,8 @@
         "codeRepository": "{{.urls.ghQuestlog}}",
         "programmingLanguage": "TypeScript",
         "runtimePlatform": "Node.js 24",
-        "license": "{{.urls.mit}}"
+        "license": "{{.urls.mit}}",
+        "url": "{{.urls.agentTasks}}"
       },
       {
         "@type": "SoftwareSourceCode",
@@ -374,7 +299,8 @@
         "codeRepository": "{{.urls.ghAffinity}}",
         "programmingLanguage": "TypeScript",
         "runtimePlatform": "Node.js 24",
-        "license": "{{.urls.mit}}"
+        "license": "{{.urls.mit}}",
+        "url": "{{.urls.agentContacts}}"
       },
       {
         "@type": "SoftwareSourceCode",
@@ -382,7 +308,8 @@
         "codeRepository": "{{.urls.ghSouls}}",
         "programmingLanguage": "TypeScript",
         "runtimePlatform": "Node.js 24",
-        "license": "{{.urls.mit}}"
+        "license": "{{.urls.mit}}",
+        "url": "{{.urls.agentIdentity}}"
       },
       {
         "@type": "SoftwareSourceCode",
@@ -390,7 +317,8 @@
         "codeRepository": "{{.urls.ghGrimoire}}",
         "programmingLanguage": "TypeScript",
         "runtimePlatform": "Node.js 24",
-        "license": "{{.urls.mit}}"
+        "license": "{{.urls.mit}}",
+        "url": "{{.urls.agentSkills}}"
       },
       {
         "@type": "SoftwareSourceCode",
@@ -398,7 +326,8 @@
         "codeRepository": "{{.urls.ghEmail}}",
         "programmingLanguage": "TypeScript",
         "runtimePlatform": "Node.js 24",
-        "license": "{{.urls.mit}}"
+        "license": "{{.urls.mit}}",
+        "url": "{{.urls.agentEmail}}"
       },
       {
         "@type": "SoftwareSourceCode",
@@ -406,7 +335,8 @@
         "codeRepository": "{{.urls.ghTelegram}}",
         "programmingLanguage": "TypeScript",
         "runtimePlatform": "Node.js 24",
-        "license": "{{.urls.mit}}"
+        "license": "{{.urls.mit}}",
+        "url": "{{.urls.agentTelegram}}"
       }
     ]
   }

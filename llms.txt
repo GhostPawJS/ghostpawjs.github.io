@@ -6,7 +6,7 @@ Install any of them with `npm install @ghostpaw/<name>`. Source: https://github.
 
 ## Pages
 
-- [GhostPaw home](https://ghostpaw.dev/): all seven libraries side by side, with measured tests, bundle size and import time.
+- [GhostPaw home](https://ghostpaw.dev/): what each of the seven libraries gives an agent that runs on its own, how they fit together, and measured tests, bundle size and import time.
 - [codex, agent memory](https://codex.ghostpaw.dev/): beliefs with a source, a certainty and a revision history; correct or delete a wrong fact.
 - [questlog, agent tasks](https://questlog.ghostpaw.dev/): quests that only finish with a written outcome; the run_quest tool refuses a blocked quest unless force is true.
 - [affinity, agent contacts](https://affinity.ghostpaw.dev/): a social CRM for agents; contacts, promises, a drift radar and yearly dates, replayed from a real run.
@@ -22,8 +22,18 @@ Install any of them with `npm install @ghostpaw/<name>`. Source: https://github.
 - [@ghostpaw/affinity](https://github.com/GhostPawJS/affinity) 0.3.0: contacts with identities, relationship tracks, an evidence journal and yearly dates.
 - [@ghostpaw/souls](https://github.com/GhostPawJS/souls) 0.3.0: an agent's character as an essence plus evidence-backed traits, with gated refinement, level-up and rollback.
 - [@ghostpaw/grimoire](https://github.com/GhostPawJS/grimoire) 0.3.0: learned procedures as SKILL.md files, git-versioned, with evidence notes and a health check.
-- [@ghostpaw/email](https://github.com/GhostPawJS/email) 0.4.0: IMAP sync and SMTP send with a local SQLite cache, threading and FTS5 search, split into five agent tools. Ships an email command line tool.
-- [@ghostpaw/telegram](https://github.com/GhostPawJS/telegram) 0.6.0: a Telegram bot channel that mirrors every update into SQLite, with edit history, FTS5 search and agent tools that return plans by default.
+- [@ghostpaw/email](https://github.com/GhostPawJS/email) 0.4.1: IMAP sync and SMTP send with a local SQLite cache, threading and FTS5 search, split into five agent tools. Ships an email command line tool.
+- [@ghostpaw/telegram](https://github.com/GhostPawJS/telegram) 0.6.2: a Telegram bot channel that mirrors every update into SQLite, with edit history, FTS5 search and agent tools that return plans by default.
+
+## Live demos and docs
+
+- [codex live demo](https://codex.ghostpaw.dev/docs/)
+- [questlog live demo](https://questlog.ghostpaw.dev/docs/)
+- [affinity live demo](https://affinity.ghostpaw.dev/docs/)
+- [souls live demo](https://souls.ghostpaw.dev/docs/)
+- [grimoire live demo](https://grimoire.ghostpaw.dev/docs/)
+- [email docs](https://email.ghostpaw.dev/docs/)
+- [telegram docs](https://telegram.ghostpaw.dev/docs/)
 
 Every library also runs as a local MCP server: `npx -y @ghostpaw/<name> mcp`.
 

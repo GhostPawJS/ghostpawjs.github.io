@@ -22,7 +22,9 @@
 <body>
 <header class="top">
   <a class="brand" href="{{.url}}">GhostPaw</a>
-  <nav aria-label="Elsewhere">
+  <nav aria-label="Site">
+    <a href="#libraries">Libraries</a>
+    <a href="#fit">How they fit</a>
     <a href="{{.urls.githubOrg}}">GitHub</a>
     <a href="{{.urls.npmOrg}}">npm</a>
   </nav>
@@ -32,12 +34,12 @@
     <div class="hero-copy">
       <h1 id="hero-title">Your agent keeps its state in markdown files.</h1>
       <p class="lede"><code>MEMORY.md</code>, <code>TODO.md</code>, <code>USER.md</code>, <code>SOUL.md</code>. They grow every session, nobody prunes them, and one wrong line steers every run after it.</p>
-      <p>GhostPaw is seven small Node.js libraries that file that state as records you can read and delete. Most of them are a few SQLite tables inside your agent's own process.</p>
+      <p>GhostPaw is seven small Node.js libraries, one for each of those files and for the skills, inbox and chats around them. Each keeps its part of the state as SQLite records inside your agent's own process, so you can read, correct and delete what the agent knows while it runs without you.</p>
       <div class="install">
         <label for="hero-cmd">Start with memory</label>
         <div class="cmd"><input id="hero-cmd" readonly value="npm install @ghostpaw/codex" spellcheck="false"><button type="button" class="copy" data-copy="hero-cmd">Copy</button></div>
       </div>
-      <p class="actions"><a class="button" href="#files">Find the file you outgrew</a> <a href="{{.urls.githubOrg}}">Read all seven on GitHub</a></p>
+      <p class="actions"><a class="button" href="#libraries">See all seven</a> <a href="#fit">How they fit together</a></p>
       <p class="terms">Free, MIT licence, Node.js 24 or newer. All seven have zero runtime dependencies. No account and no service to run.</p>
     </div>
     <figure class="hero-art frame">
@@ -46,74 +48,65 @@
     </figure>
   </section>
 
-  <section id="files" class="files" aria-labelledby="files-title">
-    <h2 id="files-title">Which file is your agent outgrowing?</h2>
-    <p class="intro">Pick the file. Its pane shows the package that takes it over, what one record holds and what we measured.</p>
-    <div class="drawer">
-      <div class="tabs" role="tablist" aria-label="Agent files">
-        {{range $i, $p := .data.packages}}<button type="button" role="tab" id="tab-{{$p.key}}" aria-controls="folder-{{$p.key}}" aria-selected="{{if eq $i 0}}true{{else}}false{{end}}" {{if ne $i 0}}tabindex="-1"{{end}}><code>{{$p.file}}</code></button>{{end}}
-      </div>
-      {{range $i, $p := .data.packages}}
-      <div class="folder" id="folder-{{$p.key}}" role="tabpanel" aria-labelledby="tab-{{$p.key}}" data-key="{{$p.key}}">
-        <div class="folder-head">
-          <div>
-            <p class="replaces">Replaces <code>{{$p.file}}</code></p>
-            <h3>{{$p.role}}</h3>
-            <p class="pkg"><code>{{$p.pkg}}</code> version {{$p.version}}</p>
-          </div>
+  <section id="libraries" class="libs" aria-labelledby="libs-title">
+    <h2 id="libs-title">One library for each file your agent keeps</h2>
+    <p class="intro">Each row names the file it takes over, what it gives an agent that runs with nobody watching, and the one command that installs it.</p>
+    <ol class="lib-rows">
+      {{range .data.packages}}<li class="lib-row" id="lib-{{.name}}">
+        <p class="lib-file"><span>Replaces</span> <code>{{.file}}</code></p>
+        <div class="lib-main">
+          <h3><a href="{{index $.urls .page}}">{{.name}}</a> <span class="ver">{{.version}}</span></h3>
+          <p class="lib-role">{{.role}}</p>
+          <p class="lib-gives">{{.gives}}</p>
+          <p class="lib-holds">One record holds:</p>
+          <ul class="lib-fields">{{range .fields}}<li>{{.}}</li>{{end}}</ul>
         </div>
-        <p class="line">{{$p.line}}</p>
-        <div class="folder-body">
-          <div class="record">
-            <h4>One record holds</h4>
-            <ul>{{range $p.fields}}<li>{{.}}</li>{{end}}</ul>
-          </div>
-          <dl class="ledger">
-            <div><dt>Runtime dependencies</dt><dd>{{$p.deps}}</dd></div>
-            <div><dt>Tests</dt><dd>{{$p.tests}}</dd></div>
-            <div><dt>Size, gzip</dt><dd>{{$p.gzip}}</dd></div>
-            <div><dt>Import time</dt><dd>{{$p.importMs}}</dd></div>
-          </dl>
+        <div class="lib-act">
+          <div class="cmd"><input id="cmd-{{.key}}" readonly value="npm install {{.pkg}}" aria-label="Install command for {{.name}}" spellcheck="false"><button type="button" class="copy" data-copy="cmd-{{.key}}">Copy</button></div>
+          <p class="links"><a class="more" href="{{index $.urls .page}}">The {{.name}} page</a><a href="{{index $.urls .docs}}">{{.docsLabel}}</a><a href="{{index $.urls .gh}}">{{.name}} on GitHub</a></p>
         </div>
-        <div class="cmd"><input id="cmd-{{$p.key}}" readonly value="npm install {{$p.pkg}}" aria-label="Install command for {{$p.name}}" spellcheck="false"><button type="button" class="copy" data-copy="cmd-{{$p.key}}">Copy</button></div>
-        <p class="links">{{range $p.links}}<a {{if .strong}}class="more" {{end}}href="{{index $.urls .to}}">{{.label}}</a>{{end}}</p>
-      </div>
+      </li>
       {{end}}
-    </div>
-    <p class="note">{{.data.measured}}</p>
-  </section>
-
-  <section class="why" aria-labelledby="why-title">
-    <h2 id="why-title">Where a markdown file stops working</h2>
-    <ol class="notes">
-      <li>
-        <h3>The junk drawer</h3>
-        <p class="before">MEMORY.md grows every session and nobody prunes it. Developers say they pay tokens on every turn to reread lines that stopped being true.</p>
-        <p class="after"><strong>Instead:</strong> codex flags stale, fading and low-trust beliefs when you read them and recalls only active ones. Pruning becomes a list you can work through.</p>
-      </li>
-      <li>
-        <h3>The wrong fact</h3>
-        <p class="before">One agent saves a wrong fact, and every other agent trusts it.</p>
-        <p class="after"><strong>Instead:</strong> In codex every belief records where it came from and how certain it is. A correction supersedes the old belief and keeps the lineage, so you can see what changed.</p>
-      </li>
-      <li>
-        <h3>Said it was done</h3>
-        <p class="before">The agent reports the task finished. It is not.</p>
-        <p class="after"><strong>Instead:</strong> questlog will not finish a quest without a written outcome, and a blocked quest stays blocked until the one before it succeeds. An outcome is text, not a test, but it gives you something to check.</p>
-      </li>
     </ol>
   </section>
 
+  <section id="fit" class="fit" aria-labelledby="fit-title">
+    <h2 id="fit-title">How they fit together</h2>
+    <p class="intro">The packages never import each other. Your agent's code carries data from one to the next, and each keeps its own records, in its own tables.</p>
+    <p class="intro">Here is one afternoon of an agent that runs a small renewal desk on its own.</p>
+    <div class="fit-grid">
+    <ol class="run">
+      {{range .data.run}}<li class="run-step"><p class="run-lib"><code>{{.lib}}</code></p><p class="run-what">{{.what}}</p></li>
+      {{end}}
+    </ol>
+    <figure class="tracks">
+      <figcaption>What the afternoon left on disk</figcaption>
+      <p class="tracks-root"><code>~/.ghostpaw/</code></p>
+      <ul>{{range .data.run}}<li><code>{{.file}}</code><span>{{.lands}}</span></li>{{end}}</ul>
+    </figure>
+    </div>
+    <p class="note">An illustration of one way to wire them, not a recorded run. Each library's own page replays a real run against its current release.</p>
+    <h3 class="shape-title">What all seven share</h3>
+    <dl class="shape">
+      <div><dt>Runtime</dt><dd>Node.js 24 or newer and its built-in <code>node:sqlite</code>. Zero runtime dependencies, MIT licence.</dd></div>
+      <div><dt>Ways in</dt><dd>A library import, an MCP server started with <code>npx -y @ghostpaw/&lt;name&gt; mcp</code>, a <code>ghostpaw-&lt;name&gt;</code> command line tool and an Agent Skill.</dd></div>
+      <div><dt>Where state lives</dt><dd>A SQLite file you can open. The MCP servers default to <code>~/.ghostpaw/&lt;name&gt;.db</code>; grimoire also keeps its SKILL.md files in a git folder.</dd></div>
+      <div><dt>Taking one</dt><dd>Install one package and ignore the rest. None of them needs another to work.</dd></div>
+    </dl>
+  </section>
+
   <section class="worry" aria-labelledby="worry-title">
-    <h2 id="worry-title">If memory makes you nervous</h2>
+    <h2 id="worry-title">If an agent working alone worries you</h2>
     <div class="worry-grid">
-    <p>Plenty of developers switch agent memory off, because unread memories pile up and old lines win arguments. That is a fair worry. This is what GhostPaw does about it.</p>
+    <div class="worry-lead"><p>Plenty of developers switch agent memory off, because unread memories pile up and old lines win arguments, and an agent that also sends mail, posts in groups and rewrites its own instructions while you sleep is a bigger worry than one that only remembers.</p>
+    <p>Here is what each package does about it.</p></div>
     <ul>
-      <li>The database is a SQLite file your own process opens. You can read and delete every row with <code>sqlite3</code>.</li>
-      <li>A belief nobody confirms for 90 days is flagged stale.</li>
-      <li>Forgetting is one call: <code>forgetBelief</code>, or <code>retire_belief</code> to hard-delete.</li>
-      <li>Recall calls no model. It is full-text search plus local similarity over the active beliefs.</li>
-      <li>Each package is an import, not a framework. Take one and ignore the rest.</li>
+      <li>Every record is a row in a SQLite file your own process opens. You can read and delete it with <code>sqlite3</code>.</li>
+      <li>codex flags a belief nobody confirms for 90 days as stale, and recall calls no model.</li>
+      <li>questlog's <code>run_quest</code> tool refuses to start a quest whose prerequisites are unmet, unless the call passes <code>force</code>.</li>
+      <li>email keeps reading and sending in separate tools. Leave <code>mail_compose</code> out and the agent cannot send.</li>
+      <li>telegram's send and moderation tools return plans until you switch execution on.</li>
+      <li>souls and grimoire keep every change to identity and skills as history you can roll back.</li>
     </ul>
     </div>
   </section>
@@ -128,7 +121,7 @@
       <caption>The seven GhostPaw packages and what we measured</caption>
       <thead><tr><th scope="col">Package</th><th scope="col">Takes over</th><th scope="col">Version</th><th scope="col">Runtime deps</th><th scope="col">Tests</th><th scope="col">gzip</th><th scope="col">Import</th></tr></thead>
       <tbody>
-      {{range .data.packages}}<tr><th scope="row"><code>{{.pkg}}</code></th><td data-label="Takes over"><code>{{.file}}</code></td><td data-label="Version">{{.version}}</td><td data-label="Runtime deps">{{.deps}}</td><td data-label="Tests">{{.tests}}</td><td data-label="gzip">{{.gzip}}</td><td data-label="Import">{{.importMs}}</td></tr>{{end}}
+      {{range .data.packages}}<tr><th scope="row"><a href="{{index $.urls .page}}"><code>{{.pkg}}</code></a></th><td data-label="Takes over"><code>{{.file}}</code></td><td data-label="Version">{{.version}}</td><td data-label="Runtime deps">{{.deps}}</td><td data-label="Tests">{{.tests}}</td><td data-label="gzip">{{.gzip}}</td><td data-label="Import">{{.importMs}}</td></tr>{{end}}
       </tbody>
     </table>
     </div>
@@ -136,7 +129,8 @@
   </section>
 </main>
 <footer class="foot">
-  <p>GhostPaw is maintained in the open. Every number on this page comes from the repositories and npm.</p>
+  <nav class="foot-libs" aria-label="GhostPaw libraries">{{range .data.packages}}<a href="{{index $.urls .page}}">{{.name}}</a>{{end}}</nav>
+  <p>GhostPaw is maintained in the open under the MIT licence. Every number on this page comes from the repositories and npm.</p>
   <p class="foot-links">
     <a href="{{.urls.githubOrg}}">GhostPawJS on GitHub</a>
     <a href="{{.urls.npmOrg}}">@ghostpaw on npm</a>

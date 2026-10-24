@@ -3,6 +3,8 @@
 ## Diagnosis
 The owner reviewed the live paper page on 2026-10-24 and rejected the visual direction: manila, ink and rubber stamps read as an office archive, not as GhostPaw. What stays strong: the file-to-package index, the measured numbers, the plain maintainer copy and the honesty notes. What changes: palette, type, form, imagery and motion move to a dark spectral identity built on the name itself, a ghost wolf. The visitor still comes to find which package replaces which file, so the index stays the mechanism.
 
+Portal review on 2026-10-24, after every library moved to its own subdomain (codex.ghostpaw.dev and the rest). The tabbed index answered "which package replaces my file" but showed one package at a time, so six of seven stayed hidden behind tabs, and nothing said how the seven work together or what they give an agent that runs without anyone watching (V030 V073). What stays: the dark scope, the wolf, the file names as the way in, the measured table, the plain notes. What changes: all seven are visible at once as rows with one install line each; a new section shows one afternoon of an unsupervised agent passing data through all seven, plus the shape they share; the objection section widens from memory to an agent working alone.
+
 ## Voices
 - Persistent agents keep their state in a handful of named markdown files, and people list them by name like rooms in a house: SOUL.md, USER.md, MEMORY.md, AGENTS.md, TOOLS.md. V001 V002 V089 V035
 - The memory file grows every session and turns into a "junk drawer"; nobody prunes it, so stale lines keep steering the agent. V001 V006 V009 V086 V005
@@ -24,10 +26,11 @@ A Node.js developer who runs one or more persistent agents (a coding agent, a bo
 2. Which package replaces which file? → the file index: pick a file, see the package, what one row records, and the install line.
 3. Is it small and honest? → measured numbers beside each package: runtime dependencies, Node floor, tests, gzip size.
 4. Will memory make my agent worse? → the objection answered where the visitor decides: beliefs decay, get flagged stale and get corrected with lineage; tasks need an explicit finish.
-5. What do I do now? → one npm install line per package and the GitHub repo, no signup.
+5. How do they work together? → one illustrated run through all seven, and the shape every package shares (node:sqlite, MCP server, CLI, Agent Skill).
+6. What do I do now? → one npm install line per package, its page and its source, no signup.
 
 ## Mechanism
-Chosen: a file index. The visitor picks the markdown file their agent outgrows (MEMORY.md, TODO.md, USER.md, SOUL.md, procedures, inbox) and sees the package that holds that state, the shape of one record, the measured numbers and a copyable install command. Speed to first value is one tap and the default state already shows MEMORY.md; proof is the repo numbers; effort is low; honesty risk is low because every row comes from the package READMEs and npm; share value is a link to a chosen file (`?file=todo`).
+Chosen: a file index, all seven rows visible at once (until 2026-10-24 it was a tab strip). The visitor finds the markdown file their agent outgrows (MEMORY.md, TODO.md, USER.md, SOUL.md, procedures, inbox) and sees the package that holds that state, the shape of one record, the measured numbers and a copyable install command. Speed to first value is one tap and the default state already shows MEMORY.md; proof is the repo numbers; effort is low; honesty risk is low because every row comes from the package READMEs and npm; share value is a link to a chosen file (`?file=todo`).
 Rejected: a live in-browser demo of a library: the packages need Node 24's node:sqlite, which a browser does not have, so it would be a mock.
 Rejected: a comparison table against mem0, Beads and the MCP server: the market already argues in tables (P001 P002), and it would rest on claims about other projects rather than our own measured facts.
 Rejected: a plain package list: it answers "what exists" but not "which one replaces the file I keep", which is the question the voices ask (V001 V002).
@@ -84,19 +87,21 @@ Delivery: `npm install @ghostpaw/<package>` into any Node.js 24+ project, immedi
   pushed: an illustrated map; pretty, but it hides the install line behind a story.
 8. Plain ledger: a single typed table of seven packages with numbers. V010 → struck: matches the market baseline (neutral docs, P004 P011) and loses the file-to-package question.
   pushed: becomes the numbers strip inside the chosen direction.
-9. Ghost on the scope: the file index from direction 3 on a dark terminal scope where the GhostPaw wolf appears in cyan light; each file tab opens a pane. V107 V120 V001 → chosen
+9. Ghost on the scope: the file index from direction 3 on a dark terminal scope where the GhostPaw wolf appears in cyan light; each file tab opens a pane. V107 V120 V001 → struck: shipped, then the portal review on 2026-10-24 found the tabs hid six of seven packages and never showed how they combine.
   pushed: the wolf resolves under one scan line on load; its paw trail leads into the list of all seven packages; flags and refusals glow alarm rose only where the library itself would raise them.
+10. Ghost on the scope, opened up: the same scope and wolf, but the index is seven rows on one screen, each with the file, what it gives an agent working alone and one install line; below, one afternoon of an unsupervised agent walks through all seven in order. V001 V089 V030 V073 V010 → chosen
+  pushed: each run step is tagged with the package that writes it, so the visitor sees which file a step would have been in before.
 
 ## Concept
-The agent's home directory, haunted. GhostPaw is the ghost that keeps an agent's state between runs, so the page is a dark scope where that ghost shows up: a spectral wolf drawn in cold cyan light resolves on the hero while a scan line passes, the way a terminal draws a new screen (V107 V120). Below it the index keeps the job the voices gave it: one tab per file a persistent agent keeps (MEMORY.md, TODO.md, USER.md, SOUL.md, skills, inbox, chat log), named the way buyers name them (V001 V089). Each tab opens a terminal pane with the package that keeps that state in SQLite, the record shape, the measured numbers and the install line. The paw-print trail returns where the page lists all seven packages: a ghost leaves tracks you can follow, which is the point of state you can read and delete (V010). Correction and the honest finish (V015 V023) are still said first in the memory and task panes. The "0 runtime dependencies" claim no peer makes sits on the hero as a HUD readout.
+The agent's home directory, haunted. GhostPaw is the ghost that keeps an agent's state between runs, so the page is a dark scope where that ghost shows up: a spectral wolf drawn in cold cyan light resolves on the hero while a scan line passes, the way a terminal draws a new screen (V107 V120). Below it the index keeps the job the voices gave it: one row per file a persistent agent keeps (MEMORY.md, TODO.md, USER.md, SOUL.md, skills, inbox, chat log), named the way buyers name them (V001 V089), all seven on one screen. Each row names the package that keeps that state in SQLite, what it gives an agent nobody is watching (V030 V073), the record shape and one install line. Then the ghost walks: one afternoon of an agent running a renewal desk alone passes through all seven in order, each step tagged with the package that writes it, so the visitor sees how they fit without any package importing another. The paw-print trail returns where the page lists all seven packages: a ghost leaves tracks you can follow, which is the point of state you can read and delete (V010). Correction and the honest finish (V015 V023) are still said first in the memory and task panes. The "0 runtime dependencies" claim no peer makes sits on the hero as a HUD readout.
 
 ## Spine
-1. Hero: names the files (MEMORY.md, TODO.md, USER.md) and says GhostPaw turns them into SQLite tables a Node process opens directly; install line and GitHub link; the zero-dependency readout; the spectral wolf. V001 V089 V002
-2. File index: the file tabs; MEMORY.md open by default; each folder shows package, record shape, numbers and install. V035 V050 V010
-3. Why not just markdown: three short notes in the voices' terms: the junk drawer, the wrong fact everyone trusts, the task said done; each answered by a package behaviour. V009 V013 V023
-4. If memory worries you: decay, stale flags, correction with lineage, explicit finish; nothing is recalled you cannot read or delete. V107 V106 V016
-5. All seven packages: the paw-print trail above a table with version, runtime deps, tests, gzip, links to repo and live demo. V053 V010
-6. Footer: GitHub org, npm org, Impressum, Datenschutz.
+1. Hero: names the files (MEMORY.md, TODO.md, USER.md, SOUL.md) and says GhostPaw files that state as SQLite records you can read, correct and delete; codex install line; links to the libraries and to how they fit; the zero-dependency readout; the spectral wolf. V001 V089 V002
+2. Libraries: seven rows, one per file, each with package and version, what it gives an agent that runs alone, what one record holds, one install line, and links to its page, its docs and its source. V035 V050 V010 V030
+3. How they fit: one afternoon of an agent running a renewal desk on its own, step by step through telegram, affinity, codex, questlog, email, grimoire and souls; marked as an illustration; then the shape all seven share. V073 V032 V017
+4. If an agent working alone worries you: what each package refuses or keeps as history; every row readable with sqlite3. V107 V106 V016 V065
+5. All seven side by side: the paw trail above the measured table. V053 V010
+6. Footer: the seven libraries, GitHub org, npm org, Impressum, Datenschutz.
 
 ## Palette
 | Role | Color | Source |
@@ -148,3 +153,4 @@ Reduced motion: the art is shown at once, no sweep; everything else changes in p
 - 2026-10-24: codex 0.3.0 and telegram 0.5.0 were published during the build; numbers, dependency count (seven of eight) and CLI facts updated from npm and the scorecard.
 - 2026-10-24: first concept from the batch of 2026-10-24 (120 voices, 12 peers).
 - 2026-10-24: "TODO.md" moved out of the Use list; it stays on the page as a code file name, because the compiler reads the bare word TODO in prose as placeholder text.
+- 2026-10-24: portal review: the tab drawer became seven visible rows with one install line each, a "how they fit" section walks one unsupervised run through all seven, the worry section covers an agent working alone, and every package links its own subdomain; direction 9 struck, direction 10 chosen; email 0.4.1 and telegram 0.6.2 numbers.
