@@ -124,7 +124,7 @@ The agent's home directory, haunted. GhostPaw is the ghost that keeps an agent's
 | code and file names | Martian Mono, Cascadia Mono, Consolas, monospace | crisp, slightly narrow mono for install lines, calls and file names like MEMORY.md V001 V002 |
 
 ## Form
-Panes, not cards: one terminal-like pane per open file with a 1px rule border, square corners and a 12px chamfer cut from the top right corner like a HUD frame; no drop shadows, glow only on the spectral accent and only where something is active. The page ground carries a faint 48px grid. Tabs are file names in mono sitting on one baseline; the chosen tab gets a cyan underline with a soft glow. Layout stays: one column on phones with tabs wrapping into a grid; on desktop the hero splits copy and art, the index is one wide pane under its tabs. Numbers sit in rows with tabular figures in spectral cyan.
+Panes, not cards: one terminal-like pane per open file with a 1px rule border, square corners and a 12px chamfer cut from the top right corner like a HUD frame; no drop shadows, glow only on the spectral accent and only where something is active. The page ground is plain void with one faint cyan glow at the top right. Tabs are file names in mono sitting on one baseline; the chosen tab gets a cyan underline with a soft glow. Layout stays: one column on phones with tabs wrapping into a grid; on desktop the hero splits copy and art, the index is one wide pane under its tabs. Numbers sit in rows with tabular figures in spectral cyan.
 
 ## Imagery
 | Image | Job | Art direction | Source |
@@ -147,6 +147,7 @@ Reduced motion: the art is shown at once, no sweep; everything else changes in p
 - Never quote voices as customers; say what developers commonly report in our words, the way they describe their own setups. V050 V051
 
 ## Changelog
+- 2026-10-24: portal chrome pass. Version badges and footer row shared with the seven library pages; the ruled grid on the page ground was replaced by one radial glow (lfm 0.1.9 rejects ruled ground textures).
 - 2026-10-24: versions and numbers moved to npm latest (codex 0.3.2, questlog 0.6.2, affinity 0.3.0, souls 0.3.0, grimoire 0.3.0, email 0.4.0, telegram 0.6.0); each pane links its new landing page (/agent-contacts/, /agent-identity/, /agent-skills/, /agent-email/, /agent-telegram/); the telegram pane no longer says files are stored on receipt, because DEFAULTS.autoDownload is false in 0.6.0.
 - 2026-10-24: visual rebuild after owner review: the paper and stamp identity is replaced by a dark spectral one (void, spectral cyan, wraith violet, alarm rose; Tektur, system sans, Martian Mono; generated ghost-wolf art). Content, mechanism, numbers and copy rules kept; direction 3 struck and direction 9 chosen.
 - 2026-10-24: website is being archived (lfm replaces it); the page now covers seven libraries, all with zero runtime dependencies.
