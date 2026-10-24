@@ -6,9 +6,9 @@ Install any of them with `npm install @ghostpaw/<name>`. Source: https://github.
 
 ## Pages
 
-- [GhostPaw home](https://ghostpaw.anonyfox.com/): all seven libraries side by side, with measured tests, bundle size and import time.
-- [codex, agent memory](https://ghostpaw.anonyfox.com/agent-memory/): beliefs with a source, a certainty and a revision history; correct or delete a wrong fact.
-- [questlog, agent tasks](https://ghostpaw.anonyfox.com/agent-tasks/): quests that only finish with a written outcome; unlocks, deadlines and repeats.
+- [GhostPaw home](https://ghostpaw.dev/): all seven libraries side by side, with measured tests, bundle size and import time.
+- [codex, agent memory](https://ghostpaw.dev/agent-memory/): beliefs with a source, a certainty and a revision history; correct or delete a wrong fact.
+- [questlog, agent tasks](https://ghostpaw.dev/agent-tasks/): quests that only finish with a written outcome; unlocks, deadlines and repeats.
 
 ## Libraries
 

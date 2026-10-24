@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "url": "https://ghostpaw.anonyfox.com/agent-memory/",
+  "url": "https://ghostpaw.dev/agent-memory/",
   "language": "en",
   "title": "codex: agent memory that shows a wrong fact's source and lets you correct it",
   "description": "@ghostpaw/codex stores what your agent believes as claims with a source, a certainty and a revision history. Flags show what is stale or weakly sourced; one call corrects or deletes. Node.js 24, zero dependencies, MIT.",
@@ -9,16 +9,16 @@
     "alt": "A glowing cyan paw print on a holographic belief card with a rose flag, beside the line: When one agent saves a wrong fact, every agent trusts it."
   },
   "urls": {
-    "home": "https://ghostpaw.anonyfox.com/",
-    "agentTasks": "https://ghostpaw.anonyfox.com/agent-tasks/",
+    "home": "https://ghostpaw.dev/",
+    "agentTasks": "https://ghostpaw.dev/agent-tasks/",
     "github": "https://github.com/GhostPawJS/codex",
     "readme": "https://github.com/GhostPawJS/codex#readme",
     "npm": "https://www.npmjs.com/package/@ghostpaw/codex",
-    "demo": "https://ghostpaw.anonyfox.com/codex/",
+    "demo": "https://ghostpaw.dev/codex/",
     "impressum": "https://lab.anonyfox.com/impressum/",
     "privacy": "https://lab.anonyfox.com/datenschutz/",
     "mit": "https://opensource.org/license/mit",
-    "orgId": "https://ghostpaw.anonyfox.com/#org"
+    "orgId": "https://ghostpaw.dev/#org"
   },
   "jsonld": {
     "@context": "https://schema.org",

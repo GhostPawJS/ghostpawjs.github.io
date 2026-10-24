@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "url": "https://ghostpaw.anonyfox.com/",
+  "url": "https://ghostpaw.dev/",
   "language": "en",
   "title": "GhostPaw: Node.js libraries for the MEMORY.md and task files your agent keeps",
   "description": "Seven MIT-licensed Node.js 24 libraries that turn the MEMORY.md, task list, USER.md and skills your agent keeps into records you can read, correct and delete. None has a runtime dependency.",
@@ -9,8 +9,8 @@
     "alt": "A wolf head drawn in cyan light on black, beside the headline: Your agent keeps its state in markdown files."
   },
   "urls": {
-    "agentMemory": "https://ghostpaw.anonyfox.com/agent-memory/",
-    "agentTasks": "https://ghostpaw.anonyfox.com/agent-tasks/",
+    "agentMemory": "https://ghostpaw.dev/agent-memory/",
+    "agentTasks": "https://ghostpaw.dev/agent-tasks/",
     "githubOrg": "https://github.com/GhostPawJS",
     "npmOrg": "https://www.npmjs.com/org/ghostpaw",
     "ghCodex": "https://github.com/GhostPawJS/codex",
@@ -27,15 +27,15 @@
     "npmGrimoire": "https://www.npmjs.com/package/@ghostpaw/grimoire",
     "npmEmail": "https://www.npmjs.com/package/@ghostpaw/email",
     "npmTelegram": "https://www.npmjs.com/package/@ghostpaw/telegram",
-    "demoCodex": "https://ghostpaw.anonyfox.com/codex/",
-    "demoQuestlog": "https://ghostpaw.anonyfox.com/questlog/",
-    "demoAffinity": "https://ghostpaw.anonyfox.com/affinity/",
-    "demoSouls": "https://ghostpaw.anonyfox.com/souls/",
-    "demoGrimoire": "https://ghostpaw.anonyfox.com/grimoire/",
+    "demoCodex": "https://ghostpaw.dev/codex/",
+    "demoQuestlog": "https://ghostpaw.dev/questlog/",
+    "demoAffinity": "https://ghostpaw.dev/affinity/",
+    "demoSouls": "https://ghostpaw.dev/souls/",
+    "demoGrimoire": "https://ghostpaw.dev/grimoire/",
     "impressum": "https://lab.anonyfox.com/impressum/",
     "privacy": "https://lab.anonyfox.com/datenschutz/",
     "mit": "https://opensource.org/licenses/MIT",
-    "orgId": "https://ghostpaw.anonyfox.com/#org"
+    "orgId": "https://ghostpaw.dev/#org"
   },
   "data": {
     "measured": "Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against the version shown: tests from node --test, size as gzip -9 of dist/index.js, import time with performance.now().",

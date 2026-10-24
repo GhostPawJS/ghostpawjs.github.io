@@ -1,8 +1,8 @@
 # Per-library docs pages (GitHub Pages of each repo, served under this domain).
 # Added to the merged root sitemap.xml by site/sitemap-extra.sh (called from merge.sh).
 # List only pages that return 200; website is archived and stays out.
-https://ghostpaw.anonyfox.com/codex/
-https://ghostpaw.anonyfox.com/questlog/
-https://ghostpaw.anonyfox.com/affinity/
-https://ghostpaw.anonyfox.com/souls/
-https://ghostpaw.anonyfox.com/grimoire/
+https://ghostpaw.dev/codex/
+https://ghostpaw.dev/questlog/
+https://ghostpaw.dev/affinity/
+https://ghostpaw.dev/souls/
+https://ghostpaw.dev/grimoire/

@@ -3,12 +3,12 @@
 <meta name=viewport content="width=device-width, initial-scale=1">
 <title>questlog: an agent task list that will not mark work done without an outcome</title>
 <meta name=description content="@ghostpaw/questlog keeps agent tasks as quests in SQLite. Finishing one needs a written outcome, blocked quests stay off the available list until their prerequisite succeeds, and due dates turn overdue on their own. Node.js 24, zero dependencies, MIT.">
-<link rel=canonical href=https://ghostpaw.anonyfox.com/agent-tasks/>
+<link rel=canonical href=https://ghostpaw.dev/agent-tasks/>
 <meta property=og:type content=website>
-<meta property=og:url content=https://ghostpaw.anonyfox.com/agent-tasks/>
+<meta property=og:url content=https://ghostpaw.dev/agent-tasks/>
 <meta property=og:title content="questlog: an agent task list that will not mark work done without an outcome">
 <meta property=og:description content="@ghostpaw/questlog keeps agent tasks as quests in SQLite. Finishing one needs a written outcome, blocked quests stay off the available list until their prerequisite succeeds, and due dates turn overdue on their own. Node.js 24, zero dependencies, MIT.">
-<meta property=og:image content=https://ghostpaw.anonyfox.com/agent-tasks/share-321867dd8c52.png><meta property=og:image:width content=1200><meta property=og:image:height content=630>
+<meta property=og:image content=https://ghostpaw.dev/agent-tasks/share-321867dd8c52.png><meta property=og:image:width content=1200><meta property=og:image:height content=630>
 <meta property=og:image:alt content="A glowing paw pressing a hexagonal exclamation marker on black, beside the line: Your agent said it was done. Was it?">
 <meta name=twitter:card content=summary_large_image>
 <link rel=preload href=./tektur-var-4c711ade6b7f.woff2 as=font type=font/woff2 crossorigin>
@@ -20,11 +20,11 @@
 </style><link rel=icon type=image/png sizes=96x96 href=./favicon.png></head>
 <body>
 <header class=top>
-  <a class=brand href=https://ghostpaw.anonyfox.com/>GhostPaw</a>
+  <a class=brand href=https://ghostpaw.dev/>GhostPaw</a>
   <nav aria-label="questlog elsewhere">
     <a href=https://github.com/GhostPawJS/questlog>GitHub</a>
     <a href=https://www.npmjs.com/package/@ghostpaw/questlog>npm</a>
-    <a href=https://ghostpaw.anonyfox.com/questlog/>Live demo</a>
+    <a href=https://ghostpaw.dev/questlog/>Live demo</a>
   </nav>
 </header>
 <main>
@@ -207,8 +207,8 @@ write.settleRumor(db, rumor.id, {
 const available = read.listAvailableQuests(db);
 const dueSoon = read.listDueSoonQuests(db, 7 * 24 * 60 * 60 * 1000);</code></pre>
     <p>Agents get twelve tools, among them <code>review_questlog</code>, <code>capture_rumor</code>, <code>shape_work</code>, <code>run_quest</code> and <code>reward_work</code>, and each one returns success, no_op, needs_clarification or error with a hint for the next step.</p>
-    <p class=links><a class=more href=https://github.com/GhostPawJS/questlog#readme>Read the README</a><a href=https://ghostpaw.anonyfox.com/questlog/>Open the live demo</a><a href=https://www.npmjs.com/package/@ghostpaw/questlog>questlog on npm</a></p>
-    <p class=links><a href=https://ghostpaw.anonyfox.com/>All seven GhostPaw libraries</a><a href=https://ghostpaw.anonyfox.com/agent-memory/>codex, for agent memory</a></p>
+    <p class=links><a class=more href=https://github.com/GhostPawJS/questlog#readme>Read the README</a><a href=https://ghostpaw.dev/questlog/>Open the live demo</a><a href=https://www.npmjs.com/package/@ghostpaw/questlog>questlog on npm</a></p>
+    <p class=links><a href=https://ghostpaw.dev/>All seven GhostPaw libraries</a><a href=https://ghostpaw.dev/agent-memory/>codex, for agent memory</a></p>
   </section>
 </main>
 <footer class=foot>
@@ -218,7 +218,7 @@ const dueSoon = read.listDueSoonQuests(db, 7 * 24 * 60 * 60 * 1000);</code></pre
 
 
 
-<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","author":{"@id":"https://ghostpaw.anonyfox.com/#org","@type":"Organization","name":"GhostPaw"},"codeRepository":"https://github.com/GhostPawJS/questlog","description":"@ghostpaw/questlog keeps agent tasks as quests in SQLite. Finishing one needs a written outcome, blocked quests stay off the available list until their prerequisite succeeds, and due dates turn overdue on their own. Node.js 24, zero dependencies, MIT.","license":"https://opensource.org/license/mit","name":"@ghostpaw/questlog","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24","version":"0.5.1"}]}</script><script>document.documentElement.classList.add("js");
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","author":{"@id":"https://ghostpaw.dev/#org","@type":"Organization","name":"GhostPaw"},"codeRepository":"https://github.com/GhostPawJS/questlog","description":"@ghostpaw/questlog keeps agent tasks as quests in SQLite. Finishing one needs a written outcome, blocked quests stay off the available list until their prerequisite succeeds, and due dates turn overdue on their own. Node.js 24, zero dependencies, MIT.","license":"https://opensource.org/license/mit","name":"@ghostpaw/questlog","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24","version":"0.5.1"}]}</script><script>document.documentElement.classList.add("js");
 </script><script type=module>(()=>{let a=Date.UTC(2026,9,24,10),E=a+5*864e5,C=document.getElementById("call-log"),g=document.getElementById("today"),y=document.getElementById("jump"),b=document.getElementById("reset");if(!C||!y)return;let q=!matchMedia("(prefers-reduced-motion: reduce)").matches,n,i,u;function v(){n={1:{started:!1,done:!1,outcome:"",unlockedBy:null,due:null},2:{started:!1,done:!1,outcome:"",unlockedBy:null,due:null},3:{started:!1,done:!1,outcome:"",unlockedBy:1,due:E}},i=a,u=""}let k=e=>n[e].unlockedBy!=null&&!n[n[e].unlockedBy].done,L=e=>!n[e].done&&!k(e),B=()=>[3,2,1],h=e=>"["+B().filter(e).join(", ")+"]",A=e=>new Date(e).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short",timeZone:"UTC"}).replace(",","");function m(){for(let t of[1,2,3]){let o=n[t],c=document.getElementById("q"+t),l=c.querySelector(".marker"),p=c.querySelector(".q-label"),w=c.querySelector(".start"),D=c.querySelector(".finish"),x=c.querySelector(".outcome"),f=k(t);c.classList.toggle("blocked",f),c.classList.toggle("done",o.done),l.hidden=o.done,o.done?p.textContent="done":o.started?(l.textContent="?",p.textContent="incomplete · in progress"):f?(l.textContent="?",p.textContent="incomplete"):(l.textContent="!",p.textContent="available"),w.hidden=o.done||o.started||f,D.hidden=o.done||!o.started,x.hidden=!o.done,x.textContent=o.outcome;let r=c.querySelector(".block");r&&!f&&!r.hidden?q?(r.classList.add("lift"),r.addEventListener("animationend",()=>{r.hidden=!0,r.classList.remove("lift")},{once:!0})):r.hidden=!0:r&&f&&(r.hidden=!1,r.classList.remove("lift"));let S=c.querySelector(".due");S&&(S.hidden=!(o.due!=null&&!o.done&&o.due<i))}let e=i>a;g.textContent="Today: "+A(i),g.classList.toggle("later",e),y.setAttribute("aria-pressed",String(e)),y.textContent=e?"Back to today":"Jump 7 days";let s=e?", {}, now":"",d=[];u&&d.push(u,""),d.push("read.listAvailableQuests(db"+s+`);
 // `+h(L)),d.push("read.listBlockedQuests(db"+s+`);
 // `+h(t=>!n[t].done&&k(t))),e?d.push("read.listOverdueQuests(db"+s+`);
