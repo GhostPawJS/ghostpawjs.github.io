@@ -1,16 +1,304 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GhostPaw: durable local state for AI agents</title>
-<meta name="description" content="Zero-dependency TypeScript capabilities for AI agents: memory, tasks, contacts, identity and procedures on SQLite.">
-<style>body{font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem;color:#111}a{color:#5b3fd1}</style></head>
-<body><h1>GhostPaw</h1><p>Durable, local, inspectable state for AI agents: memory, tasks, contacts, identity and procedures as zero-dependency SQLite libraries for Node 24+.</p>
-<ul>
-<li><a href="https://github.com/GhostPawJS/codex">codex</a>: belief and memory engine</li>
-<li><a href="https://github.com/GhostPawJS/questlog">questlog</a>: tasks and calendar</li>
-<li><a href="https://github.com/GhostPawJS/affinity">affinity</a>: social CRM core</li>
-<li><a href="https://github.com/GhostPawJS/souls">souls</a>: agent identity and prompt evolution</li>
-<li><a href="https://github.com/GhostPawJS/grimoire">grimoire</a>: procedural knowledge</li>
-<li><a href="https://github.com/GhostPawJS/email">email</a>: IMAP/SMTP engine</li>
-<li><a href="https://github.com/GhostPawJS/telegram">telegram</a>: Telegram bot engine</li>
-<li><a href="https://github.com/GhostPawJS/website">website</a>: site engine</li>
-</ul><p><a href="https://github.com/GhostPawJS">GitHub</a> · <a href="https://www.npmjs.com/org/ghostpaw">npm</a></p></body></html>
+<!DOCTYPE html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>GhostPaw: Node.js libraries for the MEMORY.md and task files your agent keeps</title>
+<meta name=description content="Seven MIT-licensed Node.js 24 libraries that turn the MEMORY.md, task list, USER.md and skills your agent keeps into records you can read, correct and delete. None has a runtime dependency.">
+<link rel=canonical href=https://ghostpaw.anonyfox.com/>
+<meta property=og:type content=website>
+<meta property=og:url content=https://ghostpaw.anonyfox.com/>
+<meta property=og:title content="GhostPaw: Node.js libraries for the MEMORY.md and task files your agent keeps">
+<meta property=og:description content="Seven MIT-licensed Node.js 24 libraries that turn the MEMORY.md, task list, USER.md and skills your agent keeps into records you can read, correct and delete. None has a runtime dependency.">
+<meta property=og:image content=https://ghostpaw.anonyfox.com/share-160d2f5bfd25.png><meta property=og:image:width content=1200><meta property=og:image:height content=630>
+<meta property=og:image:alt content="Ink drawing of a filing drawer of manila folders with a faint paw print, beside the headline: Your agent keeps its state in markdown files. GhostPaw files it.">
+<meta name=twitter:card content=summary_large_image>
+<link rel=preload href=./libre-franklin-var-a084cf2739f3.woff2 as=font type=font/woff2 crossorigin>
+<link rel=preload href=./courier-prime-400-39c240585a01.woff2 as=font type=font/woff2 crossorigin>
+
+
+<style>@font-face{font-family:Libre Franklin;src:url("./libre-franklin-var-a084cf2739f3.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:Courier Prime;src:url("./courier-prime-400-39c240585a01.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}:root{--ground: #efe4c8;--card: #f8f2e2;--ink: #1d1a16;--muted: #5a5146;--stamp: #a3312a;--ledger: #2e5a4c;--rule: #c9b98f;--body: "Libre Franklin", "Franklin Gothic", Arial, sans-serif;--mono: "Courier Prime", "Courier New", monospace;--edge: 2px solid var(--ink);--wrap: 72rem}*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--ground);color:var(--ink);font:400 1.0625rem/1.55 var(--body)}img{display:block;max-width:100%;height:auto}code,input,.cmd input{font-family:var(--mono);font-synthesis:none}code{font-size:.95em}a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:.18em}a:hover{color:var(--stamp)}:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}h1,h2,h3,h4{line-height:1.12;margin:0 0 .5em;text-wrap:balance}h1{font-size:clamp(2.3rem,6.2vw,4.4rem);font-weight:800;letter-spacing:-.02em}h2{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-.01em}h3{font-size:1.3rem;font-weight:700}h4{font-size:1rem;font-weight:700}p{margin:0 0 1em}.top,main>section,.foot{max-width:var(--wrap);margin:0 auto;padding-left:1.25rem;padding-right:1.25rem}.top{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;padding-bottom:1rem;border-bottom:1px solid var(--rule)}.brand{font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-.01em}.top nav{display:flex;gap:1.25rem}.hero{display:grid;gap:2rem;padding-top:2.5rem;padding-bottom:3rem;align-items:center}.lede{font-size:1.25rem}.lede code{white-space:nowrap}.install label{display:block;font-weight:700;margin-bottom:.35rem}.cmd{display:flex;border:var(--edge);background:var(--card);max-width:30rem}.cmd input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font-size:.875rem;padding:.7rem}.copy{border:0;border-left:var(--edge);background:var(--ink);color:var(--card);font:700 .95rem var(--body);padding:0 .9rem;cursor:pointer;min-width:4.75rem}.copy:hover{background:var(--stamp)}.actions{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;margin-top:1.4rem}.button{display:inline-block;background:var(--ink);color:var(--card);text-decoration:none;font-weight:700;padding:.75rem 1.2rem;border:var(--edge)}.button:hover{background:var(--stamp);border-color:var(--stamp);color:var(--card)}.terms{color:var(--muted);font-size:.95rem}.hero-art{position:relative;margin:0}.hero-art img{mix-blend-mode:multiply;width:100%}.stamp{position:absolute;right:4%;bottom:6%;margin:0;display:grid;justify-items:center;color:var(--stamp);border:3px solid var(--stamp);padding:.45rem .8rem .4rem;transform:rotate(-4deg);font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:1.05;font-size:1.05rem;background:#f8f2e2d9;animation:press .4s cubic-bezier(.2,.8,.3,1.2) .3s both}.stamp small{font-size:.68rem;letter-spacing:.02em;text-transform:none;font-weight:600;margin-top:.2rem}@keyframes press{0%{transform:scale(1.15) rotate(-2deg);opacity:.2}to{transform:scale(1) rotate(-4deg);opacity:1}}.files{padding-top:2.5rem;padding-bottom:2rem;border-top:var(--edge)}.intro{max-width:40rem}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;margin-top:1.5rem}.tabs{display:none!important}.js .tabs{display:grid!important}.js .folder~.folder:not(.open){display:none}.tabs button{font:inherit;background:var(--ground);color:var(--ink);border:var(--edge);padding:.6rem .2rem;cursor:pointer;position:relative;transition:transform .15s ease}.tabs button code{font-size:.85rem;font-weight:400;white-space:nowrap}.tabs button:hover{background:var(--card)}.tabs button[aria-selected=true]{background:var(--ink);color:var(--card)}.tabs+.folder,.tabs~.folder{margin-top:.75rem}.folder{background:var(--card);border:var(--edge);padding:1.5rem 1.25rem;margin-bottom:1rem}.js .folder{margin-bottom:0}.js .folder[hidden]{display:none}.folder-head{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;align-items:center;margin-bottom:1rem}.folder-head img{mix-blend-mode:multiply;width:5.5rem}.replaces{margin:0 0 .2rem;color:var(--muted);font-size:.95rem}.folder h3{font-size:clamp(1.3rem,2.6vw,1.75rem);margin-bottom:.25rem}.pkg{margin:0;color:var(--muted)}.pkg code{color:var(--ink)}.line{font-size:1.1rem;max-width:46rem}.folder-body{display:grid;gap:1.25rem;margin:1.25rem 0}.record ul{margin:0;padding-left:1.1rem}.record li{margin-bottom:.25rem}.ledger{margin:0;border-top:1px solid var(--rule)}.ledger div{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--rule);padding:.4rem 0}.ledger dt{color:var(--muted)}.ledger dd{margin:0;color:var(--ledger);font-weight:700;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}.links{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin:1.1rem 0 0}.links .more{font-weight:700;color:var(--stamp)}.note{color:var(--muted);font-size:.9rem;margin-top:1rem;max-width:46rem}.why,.worry,.all{padding-top:3rem;padding-bottom:2.5rem;border-top:1px solid var(--rule)}.notes{list-style:none;margin:1.5rem 0 0;padding:0;counter-reset:n}.notes li{display:grid;gap:.25rem 2rem;padding:1.25rem 0;border-top:var(--edge);counter-increment:n}.notes h3{font-size:1.4rem}.notes h3:before{content:counter(n) ". ";color:var(--stamp)}.before{margin:0;color:var(--muted)}.after{margin:0}.worry ul{padding-left:1.2rem;max-width:46rem}.worry li{margin-bottom:.5rem}.worry>p{max-width:46rem}.table-wrap{border:var(--edge);background:var(--card)}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}caption{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}th,td{text-align:left;padding:.55rem .9rem;border-bottom:1px solid var(--rule);vertical-align:top}thead th{border-bottom:var(--edge);font-size:.95rem}tbody th{font-weight:700;white-space:nowrap}td:nth-child(n+3){color:var(--ledger);font-weight:600;white-space:nowrap}.foot{padding-top:2rem;padding-bottom:3rem;border-top:var(--edge);color:var(--muted)}.foot-links{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:.15rem 1rem;padding:.8rem 1rem;border-bottom:1px solid var(--rule)}thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}tbody th,tbody td{border:0;padding:.1rem 0}tbody th{grid-column:1 / -1;font-size:1.05rem}tbody td:before{content:attr(data-label) " ";display:block;color:var(--muted);font-weight:400;font-size:.85rem}td:nth-child(n+3){white-space:normal}.after strong{color:var(--ledger)}@media(min-width:52rem){.cmd input{font-size:1rem}.js .tabs{display:flex!important;gap:.35rem;padding:0 .25rem}.tabs button{border-bottom:0;padding:.55rem .9rem .5rem;top:2px}.tabs button code{font-size:.95rem}.tabs button[aria-selected=true]{background:var(--card);color:var(--ink);transform:translateY(-6px);padding-bottom:1rem;margin-bottom:-6px;z-index:1}.tabs~.folder{margin-top:0}thead{position:static;width:auto;height:auto;overflow:visible;clip-path:none}tbody tr{display:table-row;padding:0}tbody th,tbody td{padding:.55rem .9rem;border-bottom:1px solid var(--rule)}tbody th{font-size:inherit}tbody td:before{content:none}td:nth-child(n+3){white-space:nowrap}.worry-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start}.hero{grid-template-columns:1.1fr 1fr;padding-top:3.5rem}.folder{padding:2rem 2.25rem}.folder-head{grid-template-columns:8rem 1fr}.folder-head img{width:8rem}.folder-body{grid-template-columns:1.2fr 1fr;gap:2.5rem}.notes li{grid-template-columns:14rem 1fr 1fr;align-items:start}}@media(prefers-reduced-motion:reduce){.stamp{animation:none}.tabs button{transition:none}}
+</style><link rel=icon type=image/png sizes=96x96 href=./favicon.png></head>
+<body>
+<header class=top>
+  <a class=brand href=https://ghostpaw.anonyfox.com/>GhostPaw</a>
+  <nav aria-label=Elsewhere>
+    <a href=https://github.com/GhostPawJS>GitHub</a>
+    <a href=https://www.npmjs.com/org/ghostpaw>npm</a>
+  </nav>
+</header>
+<main>
+  <section class=hero aria-labelledby=hero-title>
+    <div class=hero-copy>
+      <h1 id=hero-title>Your agent keeps its state in markdown files.</h1>
+      <p class=lede><code>MEMORY.md</code>, <code>TODO.md</code>, <code>USER.md</code>, <code>SOUL.md</code>. They grow every session, nobody prunes them, and one wrong line steers every run after it.</p>
+      <p>GhostPaw is seven small Node.js libraries that file that state as records you can read and delete. Most of them are a few SQLite tables inside your agent&#39;s own process.</p>
+      <div class=install>
+        <label for=hero-cmd>Start with memory</label>
+        <div class=cmd><input id=hero-cmd readonly value="npm install @ghostpaw/codex" spellcheck=false><button type=button class=copy data-copy=hero-cmd>Copy</button></div>
+      </div>
+      <p class=actions><a class=button href=#files>Find the file you outgrew</a> <a href=https://github.com/GhostPawJS>Read all seven on GitHub</a></p>
+      <p class=terms>Free, MIT licence, Node.js 24 or newer. All seven have zero runtime dependencies. No account and no service to run.</p>
+    </div>
+    <figure class=hero-art>
+      <picture><source media="(min-width: 52rem)" srcset=./drawer-720-e1a48288aae0.webp width=720 height=540><img src=./drawer-480-6415082c3360.webp width=480 height=360 alt="Ink drawing of an open filing drawer of manila folders, one pulled halfway out, with a faint paw print on it." fetchpriority=high></picture>
+      <p class=stamp aria-label="Zero runtime dependencies in all seven packages"><span>0 runtime</span><span>dependencies</span><small>in all seven packages</small></p>
+    </figure>
+  </section>
+
+  <section id=files class=files aria-labelledby=files-title>
+    <h2 id=files-title>Which file is your agent outgrowing?</h2>
+    <p class=intro>Pick the file. Its folder shows the package that takes it over, what one record holds and what we measured.</p>
+    <div class=drawer>
+      <div class=tabs role=tablist aria-label="Agent files">
+        <button type=button role=tab id=tab-memory aria-controls=folder-memory aria-selected=true><code>MEMORY.md</code></button><button type=button role=tab id=tab-tasks aria-controls=folder-tasks aria-selected=false tabindex=-1><code>TODO.md</code></button><button type=button role=tab id=tab-people aria-controls=folder-people aria-selected=false tabindex=-1><code>USER.md</code></button><button type=button role=tab id=tab-identity aria-controls=folder-identity aria-selected=false tabindex=-1><code>SOUL.md</code></button><button type=button role=tab id=tab-skills aria-controls=folder-skills aria-selected=false tabindex=-1><code>skills/</code></button><button type=button role=tab id=tab-inbox aria-controls=folder-inbox aria-selected=false tabindex=-1><code>inbox/</code></button><button type=button role=tab id=tab-chat aria-controls=folder-chat aria-selected=false tabindex=-1><code>chat log</code></button>
+      </div>
+      
+      <div class=folder id=folder-memory role=tabpanel aria-labelledby=tab-memory data-key=memory>
+        <div class=folder-head>
+          <img src=./spot-codex.webp width=256 height=256 alt="Ink drawing of a ruled index card with a red clip." loading=lazy>
+          <div>
+            <p class=replaces>Replaces <code>MEMORY.md</code></p>
+            <h3>Beliefs instead of a memory file</h3>
+            <p class=pkg><code>@ghostpaw/codex</code> version 0.3.0</p>
+          </div>
+        </div>
+        <p class=line>Every remembered line becomes a belief with a source, a certainty and a history. Flags for stale, fading and low-trust beliefs are computed each time you read, so the junk drawer shows you what to prune. Since 0.3.0 it also ships an MCP server and a ghostpaw-codex command line tool.</p>
+        <div class=folder-body>
+          <div class=record>
+            <h4>One record holds</h4>
+            <ul><li>claim</li><li>source: explicit, observed or inferred</li><li>certainty and evidence count</li><li>freshness</li><li>lineage of corrections</li></ul>
+          </div>
+          <dl class=ledger>
+            <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+            <div><dt>Tests</dt><dd>378</dd></div>
+            <div><dt>Size, gzip</dt><dd>32.5 KB</dd></div>
+            <div><dt>Import time</dt><dd>4 ms</dd></div>
+          </dl>
+        </div>
+        <div class=cmd><input id=cmd-memory readonly value="npm install @ghostpaw/codex" aria-label="Install command for codex" spellcheck=false><button type=button class=copy data-copy=cmd-memory>Copy</button></div>
+        <p class=links><a href=https://github.com/GhostPawJS/codex>codex source on GitHub</a><a href=https://www.npmjs.com/package/@ghostpaw/codex>codex on npm</a><a href=https://ghostpaw.anonyfox.com/codex/>codex live demo</a><a class=more href=https://ghostpaw.anonyfox.com/agent-memory/>Read how codex handles a wrong fact</a></p>
+      </div>
+      
+      <div class=folder id=folder-tasks role=tabpanel aria-labelledby=tab-tasks data-key=tasks>
+        <div class=folder-head>
+          <img src=./spot-questlog.webp width=256 height=256 alt="Ink drawing of a checklist on a clipboard with one box ticked." loading=lazy>
+          <div>
+            <p class=replaces>Replaces <code>TODO.md</code></p>
+            <h3>Quests instead of a to-do list</h3>
+            <p class=pkg><code>@ghostpaw/questlog</code> version 0.5.1</p>
+          </div>
+        </div>
+        <p class=line>Work becomes quests with deadlines, repeats and unlocks. A quest only finishes with a written outcome, and a blocked quest stays blocked until the one before it succeeds.</p>
+        <div class=folder-body>
+          <div class=record>
+            <h4>One record holds</h4>
+            <ul><li>title and objective</li><li>dueAt or a scheduled window</li><li>unlocks that block other quests</li><li>outcome text on finish</li><li>repeat rule (RRULE)</li></ul>
+          </div>
+          <dl class=ledger>
+            <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+            <div><dt>Tests</dt><dd>326</dd></div>
+            <div><dt>Size, gzip</dt><dd>42.6 KB</dd></div>
+            <div><dt>Import time</dt><dd>4.4 ms</dd></div>
+          </dl>
+        </div>
+        <div class=cmd><input id=cmd-tasks readonly value="npm install @ghostpaw/questlog" aria-label="Install command for questlog" spellcheck=false><button type=button class=copy data-copy=cmd-tasks>Copy</button></div>
+        <p class=links><a href=https://github.com/GhostPawJS/questlog>questlog source on GitHub</a><a href=https://www.npmjs.com/package/@ghostpaw/questlog>questlog on npm</a><a href=https://ghostpaw.anonyfox.com/questlog/>questlog live demo</a><a class=more href=https://ghostpaw.anonyfox.com/agent-tasks/>Read how questlog handles a hollow done</a></p>
+      </div>
+      
+      <div class=folder id=folder-people role=tabpanel aria-labelledby=tab-people data-key=people>
+        <div class=folder-head>
+          <img src=./spot-affinity-44dd24265668.webp width=256 height=256 alt="Ink drawing of a rotary card file of blank address cards." loading=lazy>
+          <div>
+            <p class=replaces>Replaces <code>USER.md</code></p>
+            <h3>Contacts instead of a user note</h3>
+            <p class=pkg><code>@ghostpaw/affinity</code> version 0.2.4</p>
+          </div>
+        </div>
+        <p class=line>The people, companies and services your agent deals with become contacts with identities, relationship tracks and a journal of evidence, plus the yearly dates that matter.</p>
+        <div class=folder-body>
+          <div class=record>
+            <h4>One record holds</h4>
+            <ul><li>contact and identities (email, phone, account)</li><li>social link: rank, trust, cadence</li><li>ties such as works_at</li><li>journal entries as evidence</li><li>date anchors such as birthdays</li></ul>
+          </div>
+          <dl class=ledger>
+            <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+            <div><dt>Tests</dt><dd>436</dd></div>
+            <div><dt>Size, gzip</dt><dd>57.4 KB</dd></div>
+            <div><dt>Import time</dt><dd>5.8 ms</dd></div>
+          </dl>
+        </div>
+        <div class=cmd><input id=cmd-people readonly value="npm install @ghostpaw/affinity" aria-label="Install command for affinity" spellcheck=false><button type=button class=copy data-copy=cmd-people>Copy</button></div>
+        <p class=links><a href=https://github.com/GhostPawJS/affinity>affinity source on GitHub</a><a href=https://www.npmjs.com/package/@ghostpaw/affinity>affinity on npm</a><a href=https://ghostpaw.anonyfox.com/affinity/>affinity live demo</a></p>
+      </div>
+      
+      <div class=folder id=folder-identity role=tabpanel aria-labelledby=tab-identity data-key=identity>
+        <div class=folder-head>
+          <img src=./spot-souls-e088f65be696.webp width=256 height=256 alt="Ink drawing of a hand mirror lying on a sheet of paper." loading=lazy>
+          <div>
+            <p class=replaces>Replaces <code>SOUL.md</code></p>
+            <h3>An identity that changes with evidence</h3>
+            <p class=pkg><code>@ghostpaw/souls</code> version 0.2.3</p>
+          </div>
+        </div>
+        <p class=line>The agent&#39;s character is stored as a short essence plus traits that each carry evidence. Refinements are gated, consolidated at level-up and can be rolled back.</p>
+        <div class=folder-body>
+          <div class=record>
+            <h4>One record holds</h4>
+            <ul><li>essence</li><li>traits with evidence</li><li>level-up consolidation</li><li>full rollback</li></ul>
+          </div>
+          <dl class=ledger>
+            <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+            <div><dt>Tests</dt><dd>510</dd></div>
+            <div><dt>Size, gzip</dt><dd>32.2 KB</dd></div>
+            <div><dt>Import time</dt><dd>3.9 ms</dd></div>
+          </dl>
+        </div>
+        <div class=cmd><input id=cmd-identity readonly value="npm install @ghostpaw/souls" aria-label="Install command for souls" spellcheck=false><button type=button class=copy data-copy=cmd-identity>Copy</button></div>
+        <p class=links><a href=https://github.com/GhostPawJS/souls>souls source on GitHub</a><a href=https://www.npmjs.com/package/@ghostpaw/souls>souls on npm</a><a href=https://ghostpaw.anonyfox.com/souls/>souls live demo</a></p>
+      </div>
+      
+      <div class=folder id=folder-skills role=tabpanel aria-labelledby=tab-skills data-key=skills>
+        <div class=folder-head>
+          <img src=./spot-grimoire-92eb3b88505c.webp width=256 height=256 alt="Ink drawing of an open recipe card box with one card standing up." loading=lazy>
+          <div>
+            <p class=replaces>Replaces <code>skills/</code></p>
+            <h3>Procedures that get better and keep their history</h3>
+            <p class=pkg><code>@ghostpaw/grimoire</code> version 0.2.15</p>
+          </div>
+        </div>
+        <p class=line>Each learned procedure stays a SKILL.md file. Git commits mark verified improvements, notes collect evidence, and a health check names stale, dormant and oversized skills.</p>
+        <div class=folder-body>
+          <div class=record>
+            <h4>One record holds</h4>
+            <ul><li>spell: a SKILL.md file</li><li>seal: a git commit per verified improvement</li><li>tier from seal count</li><li>notes awaiting distillation</li><li>catalogue health snapshot</li></ul>
+          </div>
+          <dl class=ledger>
+            <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+            <div><dt>Tests</dt><dd>848</dd></div>
+            <div><dt>Size, gzip</dt><dd>47.5 KB</dd></div>
+            <div><dt>Import time</dt><dd>8.8 ms</dd></div>
+          </dl>
+        </div>
+        <div class=cmd><input id=cmd-skills readonly value="npm install @ghostpaw/grimoire" aria-label="Install command for grimoire" spellcheck=false><button type=button class=copy data-copy=cmd-skills>Copy</button></div>
+        <p class=links><a href=https://github.com/GhostPawJS/grimoire>grimoire source on GitHub</a><a href=https://www.npmjs.com/package/@ghostpaw/grimoire>grimoire on npm</a><a href=https://ghostpaw.anonyfox.com/grimoire/>grimoire live demo</a></p>
+      </div>
+      
+      <div class=folder id=folder-inbox role=tabpanel aria-labelledby=tab-inbox data-key=inbox>
+        <div class=folder-head>
+          <img src=./spot-email-00d320d0297a.webp width=256 height=256 alt="Ink drawing of a sealed envelope with a red wax dot." loading=lazy>
+          <div>
+            <p class=replaces>Replaces <code>inbox/</code></p>
+            <h3>A mailbox the agent can search offline</h3>
+            <p class=pkg><code>@ghostpaw/email</code> version 0.3.0</p>
+          </div>
+        </div>
+        <p class=line>IMAP sync and SMTP send with a local SQLite cache, threads built from References headers and full-text search. Ships an email command line tool.</p>
+        <div class=folder-body>
+          <div class=record>
+            <h4>One record holds</h4>
+            <ul><li>account with IMAP and SMTP config</li><li>folder with sync state</li><li>message headers, flags, labels</li><li>body and attachments</li><li>thread tree</li></ul>
+          </div>
+          <dl class=ledger>
+            <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+            <div><dt>Tests</dt><dd>528</dd></div>
+            <div><dt>Size, gzip</dt><dd>48.7 KB</dd></div>
+            <div><dt>Import time</dt><dd>11.7 ms</dd></div>
+          </dl>
+        </div>
+        <div class=cmd><input id=cmd-inbox readonly value="npm install @ghostpaw/email" aria-label="Install command for email" spellcheck=false><button type=button class=copy data-copy=cmd-inbox>Copy</button></div>
+        <p class=links><a href=https://github.com/GhostPawJS/email>email source on GitHub</a><a href=https://www.npmjs.com/package/@ghostpaw/email>email on npm</a></p>
+      </div>
+      
+      <div class=folder id=folder-chat role=tabpanel aria-labelledby=tab-chat data-key=chat>
+        <div class=folder-head>
+          <img src=./spot-telegram.webp width=256 height=256 alt="Ink drawing of a folded paper plane with a dashed trail." loading=lazy>
+          <div>
+            <p class=replaces>Replaces <code>chat log</code></p>
+            <h3>Every Telegram update kept before your handler runs</h3>
+            <p class=pkg><code>@ghostpaw/telegram</code> version 0.5.0</p>
+          </div>
+        </div>
+        <p class=line>A Telegram bot channel that mirrors each incoming update into SQLite first, files included, with full-text search and markdown rendering. Since 0.5.0 it talks to the Bot API with built-in fetch and has no runtime dependencies.</p>
+        <div class=folder-body>
+          <div class=record>
+            <h4>One record holds</h4>
+            <ul><li>message mirror</li><li>file bytes stored as BLOBs</li><li>FTS5 search</li><li>markdown rendering</li></ul>
+          </div>
+          <dl class=ledger>
+            <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+            <div><dt>Tests</dt><dd>860</dd></div>
+            <div><dt>Size, gzip</dt><dd>34.5 KB</dd></div>
+            <div><dt>Import time</dt><dd>10.4 ms</dd></div>
+          </dl>
+        </div>
+        <div class=cmd><input id=cmd-chat readonly value="npm install @ghostpaw/telegram" aria-label="Install command for telegram" spellcheck=false><button type=button class=copy data-copy=cmd-chat>Copy</button></div>
+        <p class=links><a href=https://github.com/GhostPawJS/telegram>telegram source on GitHub</a><a href=https://www.npmjs.com/package/@ghostpaw/telegram>telegram on npm</a></p>
+      </div>
+      
+    </div>
+    <p class=note>Measured 2026-10-24 on the maintainer&#39;s machine with Node.js 24.14.0 against the version shown: tests from node --test, size as gzip -9 of dist/index.js, import time with performance.now().</p>
+  </section>
+
+  <section class=why aria-labelledby=why-title>
+    <h2 id=why-title>Where a markdown file stops working</h2>
+    <ol class=notes>
+      <li>
+        <h3>The junk drawer</h3>
+        <p class=before>MEMORY.md grows every session and nobody prunes it. Developers say they pay tokens on every turn to reread lines that stopped being true.</p>
+        <p class=after><strong>Instead:</strong> codex flags stale, fading and low-trust beliefs when you read them and recalls only active ones. Pruning becomes a list you can work through.</p>
+      </li>
+      <li>
+        <h3>The wrong fact</h3>
+        <p class=before>One agent saves a wrong fact, and every other agent trusts it.</p>
+        <p class=after><strong>Instead:</strong> In codex every belief records where it came from and how certain it is. A correction supersedes the old belief and keeps the lineage, so you can see what changed.</p>
+      </li>
+      <li>
+        <h3>Said it was done</h3>
+        <p class=before>The agent reports the task finished. It is not.</p>
+        <p class=after><strong>Instead:</strong> questlog will not finish a quest without a written outcome, and a blocked quest stays blocked until the one before it succeeds. An outcome is text, not a test, but it gives you something to check.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class=worry aria-labelledby=worry-title>
+    <h2 id=worry-title>If memory makes you nervous</h2>
+    <div class=worry-grid>
+    <p>Plenty of developers switch agent memory off, because unread memories pile up and old lines win arguments. That is a fair worry. This is what GhostPaw does about it.</p>
+    <ul>
+      <li>The database is a SQLite file your own process opens. You can read and delete every row with <code>sqlite3</code>.</li>
+      <li>A belief nobody confirms for 90 days is flagged stale.</li>
+      <li>Forgetting is one call: <code>forgetBelief</code>, or <code>retire_belief</code> to hard-delete.</li>
+      <li>Recall calls no model. It is full-text search plus local similarity over the active beliefs.</li>
+      <li>Each package is an import, not a framework. Take one and ignore the rest.</li>
+    </ul>
+    </div>
+  </section>
+
+  <section class=all aria-labelledby=all-title>
+    <h2 id=all-title>All seven, side by side</h2>
+    <div class=table-wrap>
+    <table>
+      <caption>The seven GhostPaw packages and what we measured</caption>
+      <thead><tr><th scope=col>Package</th><th scope=col>Takes over</th><th scope=col>Version</th><th scope=col>Runtime deps</th><th scope=col>Tests</th><th scope=col>gzip</th><th scope=col>Import</th></tr></thead>
+      <tbody>
+      <tr><th scope=row><code>@ghostpaw/codex</code></th><td data-label="Takes over"><code>MEMORY.md</code></td><td data-label=Version>0.3.0</td><td data-label="Runtime deps">0</td><td data-label=Tests>378</td><td data-label=gzip>32.5 KB</td><td data-label=Import>4 ms</td></tr><tr><th scope=row><code>@ghostpaw/questlog</code></th><td data-label="Takes over"><code>TODO.md</code></td><td data-label=Version>0.5.1</td><td data-label="Runtime deps">0</td><td data-label=Tests>326</td><td data-label=gzip>42.6 KB</td><td data-label=Import>4.4 ms</td></tr><tr><th scope=row><code>@ghostpaw/affinity</code></th><td data-label="Takes over"><code>USER.md</code></td><td data-label=Version>0.2.4</td><td data-label="Runtime deps">0</td><td data-label=Tests>436</td><td data-label=gzip>57.4 KB</td><td data-label=Import>5.8 ms</td></tr><tr><th scope=row><code>@ghostpaw/souls</code></th><td data-label="Takes over"><code>SOUL.md</code></td><td data-label=Version>0.2.3</td><td data-label="Runtime deps">0</td><td data-label=Tests>510</td><td data-label=gzip>32.2 KB</td><td data-label=Import>3.9 ms</td></tr><tr><th scope=row><code>@ghostpaw/grimoire</code></th><td data-label="Takes over"><code>skills/</code></td><td data-label=Version>0.2.15</td><td data-label="Runtime deps">0</td><td data-label=Tests>848</td><td data-label=gzip>47.5 KB</td><td data-label=Import>8.8 ms</td></tr><tr><th scope=row><code>@ghostpaw/email</code></th><td data-label="Takes over"><code>inbox/</code></td><td data-label=Version>0.3.0</td><td data-label="Runtime deps">0</td><td data-label=Tests>528</td><td data-label=gzip>48.7 KB</td><td data-label=Import>11.7 ms</td></tr><tr><th scope=row><code>@ghostpaw/telegram</code></th><td data-label="Takes over"><code>chat log</code></td><td data-label=Version>0.5.0</td><td data-label="Runtime deps">0</td><td data-label=Tests>860</td><td data-label=gzip>34.5 KB</td><td data-label=Import>10.4 ms</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class=note>Measured 2026-10-24 on the maintainer&#39;s machine with Node.js 24.14.0 against the version shown: tests from node --test, size as gzip -9 of dist/index.js, import time with performance.now().</p>
+  </section>
+</main>
+<footer class=foot>
+  <p>GhostPaw is maintained in the open. Every number on this page comes from the repositories and npm.</p>
+  <p class=foot-links>
+    <a href=https://github.com/GhostPawJS>GhostPawJS on GitHub</a>
+    <a href=https://www.npmjs.com/org/ghostpaw>@ghostpaw on npm</a>
+    <a href=https://lab.anonyfox.com/impressum/>Impressum</a>
+    <a href=https://lab.anonyfox.com/datenschutz/>Datenschutz</a>
+  </p>
+</footer>
+
+
+
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://ghostpaw.anonyfox.com/#org","@type":"Organization","name":"GhostPaw","sameAs":["https://github.com/GhostPawJS","https://www.npmjs.com/org/ghostpaw"],"url":"https://ghostpaw.anonyfox.com/"},{"@type":"WebSite","description":"Seven MIT-licensed Node.js 24 libraries that turn the MEMORY.md, task list, USER.md and skills your agent keeps into records you can read, correct and delete. None has a runtime dependency.","name":"GhostPaw","publisher":{"@id":"https://ghostpaw.anonyfox.com/#org"},"url":"https://ghostpaw.anonyfox.com/"},{"@type":"SoftwareSourceCode","codeRepository":"https://github.com/GhostPawJS/codex","license":"https://opensource.org/licenses/MIT","name":"@ghostpaw/codex","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24"},{"@type":"SoftwareSourceCode","codeRepository":"https://github.com/GhostPawJS/questlog","license":"https://opensource.org/licenses/MIT","name":"@ghostpaw/questlog","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24"},{"@type":"SoftwareSourceCode","codeRepository":"https://github.com/GhostPawJS/affinity","license":"https://opensource.org/licenses/MIT","name":"@ghostpaw/affinity","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24"},{"@type":"SoftwareSourceCode","codeRepository":"https://github.com/GhostPawJS/souls","license":"https://opensource.org/licenses/MIT","name":"@ghostpaw/souls","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24"},{"@type":"SoftwareSourceCode","codeRepository":"https://github.com/GhostPawJS/grimoire","license":"https://opensource.org/licenses/MIT","name":"@ghostpaw/grimoire","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24"},{"@type":"SoftwareSourceCode","codeRepository":"https://github.com/GhostPawJS/email","license":"https://opensource.org/licenses/MIT","name":"@ghostpaw/email","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24"},{"@type":"SoftwareSourceCode","codeRepository":"https://github.com/GhostPawJS/telegram","license":"https://opensource.org/licenses/MIT","name":"@ghostpaw/telegram","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24"}]}</script><script>document.documentElement.classList.add("js");
+</script><script type=module>(()=>{document.documentElement.classList.add("js");let i=document.querySelector(".tabs"),t=i?[...i.querySelectorAll('[role="tab"]')]:[],s=[...document.querySelectorAll(".folder")];function r(n,l,a){let c=t.find(e=>e.id==="tab-"+n)||t[0];if(c&&(t.forEach(e=>{let o=e===c;e.setAttribute("aria-selected",String(o)),e.tabIndex=o?0:-1}),s.forEach(e=>{let o=e.id===c.getAttribute("aria-controls");e.hidden=!o,e.classList.toggle("open",o)}),l&&c.focus(),a)){let e=new URL(location.href);e.searchParams.set("file",c.id.slice(4)),history.replaceState(null,"",e)}}if(i&&t.length){t.forEach((a,c)=>{a.addEventListener("click",()=>r(a.id.slice(4),!1,!0)),a.addEventListener("keydown",e=>{let o=null;e.key==="ArrowRight"&&(o=(c+1)%t.length),e.key==="ArrowLeft"&&(o=(c-1+t.length)%t.length),e.key==="Home"&&(o=0),e.key==="End"&&(o=t.length-1),o!==null&&(e.preventDefault(),r(t[o].id.slice(4),!0,!0))})});let n=new URLSearchParams(location.search).get("file"),l=t.some(a=>a.id==="tab-"+n);r(l?n:t[0].id.slice(4),!1,!1)}document.querySelectorAll(".copy").forEach(n=>{n.addEventListener("click",async()=>{let l=document.getElementById(n.dataset.copy);if(l){try{await navigator.clipboard.writeText(l.value)}catch{l.select(),document.execCommand&&document.execCommand("copy")}n.textContent="Copied",setTimeout(()=>{n.textContent="Copy"},2e3)}})})})();
+</script></body></html>

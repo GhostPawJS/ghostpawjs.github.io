@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>questlog: an agent task list that will not mark work done without an outcome</title>
+<meta name=description content="@ghostpaw/questlog keeps agent tasks as quests in SQLite. Finishing one needs a written outcome, blocked quests stay off the available list until their prerequisite succeeds, and due dates turn overdue on their own. Node.js 24, zero dependencies, MIT.">
+<link rel=canonical href=https://ghostpaw.anonyfox.com/agent-tasks/>
+<meta property=og:type content=website>
+<meta property=og:url content=https://ghostpaw.anonyfox.com/agent-tasks/>
+<meta property=og:title content="questlog: an agent task list that will not mark work done without an outcome">
+<meta property=og:description content="@ghostpaw/questlog keeps agent tasks as quests in SQLite. Finishing one needs a written outcome, blocked quests stay off the available list until their prerequisite succeeds, and due dates turn overdue on their own. Node.js 24, zero dependencies, MIT.">
+<meta property=og:image content=https://ghostpaw.anonyfox.com/agent-tasks/share-7de30ac59ba8.png><meta property=og:image:width content=1200><meta property=og:image:height content=630>
+<meta property=og:image:alt content="A hand-drawn task card with a large exclamation mark and an empty outcome line beside a rubber stamp, next to the line: Your agent said it was done. Was it?">
+<meta name=twitter:card content=summary_large_image>
+<link rel=preload href=./libre-franklin-var-a084cf2739f3.woff2 as=font type=font/woff2 crossorigin>
+<link rel=preload href=./courier-prime-400-39c240585a01.woff2 as=font type=font/woff2 crossorigin>
+
+
+<style>@font-face{font-family:"Libre Franklin";src:url(./libre-franklin-var-a084cf2739f3.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:"Courier Prime";src:url(./courier-prime-400-39c240585a01.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}:root{--ground: #efe4c8;--card: #f8f2e2;--ink: #1d1a16;--muted: #5a5146;--stamp: #a3312a;--ledger: #2e5a4c;--rule: #c9b98f;--body: "Libre Franklin", "Franklin Gothic", Arial, sans-serif;--mono: "Courier Prime", "Courier New", monospace;--edge: 2px solid var(--ink);--wrap: 72rem}*{box-sizing:border-box}html{text-size-adjust:100%}body{margin:0px;background:var(--ground);color:var(--ink);font:400 1.0625rem/1.55 var(--body)}img{display:block;max-width:100%;height:auto}code,input,.cmd input{font-family:var(--mono);font-synthesis:none}code{font-size:0.95em}a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:0.18em}h1,h2,h3,h4{line-height:1.12;margin:0px 0px 0.5em;text-wrap:balance}h1{font-size:clamp(2.3rem,6.2vw,4.4rem);font-weight:800;letter-spacing:-0.02em}h2{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-0.01em}p{margin:0px 0px 1em}.top,main>section,.foot{max-width:var(--wrap);margin:0px auto;padding-left:1.25rem;padding-right:1.25rem}.top{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;padding-bottom:1rem;border-bottom:1px solid var(--rule)}.brand{font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-0.01em}.top nav{display:flex;gap:1.25rem}.hero{display:grid;gap:2rem;padding-top:2.5rem;padding-bottom:3rem;align-items:center}.lede{font-size:1.25rem}.cmd{display:flex;border:var(--edge);background:var(--card);max-width:30rem}.cmd input{flex:1 1 0%;min-width:0px;border:0px;background:transparent;color:var(--ink);font-size:0.875rem;padding:0.7rem}.copy{border-top:0px;border-right:0px;border-bottom:0px;border-image:none;border-left:var(--edge);background:var(--ink);color:var(--card);font:700 .95rem var(--body);padding:0px 0.9rem;cursor:pointer;min-width:4.75rem}.actions{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;margin-top:1.4rem}.button{display:inline-block;background:var(--ink);color:var(--card);text-decoration:none;font-weight:700;padding:0.75rem 1.2rem;border:var(--edge)}.terms{color:var(--muted);font-size:0.95rem}.hero-art{position:relative;margin:0px}.hero-art img{mix-blend-mode:multiply;width:100%}.stamp{position:absolute;right:4%;bottom:6%;margin:0px;display:grid;justify-items:center;color:var(--stamp);border:3px solid var(--stamp);padding:0.45rem 0.8rem 0.4rem;transform:rotate(-4deg);font-weight:800;text-transform:uppercase;letter-spacing:0.04em;line-height:1.05;font-size:1.05rem;background:rgba(248,242,226,0.85);animation:0.4s cubic-bezier(0.2,0.8,0.3,1.2) 0.3s 1 normal both running press}@keyframes press{0%{transform:scale(1.15) rotate(-2deg);opacity:0.2}100%{transform:scale(1) rotate(-4deg);opacity:1}}.kicker{margin:0px 0px 0.75rem;color:var(--muted)}.kicker code{color:var(--ink)}.cmd-label{font-weight:700;margin:0px 0px 0.35rem}.board-sec,.todo,.time,.worry,.numbers,.start{padding-top:3rem;padding-bottom:2.5rem;border-top:1px solid var(--rule)}.board-sec{border-top:var(--edge)}@keyframes lift{100%{transform:translateY(-0.6rem) rotate(-6deg);opacity:0}}@keyframes shake{25%{transform:translate(-4px)}75%{transform:translate(4px)}}@media(min-width:52rem){.cmd input{font-size:1rem}.hero{grid-template-columns:1.1fr 1fr;padding-top:3.5rem}}@media(prefers-reduced-motion:reduce){.stamp,.qstamp.lift,.finish.shake .finish-row{animation:auto ease 0s 1 normal none running none}}.cmd input{font-size:0.8rem;padding:0.7rem 0.5rem}.copy{min-width:4rem;padding:0px 0.7rem}@media(min-width:52rem){.cmd input{font-size:1rem;padding:0.7rem}.copy{min-width:4.75rem;padding:0px 0.9rem}}
+</style><link rel=stylesheet href=./styles-f9d24953491e.css media=print onload="this.media='all';this.onload=null"><noscript><link rel="stylesheet" href="./styles-f9d24953491e.css"/></noscript><link rel=icon type=image/png sizes=96x96 href=./favicon.png></head>
+<body>
+<header class=top>
+  <a class=brand href=https://ghostpaw.anonyfox.com/>GhostPaw</a>
+  <nav aria-label="questlog elsewhere">
+    <a href=https://github.com/GhostPawJS/questlog>GitHub</a>
+    <a href=https://www.npmjs.com/package/@ghostpaw/questlog>npm</a>
+    <a href=https://ghostpaw.anonyfox.com/questlog/>Live demo</a>
+  </nav>
+</header>
+<main>
+  <section class=hero aria-labelledby=hero-title>
+    <div class=hero-copy>
+      <p class=kicker><code>@ghostpaw/questlog</code> 0.5.1</p>
+      <h1 id=hero-title>Your agent said it was done. Was it?</h1>
+      <p class=lede>An agent that ticks its own box gets to grade its own homework, so questlog makes it write the homework down: no quest is done without an outcome, and work that waits on other work stays blocked until that work is done.</p>
+      <div class=install>
+        <p class=cmd-label id=lib-label>Install</p>
+        <div class=cmd><input id=cmd-lib readonly value="npm install @ghostpaw/questlog" aria-labelledby=lib-label spellcheck=false><button type=button class=copy data-copy=cmd-lib>Copy</button></div>
+      </div>
+      <p class=actions><a class=button href=#board>Try to finish a quest</a> <a href=https://github.com/GhostPawJS/questlog>Read the source on GitHub</a></p>
+      <p class=terms>Free and MIT licensed for Node.js 24 or newer, with zero runtime dependencies and the tables in a SQLite database you open.</p>
+    </div>
+    <figure class=hero-art>
+      <picture><source media="(min-width: 52rem)" srcset=./quest-card-720-72e6e25a599c.webp width=720 height=540><img src=./quest-card-480.webp width=480 height=360 alt="Ink drawing of a pinned paper card with a large exclamation mark and an empty line at the bottom, beside a rubber stamp with a paw print on its handle." fetchpriority=high></picture>
+      <p class=stamp aria-label="Zero runtime dependencies"><span>0 runtime</span><span>dependencies</span></p>
+    </figure>
+  </section>
+
+  <section id=board class=board-sec aria-labelledby=board-title>
+    <h2 id=board-title>Three quests from the README</h2>
+    <p class=intro>Try to finish one with the outcome left blank.</p>
+    <p class=intro>This is the Vendor Renewal example from the README, replayed in your browser from a real run: we made the same calls against questlog 0.5.1 on 2026-10-24 with a fixed clock, and every error and every list you see here is what came back, so press Start, leave the outcome empty, press Finish, then finish #1 for real and watch #3, and jump a week to see the due date go overdue. The live demo runs the library itself.</p>
+    <div class=toolbar>
+      <p class=today id=today>Today: Sat 24 Oct</p>
+      <button type=button class="button ghost" id=jump aria-pressed=false>Jump 7 days</button>
+      <button type=button class="button ghost" id=reset>Reset</button>
+    </div>
+    <div class=board>
+      <div class=quest id=q1 data-id=1>
+        <p class=q-head><span class=marker>!</span> <span class=q-label>available</span> <span class=q-id>#1</span></p>
+        <h3>Collect redlines</h3>
+        <p class=objective>Obtain the latest legal markup.</p>
+        <p class=outcome hidden></p>
+        <div class=q-actions>
+          <button type=button class="act start">Start</button>
+          <div class=finish hidden>
+            <label for=out-1>Outcome</label>
+            <div class=finish-row><input id=out-1 autocomplete=off placeholder="What got done?"><button type=button class="act do-finish">Finish</button></div>
+            <p class=refusal role=status></p>
+          </div>
+        </div>
+      </div>
+      <div class=quest id=q2 data-id=2>
+        <p class=q-head><span class=marker>!</span> <span class=q-label>available</span> <span class=q-id>#2</span></p>
+        <h3>Review pricing delta</h3>
+        <p class=objective>Compare current vs. proposed cost.</p>
+        <p class=outcome hidden></p>
+        <div class=q-actions>
+          <button type=button class="act start">Start</button>
+          <div class=finish hidden>
+            <label for=out-2>Outcome</label>
+            <div class=finish-row><input id=out-2 autocomplete=off placeholder="What got done?"><button type=button class="act do-finish">Finish</button></div>
+            <p class=refusal role=status></p>
+          </div>
+        </div>
+      </div>
+      <div class="quest blocked" id=q3 data-id=3>
+        <p class=q-head><span class=marker>?</span> <span class=q-label>incomplete</span> <span class=q-id>#3</span></p>
+        <h3>Obtain finance approval</h3>
+        <p class=objective>Sign-off on the new terms. Due Thu 29 Oct.</p>
+        <p class=q-stamps><span class="qstamp block">blocked by #1</span><span class="qstamp due" hidden>overdue</span></p>
+        <p class=outcome hidden></p>
+        <div class=q-actions>
+          <button type=button class="act start" hidden>Start</button>
+          <div class=finish hidden>
+            <label for=out-3>Outcome</label>
+            <div class=finish-row><input id=out-3 autocomplete=off placeholder="What got done?"><button type=button class="act do-finish">Finish</button></div>
+            <p class=refusal role=status></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=calls>
+      <p class=calls-label>What your code sees</p>
+      <pre><code id=call-log>read.listAvailableQuests(db);
+// [2, 1]
+read.listBlockedQuests(db);
+// [3]
+read.listDueSoonQuests(db, 7 * DAY);
+// [3]</code></pre>
+    </div>
+    <p class=note>A done quest stays done, and a second <code>finishQuest</code> throws &#34;Resolved quests cannot be resolved again.&#34;</p>
+    <p class=note>Blocked is a view, not a lock: questlog leaves #3 off the available list, but a direct <code>startQuest</code> call on it would still go through.</p>
+  </section>
+
+  <section class=todo aria-labelledby=todo-title>
+    <h2 id=todo-title>Where your <code>TODO.md</code> headings go</h2>
+    <div class=todo-grid>
+      <pre class=paper><code>## Todo
+- Collect redlines
+- Obtain finance approval (after redlines)
+
+## Doing
+- Review pricing delta
+
+## Done
+- Sent the renewal notice</code></pre>
+      <dl class=form>
+        <div><dt>Todo</dt><dd>Open quests. The ones nothing waits on carry &#34;!&#34; and show up in <code>listAvailableQuests</code>.</dd></div>
+        <div><dt>(after …)</dt><dd>An unlock. The quest sits in <code>listBlockedQuests</code> until its prerequisite finishes with success.</dd></div>
+        <div><dt>Doing</dt><dd><code>startQuest</code> sets a start time. The marker turns to &#34;?&#34;.</dd></div>
+        <div><dt>Done</dt><dd><code>finishQuest</code> with an outcome string. <code>abandonQuest</code> records a failure, also with a reason.</dd></div>
+        <div><dt>The note in the margin</dt><dd>A rumor. <code>captureRumor</code> holds it until you know what the work is, then <code>settleRumor</code> turns it into a questline and quests.</dd></div>
+      </dl>
+    </div>
+    <p class=intro>None of these states is stored.</p>
+    <p class=intro>questlog works them out from the timestamps and the unlocks every time you read. A list cannot go stale, because there is no list.</p>
+  </section>
+
+  <section class=time aria-labelledby=time-title>
+    <h2 id=time-title>Deadlines, appointments, repeats</h2>
+    <p class=intro>Same table, same quest, and the fields decide what it is.</p>
+    <dl class=form>
+      <div><dt>A deadline</dt><dd>A quest with <code>dueAt</code>. It moves from due soon to overdue without anyone touching it.</dd></div>
+      <div><dt>An appointment</dt><dd>A quest with <code>scheduledStartAt</code> and <code>scheduledEndAt</code>. Missed windows have their own list.</dd></div>
+      <div><dt>Not before</dt><dd><code>notBeforeAt</code> keeps a quest off the available list until that date.</dd></div>
+      <div><dt>Every Monday</dt><dd>A repeatable quest with a standard RRULE string spawns a fresh quest each time it comes due.</dd></div>
+    </dl>
+  </section>
+
+  <section class=worry aria-labelledby=worry-title>
+    <h2 id=worry-title>If agent task trackers have burned you</h2>
+    <div class=worry-grid>
+      <p>Some agent issue trackers run to hundreds of thousands of lines, and people went back to a markdown file, which is fair enough.</p>
+      <ul>
+        <li>One package, one bundled file, no runtime dependencies. The numbers are below.</li>
+        <li>An outcome is text. It records what the agent claims; it does not run your tests.</li>
+        <li>No scheduler and no server. Your code or your agent harness decides when to read.</li>
+        <li>No MCP server in the package. It ships twelve tools with JSON Schemas for your own harness.</li>
+        <li>Node.js 24 or newer, because it uses the built-in <code>node:sqlite</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class=numbers aria-labelledby=numbers-title>
+    <h2 id=numbers-title>What it costs to add</h2>
+    <dl class="ledger wide">
+      <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+      <div><dt>Node.js</dt><dd>24 or newer (node:sqlite)</dd></div>
+      <div><dt>Size of dist/index.js, gzip</dt><dd>42.6 KB</dd></div>
+      <div><dt>Import time</dt><dd>about 4.4 ms</dd></div>
+      <div><dt>Tests</dt><dd>326 passing</dd></div>
+      <div><dt>Line coverage</dt><dd>96.0%</dd></div>
+      <div><dt>Agent tools</dt><dd>12</dd></div>
+    </dl>
+    <p class=note>Measured 2026-10-24 on the maintainer&#39;s machine with Node.js 24.14.0 against questlog 0.5.1.</p>
+  </section>
+
+  <section class=start aria-labelledby=start-title>
+    <h2 id=start-title>Start from the README</h2>
+    <pre><code>import { DatabaseSync } from &#39;node:sqlite&#39;;
+import { initQuestlogTables, read, write } from &#39;@ghostpaw/questlog&#39;;
+
+const db = new DatabaseSync(&#39;:memory:&#39;);
+initQuestlogTables(db);
+
+const rumor = write.captureRumor(db, {
+  title: &#39;Legal says the vendor terms changed&#39;,
+  details: &#39;Need to understand pricing delta and termination clause.&#39;,
+});
+
+write.settleRumor(db, rumor.id, {
+  settledAt: Date.now(),
+  questline: {
+    title: &#39;Vendor Renewal&#39;,
+    description: &#39;Commercial, legal, and approval work.&#39;,
+  },
+  quests: [
+    { title: &#39;Collect redlines&#39;, objective: &#39;Obtain the latest legal markup.&#39; },
+    { title: &#39;Review pricing delta&#39;, objective: &#39;Compare current vs. proposed cost.&#39; },
+  ],
+});
+
+const available = read.listAvailableQuests(db);
+const dueSoon = read.listDueSoonQuests(db, 7 * 24 * 60 * 60 * 1000);</code></pre>
+    <p>Agents get twelve tools, among them <code>review_questlog</code>, <code>capture_rumor</code>, <code>shape_work</code>, <code>run_quest</code> and <code>reward_work</code>, and each one returns success, no_op, needs_clarification or error with a hint for the next step.</p>
+    <p class=links><a class=more href=https://github.com/GhostPawJS/questlog#readme>Read the README</a><a href=https://ghostpaw.anonyfox.com/questlog/>Open the live demo</a><a href=https://www.npmjs.com/package/@ghostpaw/questlog>questlog on npm</a></p>
+    <p class=links><a href=https://ghostpaw.anonyfox.com/>All seven GhostPaw libraries</a><a href=https://ghostpaw.anonyfox.com/agent-memory/>codex, for agent memory</a></p>
+  </section>
+</main>
+<footer class=foot>
+  <p>questlog is maintained in the open by GhostPaw under the MIT licence.</p>
+  <p class=foot-links><a href=https://github.com/GhostPawJS/questlog>Source</a><a href=https://lab.anonyfox.com/impressum/>Impressum</a><a href=https://lab.anonyfox.com/datenschutz/>Datenschutz</a></p>
+</footer>
+
+
+
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","author":{"@id":"https://ghostpaw.anonyfox.com/#org","@type":"Organization","name":"GhostPaw"},"codeRepository":"https://github.com/GhostPawJS/questlog","description":"@ghostpaw/questlog keeps agent tasks as quests in SQLite. Finishing one needs a written outcome, blocked quests stay off the available list until their prerequisite succeeds, and due dates turn overdue on their own. Node.js 24, zero dependencies, MIT.","license":"https://opensource.org/license/mit","name":"@ghostpaw/questlog","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24","version":"0.5.1"}]}</script><script>document.documentElement.classList.add("js");
+</script><script type=module>(()=>{let a=Date.UTC(2026,9,24,10),E=a+5*864e5,C=document.getElementById("call-log"),g=document.getElementById("today"),y=document.getElementById("jump"),b=document.getElementById("reset");if(!C||!y)return;let q=!matchMedia("(prefers-reduced-motion: reduce)").matches,n,i,u;function v(){n={1:{started:!1,done:!1,outcome:"",unlockedBy:null,due:null},2:{started:!1,done:!1,outcome:"",unlockedBy:null,due:null},3:{started:!1,done:!1,outcome:"",unlockedBy:1,due:E}},i=a,u=""}let k=e=>n[e].unlockedBy!=null&&!n[n[e].unlockedBy].done,L=e=>!n[e].done&&!k(e),B=()=>[3,2,1],h=e=>"["+B().filter(e).join(", ")+"]",A=e=>new Date(e).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short",timeZone:"UTC"}).replace(",","");function m(){for(let t of[1,2,3]){let o=n[t],c=document.getElementById("q"+t),l=c.querySelector(".marker"),p=c.querySelector(".q-label"),w=c.querySelector(".start"),D=c.querySelector(".finish"),x=c.querySelector(".outcome"),f=k(t);c.classList.toggle("blocked",f),c.classList.toggle("done",o.done),l.hidden=o.done,o.done?p.textContent="done":o.started?(l.textContent="?",p.textContent="incomplete · in progress"):f?(l.textContent="?",p.textContent="incomplete"):(l.textContent="!",p.textContent="available"),w.hidden=o.done||o.started||f,D.hidden=o.done||!o.started,x.hidden=!o.done,x.textContent=o.outcome;let r=c.querySelector(".block");r&&!f&&!r.hidden?q?(r.classList.add("lift"),r.addEventListener("animationend",()=>{r.hidden=!0,r.classList.remove("lift")},{once:!0})):r.hidden=!0:r&&f&&(r.hidden=!1,r.classList.remove("lift"));let S=c.querySelector(".due");S&&(S.hidden=!(o.due!=null&&!o.done&&o.due<i))}let e=i>a;g.textContent="Today: "+A(i),g.classList.toggle("later",e),y.setAttribute("aria-pressed",String(e)),y.textContent=e?"Back to today":"Jump 7 days";let s=e?", {}, now":"",d=[];u&&d.push(u,""),d.push("read.listAvailableQuests(db"+s+`);
+// `+h(L)),d.push("read.listBlockedQuests(db"+s+`);
+// `+h(t=>!n[t].done&&k(t))),e?d.push("read.listOverdueQuests(db"+s+`);
+// `+h(t=>!n[t].done&&n[t].due!=null&&n[t].due<i)):d.push(`read.listDueSoonQuests(db, 7 * DAY);
+// `+h(t=>!n[t].done&&n[t].due!=null&&n[t].due>=i&&n[t].due<=i+7*864e5)),C.textContent=d.join(`
+`)}document.querySelectorAll(".quest").forEach(e=>{let s=Number(e.dataset.id),d=e.querySelector(".finish input"),t=e.querySelector(".finish"),o=e.querySelector(".refusal");e.querySelector(".start").addEventListener("click",()=>{n[s].started=!0,u="write.startQuest(db, "+s+");",m(),d.focus()});let c=()=>{let l=d.value.trim();if(!l){u="write.finishQuest(db, "+s+`, '');
+// Error: Quest outcome must not be empty.`,o.textContent="Quest outcome must not be empty.",q&&(t.classList.remove("shake"),t.offsetWidth,t.classList.add("shake")),m(),d.focus();return}o.textContent="",n[s].done=!0,n[s].outcome=l,u="write.finishQuest(db, "+s+", "+JSON.stringify(l).replace(/^"|"$/g,"'")+");",m()};e.querySelector(".do-finish").addEventListener("click",c),d.addEventListener("keydown",l=>{l.key==="Enter"&&(l.preventDefault(),c())})}),y.addEventListener("click",()=>{i=i>a?a:a+7*864e5,u="",m()}),b.addEventListener("click",()=>{v(),document.querySelectorAll(".finish input").forEach(e=>{e.value=""}),document.querySelectorAll(".refusal").forEach(e=>{e.textContent=""}),m()}),document.querySelectorAll(".copy").forEach(e=>{e.addEventListener("click",async()=>{let s=document.getElementById(e.dataset.copy);if(!s)return;try{await navigator.clipboard.writeText(s.value)}catch{s.select(),document.execCommand("copy")}let d=e.textContent;e.textContent="Copied",setTimeout(()=>{e.textContent=d},2e3)})}),v(),m()})();
+</script></body></html>

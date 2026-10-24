@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "url": "https://ghostpaw.anonyfox.com/",
+  "language": "en",
+  "title": "GhostPaw: Node.js libraries for the MEMORY.md and task files your agent keeps",
+  "description": "Seven MIT-licensed Node.js 24 libraries that turn the MEMORY.md, task list, USER.md and skills your agent keeps into records you can read, correct and delete. None has a runtime dependency.",
+  "socialImage": {
+    "src": "assets/images/share.png",
+    "alt": "Ink drawing of a filing drawer of manila folders with a faint paw print, beside the headline: Your agent keeps its state in markdown files. GhostPaw files it."
+  },
+  "urls": {
+    "agentMemory": "https://ghostpaw.anonyfox.com/agent-memory/",
+    "agentTasks": "https://ghostpaw.anonyfox.com/agent-tasks/",
+    "githubOrg": "https://github.com/GhostPawJS",
+    "npmOrg": "https://www.npmjs.com/org/ghostpaw",
+    "ghCodex": "https://github.com/GhostPawJS/codex",
+    "ghQuestlog": "https://github.com/GhostPawJS/questlog",
+    "ghAffinity": "https://github.com/GhostPawJS/affinity",
+    "ghSouls": "https://github.com/GhostPawJS/souls",
+    "ghGrimoire": "https://github.com/GhostPawJS/grimoire",
+    "ghEmail": "https://github.com/GhostPawJS/email",
+    "ghTelegram": "https://github.com/GhostPawJS/telegram",
+    "npmCodex": "https://www.npmjs.com/package/@ghostpaw/codex",
+    "npmQuestlog": "https://www.npmjs.com/package/@ghostpaw/questlog",
+    "npmAffinity": "https://www.npmjs.com/package/@ghostpaw/affinity",
+    "npmSouls": "https://www.npmjs.com/package/@ghostpaw/souls",
+    "npmGrimoire": "https://www.npmjs.com/package/@ghostpaw/grimoire",
+    "npmEmail": "https://www.npmjs.com/package/@ghostpaw/email",
+    "npmTelegram": "https://www.npmjs.com/package/@ghostpaw/telegram",
+    "demoCodex": "https://ghostpaw.anonyfox.com/codex/",
+    "demoQuestlog": "https://ghostpaw.anonyfox.com/questlog/",
+    "demoAffinity": "https://ghostpaw.anonyfox.com/affinity/",
+    "demoSouls": "https://ghostpaw.anonyfox.com/souls/",
+    "demoGrimoire": "https://ghostpaw.anonyfox.com/grimoire/",
+    "impressum": "https://lab.anonyfox.com/impressum/",
+    "privacy": "https://lab.anonyfox.com/datenschutz/",
+    "mit": "https://opensource.org/licenses/MIT",
+    "orgId": "https://ghostpaw.anonyfox.com/#org"
+  },
+  "data": {
+    "measured": "Measured 2026-10-24 on the maintainer's machine with Node.js 24.14.0 against the version shown: tests from node --test, size as gzip -9 of dist/index.js, import time with performance.now().",
+    "packages": [
+      {
+        "key": "memory",
+        "file": "MEMORY.md",
+        "name": "codex",
+        "pkg": "@ghostpaw/codex",
+        "version": "0.3.0",
+        "role": "Beliefs instead of a memory file",
+        "line": "Every remembered line becomes a belief with a source, a certainty and a history. Flags for stale, fading and low-trust beliefs are computed each time you read, so the junk drawer shows you what to prune. Since 0.3.0 it also ships an MCP server and a ghostpaw-codex command line tool.",
+        "fields": [
+          "claim",
+          "source: explicit, observed or inferred",
+          "certainty and evidence count",
+          "freshness",
+          "lineage of corrections"
+        ],
+        "deps": "0",
+        "tests": "378",
+        "gzip": "32.5 KB",
+        "importMs": "4 ms",
+        "spot": "codex",
+        "spotAlt": "Ink drawing of a ruled index card with a red clip.",
+        "links": [
+          {
+            "label": "codex source on GitHub",
+            "strong": false,
+            "to": "ghCodex"
+          },
+          {
+            "label": "codex on npm",
+            "strong": false,
+            "to": "npmCodex"
+          },
+          {
+            "label": "codex live demo",
+            "strong": false,
+            "to": "demoCodex"
+          },
+          {
+            "label": "Read how codex handles a wrong fact",
+            "strong": true,
+            "to": "agentMemory"
+          }
+        ]
+      },
+      {
+        "key": "tasks",
+        "file": "TODO.md",
+        "name": "questlog",
+        "pkg": "@ghostpaw/questlog",
+        "version": "0.5.1",
+        "role": "Quests instead of a to-do list",
+        "line": "Work becomes quests with deadlines, repeats and unlocks. A quest only finishes with a written outcome, and a blocked quest stays blocked until the one before it succeeds.",
+        "fields": [
+          "title and objective",
+          "dueAt or a scheduled window",
+          "unlocks that block other quests",
+          "outcome text on finish",
+          "repeat rule (RRULE)"
+        ],
+        "deps": "0",
+        "tests": "326",
+        "gzip": "42.6 KB",
+        "importMs": "4.4 ms",
+        "spot": "questlog",
+        "spotAlt": "Ink drawing of a checklist on a clipboard with one box ticked.",
+        "links": [
+          {
+            "label": "questlog source on GitHub",
+            "strong": false,
+            "to": "ghQuestlog"
+          },
+          {
+            "label": "questlog on npm",
+            "strong": false,
+            "to": "npmQuestlog"
+          },
+          {
+            "label": "questlog live demo",
+            "strong": false,
+            "to": "demoQuestlog"
+          },
+          {
+            "label": "Read how questlog handles a hollow done",
+            "strong": true,
+            "to": "agentTasks"
+          }
+        ]
+      },
+      {
+        "key": "people",
+        "file": "USER.md",
+        "name": "affinity",
+        "pkg": "@ghostpaw/affinity",
+        "version": "0.2.4",
+        "role": "Contacts instead of a user note",
+        "line": "The people, companies and services your agent deals with become contacts with identities, relationship tracks and a journal of evidence, plus the yearly dates that matter.",
+        "fields": [
+          "contact and identities (email, phone, account)",
+          "social link: rank, trust, cadence",
+          "ties such as works_at",
+          "journal entries as evidence",
+          "date anchors such as birthdays"
+        ],
+        "deps": "0",
+        "tests": "436",
+        "gzip": "57.4 KB",
+        "importMs": "5.8 ms",
+        "spot": "affinity",
+        "spotAlt": "Ink drawing of a rotary card file of blank address cards.",
+        "links": [
+          {
+            "label": "affinity source on GitHub",
+            "strong": false,
+            "to": "ghAffinity"
+          },
+          {
+            "label": "affinity on npm",
+            "strong": false,
+            "to": "npmAffinity"
+          },
+          {
+            "label": "affinity live demo",
+            "strong": false,
+            "to": "demoAffinity"
+          }
+        ]
+      },
+      {
+        "key": "identity",
+        "file": "SOUL.md",
+        "name": "souls",
+        "pkg": "@ghostpaw/souls",
+        "version": "0.2.3",
+        "role": "An identity that changes with evidence",
+        "line": "The agent's character is stored as a short essence plus traits that each carry evidence. Refinements are gated, consolidated at level-up and can be rolled back.",
+        "fields": [
+          "essence",
+          "traits with evidence",
+          "level-up consolidation",
+          "full rollback"
+        ],
+        "deps": "0",
+        "tests": "510",
+        "gzip": "32.2 KB",
+        "importMs": "3.9 ms",
+        "spot": "souls",
+        "spotAlt": "Ink drawing of a hand mirror lying on a sheet of paper.",
+        "links": [
+          {
+            "label": "souls source on GitHub",
+            "strong": false,
+            "to": "ghSouls"
+          },
+          {
+            "label": "souls on npm",
+            "strong": false,
+            "to": "npmSouls"
+          },
+          {
+            "label": "souls live demo",
+            "strong": false,
+            "to": "demoSouls"
+          }
+        ]
+      },
+      {
+        "key": "skills",
+        "file": "skills/",
+        "name": "grimoire",
+        "pkg": "@ghostpaw/grimoire",
+        "version": "0.2.15",
+        "role": "Procedures that get better and keep their history",
+        "line": "Each learned procedure stays a SKILL.md file. Git commits mark verified improvements, notes collect evidence, and a health check names stale, dormant and oversized skills.",
+        "fields": [
+          "spell: a SKILL.md file",
+          "seal: a git commit per verified improvement",
+          "tier from seal count",
+          "notes awaiting distillation",
+          "catalogue health snapshot"
+        ],
+        "deps": "0",
+        "tests": "848",
+        "gzip": "47.5 KB",
+        "importMs": "8.8 ms",
+        "spot": "grimoire",
+        "spotAlt": "Ink drawing of an open recipe card box with one card standing up.",
+        "links": [
+          {
+            "label": "grimoire source on GitHub",
+            "strong": false,
+            "to": "ghGrimoire"
+          },
+          {
+            "label": "grimoire on npm",
+            "strong": false,
+            "to": "npmGrimoire"
+          },
+          {
+            "label": "grimoire live demo",
+            "strong": false,
+            "to": "demoGrimoire"
+          }
+        ]
+      },
+      {
+        "key": "inbox",
+        "file": "inbox/",
+        "name": "email",
+        "pkg": "@ghostpaw/email",
+        "version": "0.3.0",
+        "role": "A mailbox the agent can search offline",
+        "line": "IMAP sync and SMTP send with a local SQLite cache, threads built from References headers and full-text search. Ships an email command line tool.",
+        "fields": [
+          "account with IMAP and SMTP config",
+          "folder with sync state",
+          "message headers, flags, labels",
+          "body and attachments",
+          "thread tree"
+        ],
+        "deps": "0",
+        "tests": "528",
+        "gzip": "48.7 KB",
+        "importMs": "11.7 ms",
+        "spot": "email",
+        "spotAlt": "Ink drawing of a sealed envelope with a red wax dot.",
+        "links": [
+          {
+            "label": "email source on GitHub",
+            "strong": false,
+            "to": "ghEmail"
+          },
+          {
+            "label": "email on npm",
+            "strong": false,
+            "to": "npmEmail"
+          }
+        ]
+      },
+      {
+        "key": "chat",
+        "file": "chat log",
+        "name": "telegram",
+        "pkg": "@ghostpaw/telegram",
+        "version": "0.5.0",
+        "role": "Every Telegram update kept before your handler runs",
+        "line": "A Telegram bot channel that mirrors each incoming update into SQLite first, files included, with full-text search and markdown rendering. Since 0.5.0 it talks to the Bot API with built-in fetch and has no runtime dependencies.",
+        "fields": [
+          "message mirror",
+          "file bytes stored as BLOBs",
+          "FTS5 search",
+          "markdown rendering"
+        ],
+        "deps": "0",
+        "tests": "860",
+        "gzip": "34.5 KB",
+        "importMs": "10.4 ms",
+        "spot": "telegram",
+        "spotAlt": "Ink drawing of a folded paper plane with a dashed trail.",
+        "links": [
+          {
+            "label": "telegram source on GitHub",
+            "strong": false,
+            "to": "ghTelegram"
+          },
+          {
+            "label": "telegram on npm",
+            "strong": false,
+            "to": "npmTelegram"
+          }
+        ]
+      }
+    ]
+  },
+  "build": {
+    "assets": {
+      "overrides": {
+        "assets/images/spot-codex.webp": "file",
+        "assets/images/spot-questlog.webp": "file",
+        "assets/images/spot-telegram.webp": "file"
+      }
+    }
+  },
+  "jsonld": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "{{.urls.orgId}}",
+        "name": "GhostPaw",
+        "url": "{{.url}}",
+        "sameAs": [
+          "{{.urls.githubOrg}}",
+          "{{.urls.npmOrg}}"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "name": "GhostPaw",
+        "url": "{{.url}}",
+        "description": "{{.description}}",
+        "publisher": {
+          "@id": "{{.urls.orgId}}"
+        }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/codex",
+        "codeRepository": "{{.urls.ghCodex}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "license": "{{.urls.mit}}"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/questlog",
+        "codeRepository": "{{.urls.ghQuestlog}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "license": "{{.urls.mit}}"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/affinity",
+        "codeRepository": "{{.urls.ghAffinity}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "license": "{{.urls.mit}}"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/souls",
+        "codeRepository": "{{.urls.ghSouls}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "license": "{{.urls.mit}}"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/grimoire",
+        "codeRepository": "{{.urls.ghGrimoire}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "license": "{{.urls.mit}}"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/email",
+        "codeRepository": "{{.urls.ghEmail}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "license": "{{.urls.mit}}"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@ghostpaw/telegram",
+        "codeRepository": "{{.urls.ghTelegram}}",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "Node.js 24",
+        "license": "{{.urls.mit}}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang=en><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>codex: agent memory that shows a wrong fact&#39;s source and lets you correct it</title>
+<meta name=description content="@ghostpaw/codex stores what your agent believes as claims with a source, a certainty and a revision history. Flags show what is stale or weakly sourced; one call corrects or deletes. Node.js 24, zero dependencies, MIT.">
+<link rel=canonical href=https://ghostpaw.anonyfox.com/agent-memory/>
+<meta property=og:type content=website>
+<meta property=og:url content=https://ghostpaw.anonyfox.com/agent-memory/>
+<meta property=og:title content="codex: agent memory that shows a wrong fact's source and lets you correct it">
+<meta property=og:description content="@ghostpaw/codex stores what your agent believes as claims with a source, a certainty and a revision history. Flags show what is stale or weakly sourced; one call corrects or deletes. Node.js 24, zero dependencies, MIT.">
+<meta property=og:image content=https://ghostpaw.anonyfox.com/agent-memory/share-3e468fbbca7d.png><meta property=og:image:width content=1200><meta property=og:image:height content=630>
+<meta property=og:image:alt content="A hand-drawn index card with a red flag clip, beside the line: When one agent saves a wrong fact, every agent trusts it.">
+<meta name=twitter:card content=summary_large_image>
+<link rel=preload href=./libre-franklin-var-a084cf2739f3.woff2 as=font type=font/woff2 crossorigin>
+<link rel=preload href=./courier-prime-400-39c240585a01.woff2 as=font type=font/woff2 crossorigin>
+
+
+<style>@font-face{font-family:"Libre Franklin";src:url(./libre-franklin-var-a084cf2739f3.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:"Courier Prime";src:url(./courier-prime-400-39c240585a01.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}:root{--ground: #efe4c8;--card: #f8f2e2;--ink: #1d1a16;--muted: #5a5146;--stamp: #a3312a;--ledger: #2e5a4c;--rule: #c9b98f;--body: "Libre Franklin", "Franklin Gothic", Arial, sans-serif;--mono: "Courier Prime", "Courier New", monospace;--edge: 2px solid var(--ink);--wrap: 72rem}*{box-sizing:border-box}html{text-size-adjust:100%}body{margin:0px;background:var(--ground);color:var(--ink);font:400 1.0625rem/1.55 var(--body)}img{display:block;max-width:100%;height:auto}code,input,.cmd input{font-family:var(--mono);font-synthesis:none}code{font-size:0.95em}a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:0.18em}h1,h2,h3,h4{line-height:1.12;margin:0px 0px 0.5em;text-wrap:balance}h1{font-size:clamp(2.3rem,6.2vw,4.4rem);font-weight:800;letter-spacing:-0.02em}p{margin:0px 0px 1em}.top,main>section,.foot{max-width:var(--wrap);margin:0px auto;padding-left:1.25rem;padding-right:1.25rem}.top{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;padding-bottom:1rem;border-bottom:1px solid var(--rule)}.brand{font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-0.01em}.top nav{display:flex;gap:1.25rem}.hero{display:grid;gap:2rem;padding-top:2.5rem;padding-bottom:3rem;align-items:center}.lede{font-size:1.25rem}.cmd{display:flex;border:var(--edge);background:var(--card);max-width:30rem}.cmd input{flex:1 1 0%;min-width:0px;border:0px;background:transparent;color:var(--ink);font-size:0.875rem;padding:0.7rem}.copy{border-top:0px;border-right:0px;border-bottom:0px;border-image:none;border-left:var(--edge);background:var(--ink);color:var(--card);font:700 .95rem var(--body);padding:0px 0.9rem;cursor:pointer;min-width:4.75rem}.actions{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;margin-top:1.4rem}.button{display:inline-block;background:var(--ink);color:var(--card);text-decoration:none;font-weight:700;padding:0.75rem 1.2rem;border:var(--edge)}.terms{color:var(--muted);font-size:0.95rem}.hero-art{position:relative;margin:0px}.hero-art img{mix-blend-mode:multiply;width:100%}.stamp{position:absolute;right:4%;bottom:6%;margin:0px;display:grid;justify-items:center;color:var(--stamp);border:3px solid var(--stamp);padding:0.45rem 0.8rem 0.4rem;transform:rotate(-4deg);font-weight:800;text-transform:uppercase;letter-spacing:0.04em;line-height:1.05;font-size:1.05rem;background:rgba(248,242,226,0.85);animation:0.4s cubic-bezier(0.2,0.8,0.3,1.2) 0.3s 1 normal both running press}@keyframes press{0%{transform:scale(1.15) rotate(-2deg);opacity:0.2}100%{transform:scale(1) rotate(-4deg);opacity:1}}@media(min-width:52rem){.cmd input{font-size:1rem}.hero{grid-template-columns:1.1fr 1fr;padding-top:3.5rem}}@media(prefers-reduced-motion:reduce){.stamp{animation:auto ease 0s 1 normal none running none}}.kicker{margin:0px 0px 0.75rem;color:var(--muted)}.kicker code{color:var(--ink)}.cmd-label{font-weight:700;margin:0.9rem 0px 0.35rem}.cmd-label:first-child{margin-top:0px}.drill,.record-form,.numbers,.start{padding-top:3rem;padding-bottom:2.5rem;border-top:1px solid var(--rule)}.drill{border-top:var(--edge)}@keyframes flagpress{0%{transform:scale(1.12)}100%{transform:scale(1)}}@keyframes slideunder{0%{transform:translate(-0.9rem,-3rem);opacity:0}100%{transform:none;opacity:1}}
+</style><link rel=stylesheet href=./styles-ca4a4005c77e.css media=print onload="this.media='all';this.onload=null"><noscript><link rel="stylesheet" href="./styles-ca4a4005c77e.css"/></noscript><link rel=icon type=image/png sizes=96x96 href=./favicon.png></head>
+<body>
+<header class=top>
+  <a class=brand href=https://ghostpaw.anonyfox.com/>GhostPaw</a>
+  <nav aria-label="codex elsewhere">
+    <a href=https://github.com/GhostPawJS/codex>GitHub</a>
+    <a href=https://www.npmjs.com/package/@ghostpaw/codex>npm</a>
+    <a href=https://ghostpaw.anonyfox.com/codex/>Live demo</a>
+  </nav>
+</header>
+<main>
+  <section class=hero aria-labelledby=hero-title>
+    <div class=hero-copy>
+      <p class=kicker><code>@ghostpaw/codex</code> 0.3.0</p>
+      <h1 id=hero-title>When one agent saves a wrong fact, every agent trusts it.</h1>
+      <p class=lede>codex keeps what your agent believes as beliefs with a source, a certainty and a history, so you can read and delete them one at a time instead of rereading MEMORY.md.</p>
+      <div class=install>
+        <p class=cmd-label id=lib-label>As a library</p>
+        <div class=cmd><input id=cmd-lib readonly value="npm install @ghostpaw/codex" aria-labelledby=lib-label spellcheck=false><button type=button class=copy data-copy=cmd-lib>Copy</button></div>
+        <p class=cmd-label id=mcp-label>As a local MCP server</p>
+        <div class=cmd><input id=cmd-mcp readonly value="npx -y @ghostpaw/codex mcp" aria-labelledby=mcp-label spellcheck=false><button type=button class=copy data-copy=cmd-mcp>Copy</button></div>
+      </div>
+      <p class=actions><a class=button href=#drill>Follow one wrong fact</a> <a href=https://github.com/GhostPawJS/codex>Read the source on GitHub</a></p>
+      <p class=terms>Free, MIT licence, Node.js 24 or newer, zero runtime dependencies. One SQLite file on your machine.</p>
+    </div>
+    <figure class=hero-art>
+      <picture><source media="(min-width: 52rem)" srcset=./belief-card-720-127f399655d2.webp width=720 height=540><img src=./belief-card-480-fb50138b3525.webp width=480 height=360 alt="Ink drawing of a ruled index card with a red clip on its corner, lying over an older card marked with a faint paw print." fetchpriority=high></picture>
+      <p class=stamp aria-label="Zero runtime dependencies"><span>0 runtime</span><span>dependencies</span></p>
+    </figure>
+  </section>
+
+  <section id=drill class=drill aria-labelledby=drill-title>
+    <h2 id=drill-title>One wrong fact, five moves</h2>
+    <p class=intro>The hard half is forgetting.</p>
+    <p class=intro>Here is one belief from the README example, from the guess that starts it to the call that deletes it. The cards show what codex 0.3.0 actually returned when we ran these calls on 2026-10-24 with a fixed clock, so the numbers are not made up for the page.</p>
+    <div class=tabs role=tablist aria-label=Steps>
+      <button type=button role=tab id=tab-1 aria-controls=step-1 aria-selected=true><span>1</span> remember</button>
+      <button type=button role=tab id=tab-2 aria-controls=step-2 aria-selected=false tabindex=-1><span>2</span> recall</button>
+      <button type=button role=tab id=tab-3 aria-controls=step-3 aria-selected=false tabindex=-1><span>3</span> correct</button>
+      <button type=button role=tab id=tab-4 aria-controls=step-4 aria-selected=false tabindex=-1><span>4</span> day 90</button>
+      <button type=button role=tab id=tab-5 aria-controls=step-5 aria-selected=false tabindex=-1><span>5</span> retire</button>
+    </div>
+
+    <div class=step id=step-1 role=tabpanel aria-labelledby=tab-1>
+      <div class=step-text>
+        <h3>An agent saves a guess</h3>
+        <p>One session guesses that the API still has a REST fallback and saves it. The belief is marked inferred, starts at 50% certainty and is flagged low trust before anyone has read it.</p>
+      </div>
+      <div class="belief flagged">
+        <p class=belief-id>Belief #1 · fact</p>
+        <p class=claim>The API uses GraphQL with a REST fallback.</p>
+        <dl class=fields>
+          <div><dt>source</dt><dd>inferred</dd></div>
+          <div><dt>certainty</dt><dd>50%</dd></div>
+          <div><dt>evidence</dt><dd>1</dd></div>
+          <div><dt>freshness</dt><dd>100%</dd></div>
+        </dl>
+        <p class=flags><span class=flag>low trust</span> <span class=flag>single evidence</span></p>
+      </div>
+      <div class=step-call><pre><code>write.remember(db, {
+  claim: &#39;The API uses GraphQL with a REST fallback.&#39;,
+  source: &#39;inferred&#39;,
+  category: &#39;fact&#39;,
+});</code></pre></div>
+    </div>
+
+    <div class=step id=step-2 role=tabpanel aria-labelledby=tab-2>
+      <div class=step-text>
+        <h3>Another session finds it</h3>
+        <p>A day later a different session asks about the API and gets the belief back with the flags still on it. That is the point: the second agent sees a guess, not a fact.</p>
+        <p>Recall is full-text search plus local similarity. No model is called.</p>
+      </div>
+      <div class="belief flagged">
+        <p class=belief-id>Belief #1 · fact · recalled</p>
+        <p class=claim>The API uses GraphQL with a REST fallback.</p>
+        <dl class=fields>
+          <div><dt>source</dt><dd>inferred</dd></div>
+          <div><dt>certainty</dt><dd>50%</dd></div>
+          <div><dt>evidence</dt><dd>1</dd></div>
+          <div><dt>freshness</dt><dd>99%</dd></div>
+        </dl>
+        <p class=flags><span class=flag>low trust</span> <span class=flag>single evidence</span></p>
+      </div>
+      <div class=step-call><pre><code>read.recall(db, &#39;graphql api&#39;);
+read.listFlags(db);</code></pre></div>
+    </div>
+
+    <div class=step id=step-3 role=tabpanel aria-labelledby=tab-3>
+      <div class=step-text>
+        <h3>Someone checks and corrects it</h3>
+        <p>Someone looks at the API and REST is gone. In a markdown file you would now have two lines that disagree. Here the old belief is marked superseded and drops out of recall, the new belief starts at 80% because it was observed, and the lineage keeps both.</p>
+      </div>
+      <div class=stack>
+        <div class="belief superseded">
+          <p class=belief-id>Belief #1 · superseded by #2</p>
+          <p class=claim>The API uses GraphQL with a REST fallback.</p>
+        </div>
+        <div class="belief confirmed">
+          <p class=belief-id>Belief #2 · fact · supersedes #1</p>
+          <p class=claim>The API uses GraphQL exclusively; REST was retired.</p>
+          <dl class=fields>
+            <div><dt>source</dt><dd>observed</dd></div>
+            <div><dt>certainty</dt><dd>80%</dd></div>
+            <div><dt>evidence</dt><dd>1</dd></div>
+            <div><dt>freshness</dt><dd>100%</dd></div>
+          </dl>
+          <p class=flags><span class=flag>single evidence</span></p>
+        </div>
+      </div>
+      <div class=step-call><pre><code>write.correctBelief(db, 1, {
+  claim: &#39;The API uses GraphQL exclusively; REST was retired.&#39;,
+  source: &#39;observed&#39;,
+  category: &#39;fact&#39;,
+});</code></pre></div>
+    </div>
+
+    <div class=step id=step-4 role=tabpanel aria-labelledby=tab-4>
+      <div class=step-text>
+        <h3>Ninety days pass</h3>
+        <p>Nobody confirms the belief for 90 days. Freshness is down to 37% and the belief is flagged stale, so it turns up in review instead of steering every run.</p>
+        <p>Confirm it and the clock starts over.</p>
+      </div>
+      <div class="belief flagged">
+        <p class=belief-id>Belief #2 · fact · day 90</p>
+        <p class=claim>The API uses GraphQL exclusively; REST was retired.</p>
+        <dl class=fields>
+          <div><dt>source</dt><dd>observed</dd></div>
+          <div><dt>certainty</dt><dd>80%</dd></div>
+          <div><dt>evidence</dt><dd>1</dd></div>
+          <div><dt>freshness</dt><dd>37%</dd></div>
+        </dl>
+        <p class=flags><span class=flag>stale</span> <span class=flag>single evidence</span></p>
+      </div>
+      <div class=step-call><pre><code>read.listFlags(db);
+// stale, single_evidence
+write.confirmBelief(db, 2);</code></pre></div>
+    </div>
+
+    <div class=step id=step-5 role=tabpanel aria-labelledby=tab-5>
+      <div class=step-text>
+        <h3>You retire it for good</h3>
+        <p>Some things should not be remembered at all. Retire deletes the belief and its whole lineage: the call returns the deleted ids and recall comes back empty. Agents get the same call as the <code>retire_belief</code> tool.</p>
+      </div>
+      <div class="belief gone">
+        <p class=belief-id>Beliefs #1 and #2 · deleted</p>
+        <p class=claim>Nothing left to recall.</p>
+        <p class=flags><span class="flag ok">0 rows</span></p>
+      </div>
+      <div class=step-call><pre><code>write.deleteBelief(db, 2);   // [1, 2]
+read.recall(db, &#39;graphql api&#39;); // []</code></pre></div>
+    </div>
+    <p class=drill-nav><button type=button class="button ghost" id=next-step hidden>Next move</button></p>
+  </section>
+
+  <section class=record-form aria-labelledby=record-title>
+    <h2 id=record-title>What one belief records</h2>
+    <p class=intro>Each line your markdown file would hold becomes one row. Open the file with <code>sqlite3</code> if you want to check.</p>
+    <dl class=form>
+      <div><dt>claim</dt><dd>The sentence itself, kept short.</dd></div>
+      <div><dt>source</dt><dd>explicit, observed, distilled or inferred. Inferred and distilled beliefs are flagged low trust.</dd></div>
+      <div><dt>category</dt><dd>What kind of belief it is, such as a fact or a preference.</dd></div>
+      <div><dt>certainty</dt><dd>Starts from the source (explicit 90%, observed 80%, inferred 50%) and moves with confirmations.</dd></div>
+      <div><dt>evidence</dt><dd>How many times it was confirmed. One piece of evidence is its own flag.</dd></div>
+      <div><dt>freshness</dt><dd>Decays from the last confirmation; stale and fading flags are computed every time you read.</dd></div>
+      <div><dt>lineage</dt><dd>Which belief it superseded, with a before and after diff.</dd></div>
+    </dl>
+  </section>
+
+  <section class=worry aria-labelledby=worry-title>
+    <h2 id=worry-title>If memory makes your agent worse</h2>
+    <div class=worry-grid>
+      <p>Plenty of developers turn agent memory off. Unread memories pile up, and an old line wins against a new one. That is a fair reason, and most of codex exists because of it.</p>
+      <ul>
+        <li>Recall returns only active beliefs. Superseded and forgotten ones stay out of the prompt.</li>
+        <li>Flags tell you what to prune: stale, fading, low trust, single evidence.</li>
+        <li>Every write lists nearby beliefs, so a near-duplicate shows up when it is written, not months later.</li>
+        <li>Retire deletes a belief and its history. Forget keeps the history but removes it from recall.</li>
+        <li>The database is one local file. No server, no API key, no network.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class=numbers aria-labelledby=numbers-title>
+    <h2 id=numbers-title>What it costs to add</h2>
+    <dl class="ledger wide">
+      <div><dt>Runtime dependencies</dt><dd>0</dd></div>
+      <div><dt>Node.js</dt><dd>24 or newer (node:sqlite)</dd></div>
+      <div><dt>Size of dist/index.js, gzip</dt><dd>32.5 KB</dd></div>
+      <div><dt>Import time</dt><dd>about 4 ms</dd></div>
+      <div><dt>Tests</dt><dd>378 passing</dd></div>
+      <div><dt>Agent tools</dt><dd>7</dd></div>
+    </dl>
+    <p class=note>Measured 2026-10-24 on the maintainer&#39;s machine with Node.js 24.14.0 against codex 0.3.0.</p>
+  </section>
+
+  <section class=start aria-labelledby=start-title>
+    <h2 id=start-title>Start from the README</h2>
+    <pre><code>import { DatabaseSync } from &#39;node:sqlite&#39;;
+import { initCodexTables, read, write } from &#39;@ghostpaw/codex&#39;;
+
+const db = new DatabaseSync(&#39;codex.db&#39;);
+initCodexTables(db);
+
+const { id } = write.remember(db, {
+  claim: &#39;The API uses GraphQL with a REST fallback.&#39;,
+  source: &#39;explicit&#39;,
+  category: &#39;fact&#39;,
+});
+write.confirmBelief(db, id);
+read.recall(db, &#39;graphql api&#39;);
+read.listFlags(db);</code></pre>
+    <p>The seven tools (<code>search_codex</code>, <code>review_codex</code>, <code>inspect_codex_item</code>, <code>remember_belief</code>, <code>revise_belief</code>, <code>retire_belief</code>, <code>dismiss_proximity</code>) ship with JSON Schemas for any LLM SDK. The MCP server and the command line tool use the same seven.</p>
+    <p class=links><a class=more href=https://github.com/GhostPawJS/codex#readme>Read the README</a><a href=https://ghostpaw.anonyfox.com/codex/>Try the live Belief Console</a><a href=https://www.npmjs.com/package/@ghostpaw/codex>codex on npm</a></p>
+    <p class=links><a href=https://ghostpaw.anonyfox.com/>All seven GhostPaw libraries</a><a href=https://ghostpaw.anonyfox.com/agent-tasks/>questlog, for task lists</a></p>
+  </section>
+</main>
+<footer class=foot>
+  <p>codex is maintained in the open by GhostPaw under the MIT licence.</p>
+  <p class=foot-links><a href=https://github.com/GhostPawJS/codex>Source</a><a href=https://lab.anonyfox.com/impressum/>Impressum</a><a href=https://lab.anonyfox.com/datenschutz/>Datenschutz</a></p>
+</footer>
+
+
+
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"SoftwareSourceCode","author":{"@id":"https://ghostpaw.anonyfox.com/#org","@type":"Organization","name":"GhostPaw"},"codeRepository":"https://github.com/GhostPawJS/codex","description":"@ghostpaw/codex stores what your agent believes as claims with a source, a certainty and a revision history. Flags show what is stale or weakly sourced; one call corrects or deletes. Node.js 24, zero dependencies, MIT.","license":"https://opensource.org/license/mit","name":"@ghostpaw/codex","programmingLanguage":"TypeScript","runtimePlatform":"Node.js 24","version":"0.3.0"}]}</script><script>document.documentElement.classList.add("js");
+</script><script type=module>(()=>{document.documentElement.classList.add("js");let t=[...document.querySelectorAll('.drill [role="tab"]')],i=[...document.querySelectorAll(".step")],a=document.getElementById("next-step");function s(n,c,l){let o=t[n]||t[0];if(t.forEach(e=>{let r=e===o;e.setAttribute("aria-selected",String(r)),e.tabIndex=r?0:-1}),i.forEach(e=>{let r=e.id===o.getAttribute("aria-controls");e.hidden=!r,e.classList.toggle("open",r)}),a){let e=t.indexOf(o)===t.length-1;a.textContent=e?"Start again":"Next move"}if(c&&o.focus(),l){let e=new URL(location.href);e.searchParams.set("step",String(t.indexOf(o)+1)),history.replaceState(null,"",e)}}if(t.length){t.forEach((c,l)=>{c.addEventListener("click",()=>s(l,!1,!0)),c.addEventListener("keydown",o=>{let e=null;o.key==="ArrowRight"&&(e=(l+1)%t.length),o.key==="ArrowLeft"&&(e=(l-1+t.length)%t.length),o.key==="Home"&&(e=0),o.key==="End"&&(e=t.length-1),e!==null&&(o.preventDefault(),s(e,!0,!0))})}),a&&(a.hidden=!1,a.addEventListener("click",()=>{let c=t.findIndex(l=>l.getAttribute("aria-selected")==="true");s((c+1)%t.length,!1,!0)}));let n=Number(new URLSearchParams(location.search).get("step"));s(n>=1&&n<=t.length?n-1:0,!1,!1)}document.querySelectorAll(".copy").forEach(n=>{n.addEventListener("click",async()=>{let c=document.getElementById(n.dataset.copy);if(!c)return;try{await navigator.clipboard.writeText(c.value)}catch{c.select(),document.execCommand("copy")}let l=n.textContent;n.textContent="Copied",setTimeout(()=>{n.textContent=l},2e3)})})})();
+</script></body></html>

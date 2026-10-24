@@ -1,0 +1,26 @@
+# GhostPaw
+
+> Seven small MIT-licensed Node.js libraries for agent state, published under the @ghostpaw scope on npm. Each stores its data in SQLite through the built-in node:sqlite module, needs Node.js 24 or newer, and has zero runtime dependencies.
+
+Install any of them with `npm install @ghostpaw/<name>`. Source: https://github.com/GhostPawJS
+
+## Pages
+
+- [GhostPaw home](https://ghostpaw.anonyfox.com/): all seven libraries side by side, with measured tests, bundle size and import time.
+- [codex, agent memory](https://ghostpaw.anonyfox.com/agent-memory/): beliefs with a source, a certainty and a revision history; correct or delete a wrong fact.
+- [questlog, agent tasks](https://ghostpaw.anonyfox.com/agent-tasks/): quests that only finish with a written outcome; unlocks, deadlines and repeats.
+
+## Libraries
+
+- [@ghostpaw/codex](https://github.com/GhostPawJS/codex) 0.3.0: agent memory as beliefs with source, certainty and history; computed flags for stale, fading and low-trust beliefs. Ships an MCP server and a ghostpaw-codex command line tool.
+- [@ghostpaw/questlog](https://github.com/GhostPawJS/questlog) 0.5.1: tasks, deadlines, scheduled windows and RRULE repeats as quests; finishing needs an outcome; state is derived at read time.
+- [@ghostpaw/affinity](https://github.com/GhostPawJS/affinity) 0.2.4: contacts with identities, relationship tracks, an evidence journal and yearly dates.
+- [@ghostpaw/souls](https://github.com/GhostPawJS/souls) 0.2.3: an agent's character as an essence plus evidence-backed traits, with gated refinement and rollback.
+- [@ghostpaw/grimoire](https://github.com/GhostPawJS/grimoire) 0.2.15: learned procedures as SKILL.md files, git-versioned, with evidence notes and a health check.
+- [@ghostpaw/email](https://github.com/GhostPawJS/email) 0.3.0: IMAP sync and SMTP send with a local SQLite cache, threading and full-text search. Ships an email command line tool.
+- [@ghostpaw/telegram](https://github.com/GhostPawJS/telegram) 0.5.0: a Telegram bot channel that mirrors every update into SQLite, with full-text search and markdown rendering.
+
+## Legal
+
+- [Impressum](https://lab.anonyfox.com/impressum/)
+- [Datenschutz](https://lab.anonyfox.com/datenschutz/)

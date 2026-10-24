@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="{{.language}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.title}}</title>
+<meta name="description" content="{{.description}}">
+<link rel="canonical" href="{{.url}}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{.url}}">
+<meta property="og:title" content="{{.title}}">
+<meta property="og:description" content="{{.description}}">
+<meta property="og:image" content="{{.socialImage.src}}">
+<meta property="og:image:alt" content="{{.socialImage.alt}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/libre-franklin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/courier-prime-400.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add("js")</script>
+{{style "assets/styles/main.css"}}
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="{{.url}}">GhostPaw</a>
+  <nav aria-label="Elsewhere">
+    <a href="{{.urls.githubOrg}}">GitHub</a>
+    <a href="{{.urls.npmOrg}}">npm</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">Your agent keeps its state in markdown files.</h1>
+      <p class="lede"><code>MEMORY.md</code>, <code>TODO.md</code>, <code>USER.md</code>, <code>SOUL.md</code>. They grow every session, nobody prunes them, and one wrong line steers every run after it.</p>
+      <p>GhostPaw is seven small Node.js libraries that file that state as records you can read and delete. Most of them are a few SQLite tables inside your agent's own process.</p>
+      <div class="install">
+        <label for="hero-cmd">Start with memory</label>
+        <div class="cmd"><input id="hero-cmd" readonly value="npm install @ghostpaw/codex" spellcheck="false"><button type="button" class="copy" data-copy="hero-cmd">Copy</button></div>
+      </div>
+      <p class="actions"><a class="button" href="#files">Find the file you outgrew</a> <a href="{{.urls.githubOrg}}">Read all seven on GitHub</a></p>
+      <p class="terms">Free, MIT licence, Node.js 24 or newer. All seven have zero runtime dependencies. No account and no service to run.</p>
+    </div>
+    <figure class="hero-art">
+      <picture><source media="(min-width: 52rem)" srcset="assets/images/drawer-720.webp" width="720" height="540"><img src="assets/images/drawer-480.webp" width="480" height="360" alt="Ink drawing of an open filing drawer of manila folders, one pulled halfway out, with a faint paw print on it." fetchpriority="high"></picture>
+      <p class="stamp" aria-label="Zero runtime dependencies in all seven packages"><span>0 runtime</span><span>dependencies</span><small>in all seven packages</small></p>
+    </figure>
+  </section>
+
+  <section id="files" class="files" aria-labelledby="files-title">
+    <h2 id="files-title">Which file is your agent outgrowing?</h2>
+    <p class="intro">Pick the file. Its folder shows the package that takes it over, what one record holds and what we measured.</p>
+    <div class="drawer">
+      <div class="tabs" role="tablist" aria-label="Agent files">
+        {{range $i, $p := .data.packages}}<button type="button" role="tab" id="tab-{{$p.key}}" aria-controls="folder-{{$p.key}}" aria-selected="{{if eq $i 0}}true{{else}}false{{end}}" {{if ne $i 0}}tabindex="-1"{{end}}><code>{{$p.file}}</code></button>{{end}}
+      </div>
+      {{range $i, $p := .data.packages}}
+      <div class="folder" id="folder-{{$p.key}}" role="tabpanel" aria-labelledby="tab-{{$p.key}}" data-key="{{$p.key}}">
+        <div class="folder-head">
+          <img src="assets/images/spot-{{$p.spot}}.webp" width="256" height="256" alt="{{$p.spotAlt}}" loading="lazy">
+          <div>
+            <p class="replaces">Replaces <code>{{$p.file}}</code></p>
+            <h3>{{$p.role}}</h3>
+            <p class="pkg"><code>{{$p.pkg}}</code> version {{$p.version}}</p>
+          </div>
+        </div>
+        <p class="line">{{$p.line}}</p>
+        <div class="folder-body">
+          <div class="record">
+            <h4>One record holds</h4>
+            <ul>{{range $p.fields}}<li>{{.}}</li>{{end}}</ul>
+          </div>
+          <dl class="ledger">
+            <div><dt>Runtime dependencies</dt><dd>{{$p.deps}}</dd></div>
+            <div><dt>Tests</dt><dd>{{$p.tests}}</dd></div>
+            <div><dt>Size, gzip</dt><dd>{{$p.gzip}}</dd></div>
+            <div><dt>Import time</dt><dd>{{$p.importMs}}</dd></div>
+          </dl>
+        </div>
+        <div class="cmd"><input id="cmd-{{$p.key}}" readonly value="npm install {{$p.pkg}}" aria-label="Install command for {{$p.name}}" spellcheck="false"><button type="button" class="copy" data-copy="cmd-{{$p.key}}">Copy</button></div>
+        <p class="links">{{range $p.links}}<a {{if .strong}}class="more" {{end}}href="{{index $.urls .to}}">{{.label}}</a>{{end}}</p>
+      </div>
+      {{end}}
+    </div>
+    <p class="note">{{.data.measured}}</p>
+  </section>
+
+  <section class="why" aria-labelledby="why-title">
+    <h2 id="why-title">Where a markdown file stops working</h2>
+    <ol class="notes">
+      <li>
+        <h3>The junk drawer</h3>
+        <p class="before">MEMORY.md grows every session and nobody prunes it. Developers say they pay tokens on every turn to reread lines that stopped being true.</p>
+        <p class="after"><strong>Instead:</strong> codex flags stale, fading and low-trust beliefs when you read them and recalls only active ones. Pruning becomes a list you can work through.</p>
+      </li>
+      <li>
+        <h3>The wrong fact</h3>
+        <p class="before">One agent saves a wrong fact, and every other agent trusts it.</p>
+        <p class="after"><strong>Instead:</strong> In codex every belief records where it came from and how certain it is. A correction supersedes the old belief and keeps the lineage, so you can see what changed.</p>
+      </li>
+      <li>
+        <h3>Said it was done</h3>
+        <p class="before">The agent reports the task finished. It is not.</p>
+        <p class="after"><strong>Instead:</strong> questlog will not finish a quest without a written outcome, and a blocked quest stays blocked until the one before it succeeds. An outcome is text, not a test, but it gives you something to check.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="worry" aria-labelledby="worry-title">
+    <h2 id="worry-title">If memory makes you nervous</h2>
+    <div class="worry-grid">
+    <p>Plenty of developers switch agent memory off, because unread memories pile up and old lines win arguments. That is a fair worry. This is what GhostPaw does about it.</p>
+    <ul>
+      <li>The database is a SQLite file your own process opens. You can read and delete every row with <code>sqlite3</code>.</li>
+      <li>A belief nobody confirms for 90 days is flagged stale.</li>
+      <li>Forgetting is one call: <code>forgetBelief</code>, or <code>retire_belief</code> to hard-delete.</li>
+      <li>Recall calls no model. It is full-text search plus local similarity over the active beliefs.</li>
+      <li>Each package is an import, not a framework. Take one and ignore the rest.</li>
+    </ul>
+    </div>
+  </section>
+
+  <section class="all" aria-labelledby="all-title">
+    <h2 id="all-title">All seven, side by side</h2>
+    <div class="table-wrap">
+    <table>
+      <caption>The seven GhostPaw packages and what we measured</caption>
+      <thead><tr><th scope="col">Package</th><th scope="col">Takes over</th><th scope="col">Version</th><th scope="col">Runtime deps</th><th scope="col">Tests</th><th scope="col">gzip</th><th scope="col">Import</th></tr></thead>
+      <tbody>
+      {{range .data.packages}}<tr><th scope="row"><code>{{.pkg}}</code></th><td data-label="Takes over"><code>{{.file}}</code></td><td data-label="Version">{{.version}}</td><td data-label="Runtime deps">{{.deps}}</td><td data-label="Tests">{{.tests}}</td><td data-label="gzip">{{.gzip}}</td><td data-label="Import">{{.importMs}}</td></tr>{{end}}
+      </tbody>
+    </table>
+    </div>
+    <p class="note">{{.data.measured}}</p>
+  </section>
+</main>
+<footer class="foot">
+  <p>GhostPaw is maintained in the open. Every number on this page comes from the repositories and npm.</p>
+  <p class="foot-links">
+    <a href="{{.urls.githubOrg}}">GhostPawJS on GitHub</a>
+    <a href="{{.urls.npmOrg}}">@ghostpaw on npm</a>
+    <a href="{{.urls.impressum}}">Impressum</a>
+    <a href="{{.urls.privacy}}">Datenschutz</a>
+  </p>
+</footer>
+{{script "assets/scripts/main.js"}}
+</body>
+</html>
